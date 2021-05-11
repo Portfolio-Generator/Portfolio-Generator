@@ -13,6 +13,10 @@ export const QUERY_USER = gql`
       headshot
       aboutMe
       devSkills
+      preferences {
+        colorScheme
+        fonts
+      }
       projects {
         _id
         title
@@ -45,6 +49,10 @@ export const QUERY_ME = gql`
     headshot
     aboutMe
     devSkills
+    preferences {
+      colorScheme
+      fonts
+    }
     projects {
       _id
       title
@@ -93,23 +101,6 @@ export const QUERY_USERS = gql`
       headshot
       aboutMe
       devSkills
-      projects {
-        _id
-        title
-        thumbnail
-        repoLink
-        deployedLink
-        videoLink
-        organization
-        blurb
-        projectSkills
-      }
-      socialMedia: {
-        _id: ID!
-        platform
-        icon
-        accountLink
-      }
-    }
+          }
   }
 `;

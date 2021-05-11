@@ -8,6 +8,7 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
+          .populate('preferences')
           .populate('projects')
           .populate('socialMedia');
         
@@ -26,6 +27,7 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select('-__v -password')
+        .populate('preferences')
         .populate('projects')
         .populate('socialMedia');
     },

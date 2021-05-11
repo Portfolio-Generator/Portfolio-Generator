@@ -12,9 +12,14 @@ Portfolio-Generator
 *  aboutMe 
 *  devSkills[String]
 *  projects[projectSchema]
+*  preferences[preferenceSchema]
 *  socialMedia[socialMediaSchema]  
 --- ^ MVP ^ -------------
 *  resume[workHistorySchema]
+
+PREFERENCE_SCHEMA
+* colorScheme
+* fonts
 
 PROJECT_SCHEMA:  
 * title

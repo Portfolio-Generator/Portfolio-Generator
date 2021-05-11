@@ -10,8 +10,15 @@ const typeDefs = gql`
     headshot: String
     aboutMe: String
     devSkills: [String]
+    preferences: [Preference]
     projects: [Project]
     socialMedia: [socialMedia]
+  }
+
+  type Preference {
+    _id:ID
+    colorScheme:Int
+    fonts: String
   }
 
   type Project {
