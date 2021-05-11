@@ -8,23 +8,27 @@ Portfolio-Generator
 *  firstname!  
 *  lastname
 *  phone
-*  socialMedia[socialMediaLinks]  
 *  headshot  
 *  aboutMe 
 *  devSkills[String]
 *  projects[projectSchema]
+*  socialMedia[socialMediaSchema]  
 --- ^ MVP ^ -------------
 *  resume[workHistorySchema]
 
 PROJECT_SCHEMA:  
-* name
-* repo
+* title
+* thumbnail
+* repoLink
 * deployedLink
 * organization
---- ^ MVP ^ -------------
+* videoLink
 * projectSkills[String]
-* video_URL
-* thumbnail
+
+SOCIAL_MEDIA_SCHEMA:
+* platform
+* icon
+* accountLink
 
 --- v ENHANCEMENT v ------
 WORK_HISTORY_SCHEMA
@@ -97,7 +101,7 @@ Header
         - Dev Skills CheckList  
             {user.devSkills} (List located below)  
         - Projects List  
-            {project.name}  
+            {project.title}  
             {project.organization}  
             {project.repo}  (source code)
             {project.deployedLink} (link to live site)
@@ -149,7 +153,11 @@ Ability to update user info
 //stretch goals
 USESTATE Actions and reducers
 Premium template - $1.00 donation to charity
-
+-----------------------------------------------
+---- vll: I marked up what was above - can't remember
+--  if one of these was more current.. or is the List
+--  belo ui notes?
+------------------------------------------------
   
 [Portfolio Generator]
     < Select Portfolio Components >  

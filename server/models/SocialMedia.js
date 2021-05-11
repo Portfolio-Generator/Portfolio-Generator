@@ -1,24 +1,25 @@
 const { Schema } = require('mongoose');
 
-//socialMediaSchema: linkName(required), LinkIcon, linkAddress(required)
+//socialMediaSchema: see assets/FunctionalSpec
+
 const socialMediaSchema = new Schema(
   {
-    linkName: {
+    platform: {
       type: String,
       required: true,
       maxlength: 280
     },
-    linkIcon: {
+    icon: {
       type: String,
       required: false,
       maxlength: 280
     },
-    linkAddress: {
+    accountLink: {
       type: String,
       required: true,
       maxlength: 280
     }
   }
-)
+);
 
 module.exports = socialMediaSchema;

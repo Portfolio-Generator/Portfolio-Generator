@@ -1,3 +1,4 @@
 const User = require('./User');
 
-module.exports = { User, Portfolio};
+// do we export schema?
+module.exports = { User, Projects, SocialMedia};

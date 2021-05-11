@@ -1,12 +1,7 @@
 const { Schema } = require('mongoose');
 
-// PROJECT: projectTitle(required), organization, blurb, imgLink, deployedLink, skillList
-//  projectTitle!
-//  organization
-//  blurb
-//  imgLinkLink
-//  deployedLink
-//  skillList
+// PROJECT: 
+// see assets/Functional-Spec for definitions
 
 const projectSchema = new Schema(
   {
@@ -14,6 +9,27 @@ const projectSchema = new Schema(
       type: String,
       required: 'Each project needs a title',
       minlength: 1,
+      maxlength: 280
+    },
+    thumbnail: {
+      type: String,
+      required: false,
+      maxlength: 280,
+      default: 'https://via.placeholder.com/300'
+    },
+    repoLink: {
+      type: String,
+      required: false,
+      maxlength: 280
+    },
+    deployedLink: {
+      type: String,
+      required: false,
+      maxlength: 280
+    },
+    videoLink: {
+      type: String,
+      required: false,
       maxlength: 280
     },
     organization: {
@@ -27,19 +43,7 @@ const projectSchema = new Schema(
       trim: true,
       default: 'Optional text description'
     },
-    imgLink: {
-      type: String,
-      required: false,
-      maxlength: 280,
-      default: 'https://via.placeholder.com/300'
-
-    },
-    deployedLink: {
-      type: String,
-      required: false,
-      maxlength: 280
-    },
-    skillList: [String]
+    projectSkills: [String]
   },
 
 );

@@ -2,60 +2,65 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 
-//USER:
-// username!
-// email!
-// password!
-// headshot
-// bio
-// projects[Project]
-// friends[User]
-
-// this may need its own file
-
-// ************************** ///
+//USER: 
+// for data definitions, 
+// See assets/Functional-Spec
 
 
+// email will be unique identifier
+// saving first and last name instead of username
 const userSchema = new Schema(
   {
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true
-    },
     email: {
       type: String,
       required: true,
       unique: true,
-      match: [/.+@.+\..+/, 'Must match an email address!']
+      match: [/.+@.+\..+/, 'Please enter a valid email address!']
     },
     password: {
       type: String,
       required: true,
       minlength: 8
     },
+    firstname: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    lastname: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    phone: {
+      type: String,
+      required: false,
+      trim: true
+    },
     headshot: {
       type: String,
       required: false,
       default: 'https://via.placeholder.com/150'
     },
-    bio: {
+    aboutMe: {
       type: String,
       required: false,
       trim: true,
-      default: 'Enter a short bio for your portfolio'
+      default: 'Enter a short, optional bio'
     },
-
-    //?? READ IN AS AN OJBECT WITH Schema.Types.ObjectId OR AS AN ARRAY??
-    portfolio: {
-        type: Schema.Types.ObjectId,
-        ref: 'Portfolio'
+    devSkills: {
+      type: [String]
     },
-    friends: [
+    projects: [
+      {
+      type: Schema.Types.ObjectId,
+      ref: 'ProjectSchema'
+      }
+    ],
+    socialMedia: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'SocialMediaSchema'
       }
     ]
   },
@@ -82,10 +87,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-//vll: not sure we need friendcount but leaving for now
-userSchema.virtual('friendCount').get(function () {
-  return this.friends.length;
-});
 
 const User = model('User', userSchema);
 
