@@ -1,5 +1,7 @@
 import gql from 'graphql-tag';
 
+//put in whatever data you want to get back
+
 export const QUERY_THOUGHTS = gql`
   query projects($username: String) {
     projects(username: $username) {

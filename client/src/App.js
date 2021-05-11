@@ -23,6 +23,7 @@ const client = new ApolloClient({
       }
     });
   },
+  // use the graphql route
   uri: '/graphql'
 });
 
