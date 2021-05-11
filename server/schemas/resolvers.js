@@ -8,40 +8,32 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
-          .populate('friends');
-
+          .populate('projects')
+          .populate('socialMedia');
+        
         return userData;
       }
 
       throw new AuthenticationError('Not logged in');
     },
+    //vll: If you're getting all the users (as an admin, for example) you
+    // probably don't want to see their portfolios
     users: async () => {
       return User.find()
         .select('-__v -password')
-        .populate('friends');
+        .populate('socialMedia');
     },
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select('-__v -password')
-        .populate('friends')
+        .populate('projects')
+        .populate('socialMedia');
     },
-    portfolios: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Thought.find(params).sort({ createdAt: -1 });
-    },
-    // place this inside of the `Query` nested object right after `thoughts` 
-    portfolio: async (parent, { _id }) => {
-      return Thought.findOne({ _id });
-    },
+
   },
 
   Mutation: {
-    addUser: async (parent, args) => {
-      const user = await User.create(args);
-      const token = signToken(user);
-
-      return { token, user };
-    },
+  //--login
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -58,47 +50,65 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addProject: async (parent, args, context) => {
-      if (context.user) {
-        const project = await Project.create({ ...args, username: context.user.username });
+    
+  //--createUser
+    createUser: async (parent, args) => {
+      const user = await User.create(args);
+      const token = signToken(user);
 
-        await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { projects: project._id } },
-          { new: true }
-        );
-
-        return project;
-      }
-
-      throw new AuthenticationError('You need to be logged in!');
+      return { token, user };
     },
-    addReaction: async (parent, { projectId, reactionBody }, context) => {
-      if (context.user) {
-        const updatedProject = await Project.findOneAndUpdate(
-          { _id: projectId },
-          { $push: { reactions: { reactionBody, username: context.user.username } } },
-          { new: true, runValidators: true }
-        );
 
-        return updatedProject;
-      }
+    //--updateUser  // where is the id?
+    updateUser: async (parent, args) => {
+      const user = await User.findOneAndUpdate(args);
+      const token = signToken(user);
 
-      throw new AuthenticationError('You need to be logged in!');
+      return { token, user };
     },
-    addFriend: async (parent, { friendId }, context) => {
-      if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { friends: friendId } },
-          { new: true }
-        ).populate('friends');
 
-        return updatedUser;
-      }
 
-      throw new AuthenticationError('You need to be logged in!');
-    }
+  //   addProject: async (parent, args, context) => {
+  //     if (context.user) {
+  //       const project = await Project.create({ ...args, username: context.user.username });
+
+  //       await User.findByIdAndUpdate(
+  //         { _id: context.user._id },
+  //         { $push: { projects: project._id } },
+  //         { new: true }
+  //       );
+
+  //       return project;
+  //     }
+
+  //     throw new AuthenticationError('You need to be logged in!');
+  //   },
+  //   addReaction: async (parent, { projectId, reactionBody }, context) => {
+  //     if (context.user) {
+  //       const updatedProject = await Project.findOneAndUpdate(
+  //         { _id: projectId },
+  //         { $push: { reactions: { reactionBody, username: context.user.username } } },
+  //         { new: true, runValidators: true }
+  //       );
+
+  //       return updatedProject;
+  //     }
+
+  //     throw new AuthenticationError('You need to be logged in!');
+  //   },
+  //   addFriend: async (parent, { friendId }, context) => {
+  //     if (context.user) {
+  //       const updatedUser = await User.findOneAndUpdate(
+  //         { _id: context.user._id },
+  //         { $addToSet: { friends: friendId } },
+  //         { new: true }
+  //       ).populate('friends');
+
+  //       return updatedUser;
+  //     }
+
+  //     throw new AuthenticationError('You need to be logged in!');
+  //   }
   }
 };
 

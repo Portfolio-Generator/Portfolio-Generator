@@ -55,7 +55,6 @@ const typeDefs = gql`
       phone: String
       ): Auth
 
-
     updateUser(
       userId:ID!
       email: String
@@ -68,8 +67,6 @@ const typeDefs = gql`
       projects: [Project]
       socialMedia: [socialMedia]
       ): Auth
-
- 
 `;
 
 module.exports = typeDefs;
