@@ -2,100 +2,113 @@ import gql from 'graphql-tag';
 
 //put in whatever data you want to get back
 
-export const QUERY_THOUGHTS = gql`
-  query projects($username: String) {
-    projects(username: $username) {
-      _id
-      ProjectTitle
-      createdAt
-      username
-      reactionCount
-      reactions {
-        _id
-        createdAt
-        username
-        reactionBody
-      }
-    }
-  }
-`;
-
-export const QUERY_THOUGHT = gql`
-  query project($id: ID!) {
-    project(_id: $id) {
-      _id
-      ProjectTitle
-      createdAt
-      username
-      reactionCount
-      reactions {
-        _id
-        createdAt
-        username
-        reactionBody
-      }
-    }
-  }
-`;
-
 export const QUERY_USER = gql`
-  query user($username: String!) {
-    user(username: $username) {
+  query user($email: String!) {
+    user(email: $email) {
       _id
-      username
       email
-      friendCount
-      friends {
-        _id
-        username
-      }
+      firstname
+      lastname
+      phone
+      headshot
+      aboutMe
+      devSkills
       projects {
         _id
-        ProjectTitle
-        createdAt
-        reactionCount
+        title
+        thumbnail
+        repoLink
+        deployedLink
+        videoLink
+        organization
+        blurb
+        projectSkills
+      }
+      socialMedia: {
+        _id: ID!
+        platform
+        icon
+        accountLink
       }
     }
   }
 `;
 
 export const QUERY_ME = gql`
-  {
-    me {
+{
+  me {
+    _id
+    email
+    firstname
+    lastname
+    phone
+    headshot
+    aboutMe
+    devSkills
+    projects {
       _id
-      username
-      email
-      friendCount
-      projects {
-        _id
-        ProjectTitle
-        createdAt
-        reactionCount
-        reactions {
-          _id
-          createdAt
-          reactionBody
-          username
-        }
-      }
-      friends {
-        _id
-        username
-      }
+      title
+      thumbnail
+      repoLink
+      deployedLink
+      videoLink
+      organization
+      blurb
+      projectSkills
+    }
+    socialMedia: {
+      _id: ID!
+      platform
+      icon
+      accountLink
     }
   }
+}
 `;
+
 
 export const QUERY_ME_BASIC = gql`
   {
     me {
       _id
-      username
       email
-      friendCount
-      friends {
+      firstname
+      lastname
+      phone
+      headshot
+      aboutMe
+      devSkills
+    }
+  }
+`;
+// not sure what you pass into this one?
+export const QUERY_USERS = gql`
+  query users() {
+    user(email: $email) {
+      _id
+      email
+      firstname
+      lastname
+      phone
+      headshot
+      aboutMe
+      devSkills
+      projects {
         _id
-        username
+        title
+        thumbnail
+        repoLink
+        deployedLink
+        videoLink
+        organization
+        blurb
+        projectSkills
+      }
+      socialMedia: {
+        _id: ID!
+        platform
+        icon
+        accountLink
       }
     }
   }

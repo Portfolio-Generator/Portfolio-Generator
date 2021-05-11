@@ -32,7 +32,7 @@ const typeDefs = gql`
     icon: String
     accountLink: String!
   }
- 
+
   type Auth {
     token: ID!
     user: User
