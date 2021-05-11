@@ -1,43 +1,36 @@
 const { gql } = require('apollo-server-express');
-//vll:?? How do you assign a proj to a user or do
-// other stuff ? Doesn't need a mutation?
+//
 const typeDefs = gql`
   type User {
     _id: ID!
-    username: String!
     email: String!
+    firstname: String!
+    lastname: String!
+    phone: String
     headshot: String
-    bio: String
-    portfolio: [Portfolio]
-    friends: [User]
-    friendCount: Int
-  }
-
-  type Portfolio {
-    _id: ID!
-    username: String!
-    colorScheme: Int
-    font: Int
-    template: Int!
+    aboutMe: String
+    devSkills: [String]
     projects: [Project]
-    socialMedia: [SocialMedia]
+    socialMedia: [socialMedia]
   }
 
   type Project {
     _id: ID!
     title: String!
+    thumbnail: String
+    repoLink: String
+    deployedLink: String
+    videoLink: String
     organization: String
     blurb: String
-    imgLink String
-    deployedLink: String
-    skillList: String    
+    projectSkills: String    
   }
 
   type SocialMedia {
     _id: ID!
-    linkName: String!
-    linkIcon: String
-    linkAddress: String!
+    platform: String!
+    icon: String
+    accountLink: String!
   }
  
   type Auth {
@@ -48,54 +41,66 @@ const typeDefs = gql`
   type Query {
     me: User
     users: [User]
-    user(username: String!): User
-    portfolio(username: String): Portfolio
-
+    user(email: String!): User
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
 
     createUser(
-      username: String!
       email: String!
-      password: String!
-      headshot: String
-      bio: String
-      portfolio: Portfolio
-      friends: [User]
-      friendCount: Int
+      password:String!
+      firstname: String!
+      lastname: String!
+      phone: String
       ): Auth
 
-    addSocialMedia (
-      linkName: String!
-      linkIcon: String
-      linkAddress: String!
-    ): Portfolio
 
-    addProjects (
-      title: String!
-      organization: String
-      blurb: String
-      imgLink: String
-      deployedLink: String
-      skillList: [String]
-    ): Portfolio
-
-    createPortfolio(
-      colorScheme: Int
-      font: Int
-      template: Int!
+    updateUser(
+      userId:ID!
+      email: String
+      firstname: String
+      lastname: String
+      phone: String
+      headshot: String
+      aboutMe: String
+      devSkills: [String]
       projects: [Project]
-      socialMedia: [SocialMedia]
-      ): Portfolio
+      socialMedia: [socialMedia]
+      ): Auth
 
-    editSocialMedia (socialMediaId: ID!): Portfolio
-
-    editProject (projectId: ID!): Portfolio
-
-    editPortfolio(username: String!): Portfolio
-  }
+ 
 `;
 
 module.exports = typeDefs;
+
+// ********* moved temporarily ************
+// addSocialMedia (
+//   linkName: String!
+//   linkIcon: String
+//   linkAddress: String!
+// ): Portfolio
+
+// addProjects (
+//   title: String!
+//   organization: String
+//   blurb: String
+//   imgLink: String
+//   deployedLink: String
+//   skillList: [String]
+// ): Portfolio
+
+// createPortfolio(
+//   colorScheme: Int
+//   font: Int
+//   template: Int!
+//   projects: [Project]
+//   socialMedia: [SocialMedia]
+//   ): Portfolio
+
+// editSocialMedia (socialMediaId: ID!): Portfolio
+
+// editProject (projectId: ID!): Portfolio
+
+// editPortfolio(username: String!): Portfolio
+// }

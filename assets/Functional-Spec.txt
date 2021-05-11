@@ -21,8 +21,9 @@ PROJECT_SCHEMA:
 * thumbnail
 * repoLink
 * deployedLink
-* organization
 * videoLink
+* organization
+* blurb
 * projectSkills[String]
 
 SOCIAL_MEDIA_SCHEMA:
