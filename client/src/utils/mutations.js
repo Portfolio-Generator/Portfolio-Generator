@@ -76,6 +76,41 @@ mutation addSocialMedia($platform: String!, $icon: String, $accountLink: String!
 }
 `;
 
+export const EDIT_PROJECT = gql`
+mutation editProject($_id: ID!, $title: String!, $thumbnail: String, $repoLink: String, $deployedLink: String,
+  $videoLink: String, $organization: String, $blurb: String, $projectSkills: [String]) {
+    editProject(_id: $_id, title: $title, thumbnail: $thumbnail, repoLink: $repolink, deployedLink: $deployedLink,
+      videoLink: $videoLink, organization: $organization, blurb: $blurb, projectSkills: $projectSkills ) {
+      _id
+      firstname
+      lastname
+      projects{
+        _id
+        title
+        thumbnail
+        repoLink
+        deployedLink
+      }
+    }
+}
+`;
+
+export const EDIT_SOCIAL_MEDIA = gql`
+mutation editSocialMedia($_id: ID!, $platform: String!, $icon: String, $accountLink: String!) {
+    editSocialMedia(_id: $_id, platform: $platform, icon: $icon, accountLink: $accountLink) {
+      _id
+      firstname
+      lastname
+      socialMedia {
+        _id
+        platform
+        icon
+        accountLink
+      }
+    }
+}
+`;
+
 export const REMOVE_PROJECT = gql`
 mutation removeProject($_id: ID!) {
     removeProject(_id: $_id) {

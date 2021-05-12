@@ -94,6 +94,20 @@ const resolvers = {
     
       throw new AuthenticationError('You need to be logged in!');
     },
+    // editProject: async (parent, args , context) => {
+    //   if (context.user) {
+    //     const updatedUser = await User.findOneAndUpdate(
+    //       { _id: context.user._id },
+    //       { $set: {name: args.name, dateUpdated: date}},
+    //       {  projects: { $elemMatch: {_id: args._id }}},
+    //       { new: true }
+    //       );
+    //       return  updatedUser  ;
+    //   }
+    
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
+
     removeSocialMedia: async (parent, args , context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(

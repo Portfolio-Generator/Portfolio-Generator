@@ -46,7 +46,7 @@ export const QUERY_ME = gql`
     phone
     headshot
     aboutMe
-    devSkills
+    devSkill
     colorPref
     fontPref
     projects {

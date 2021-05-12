@@ -86,6 +86,17 @@ const typeDefs = gql`
         accountLink: String!
       ): User
 
+      editProject(
+        title: String!
+        thumbnail: String
+        repoLink: String
+        deployedLink: String
+        videoLink: String
+        organization: String
+        blurb: String
+        projectSkills:[String]
+      ): User
+
       removeProject(_id:ID!): User     
 
       removeSocialMedia(_id:ID!): User      
