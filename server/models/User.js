@@ -1,11 +1,11 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-
+const socialMediaSchema = require('./SocialMedia');
+const projectSchema = require('./Project');
 
 //USER: 
 // for data definitions, 
 // See assets/Functional-Spec
-
 
 // email will be unique identifier
 // saving first and last name instead of username
@@ -51,18 +51,13 @@ const userSchema = new Schema(
     devSkills: {
       type: [String]
     },
-    projects: [
-      {
-      type: Schema.Types.ObjectId,
-      ref: 'ProjectSchema'
-      }
-    ],
-    socialMedia: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'SocialMediaSchema'
-      }
-    ]
+    colorPref: {
+      type: Number,
+    },
+    fontPref: {
+      type: Number,
+    },    projects: [projectSchema],
+    socialMedia: [socialMediaSchema],
   },
   {
     toJSON: {

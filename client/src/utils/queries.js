@@ -13,10 +13,8 @@ export const QUERY_USER = gql`
       headshot
       aboutMe
       devSkills
-      preferences {
-        colorScheme
-        fonts
-      }
+      colorPref
+      fontPref
       projects {
         _id
         title
@@ -48,11 +46,9 @@ export const QUERY_ME = gql`
     phone
     headshot
     aboutMe
-    devSkills
-    preferences {
-      colorScheme
-      fonts
-    }
+    devSkill
+    colorPref
+    fontPref
     projects {
       _id
       title

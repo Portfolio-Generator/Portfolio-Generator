@@ -1,29 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// import Auth from './utils/auth';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
-
-import Header from './components/Header';
-import Footer from './components/Footer';
-
 import Home from './pages/Home';
 import Login from './pages/Login';
-import NoMatch from './pages/NoMatch';
-import SingleProject from './pages/SingleProject';
-import Profile from './pages/Profile';
-import Signup from './pages/Signup';
 
 const client = new ApolloClient({
-  request: operation => {
-    const token = localStorage.getItem('id_token');
-
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : ''
-      }
-    });
-  },
-  // use the graphql route
   uri: '/graphql'
 });
 
@@ -31,22 +14,25 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
+      <div className="flex-column justify-flex-start min-100-vh">
+        <header className="bg-secondary mb-4 py-2 flex-row align-center">
+          <div className="container flex-row justify-space-between-lg justify-center align-center">
+{/*  where's the path coming in? */}
           <div className="container">
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} />
-              <Route exact path="/profile/:username?" component={Profile} />
-              <Route exact path="/project/:id" component={SingleProject} />
 
-              <Route component={NoMatch} />
+              {/* <Route component={NoMatch} /> */}
             </Switch>
           </div>
-          <Footer />
+
+          </div>
+        </header>
+       
         </div>
-      </Router>
+        </Router>
+
     </ApolloProvider>
   );
 }

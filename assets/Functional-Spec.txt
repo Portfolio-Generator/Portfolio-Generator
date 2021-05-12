@@ -6,7 +6,7 @@ Portfolio-Generator
 *  email!  
 *  password!  
 *  firstname!  
-*  lastname
+*  lastname!
 *  phone
 *  headshot  
 *  aboutMe 
@@ -22,7 +22,7 @@ PREFERENCE_SCHEMA
 * fonts
 
 PROJECT_SCHEMA:  
-* title
+* title!
 * thumbnail
 * repoLink
 * deployedLink
@@ -32,9 +32,9 @@ PROJECT_SCHEMA:
 * projectSkills[String]
 
 SOCIAL_MEDIA_SCHEMA:
-* platform
+* platform!
 * icon
-* accountLink
+* accountLink!
 
 --- v ENHANCEMENT v ------
 WORK_HISTORY_SCHEMA

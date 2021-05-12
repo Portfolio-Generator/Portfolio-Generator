@@ -1,3 +1,6 @@
+// This is from the module 21 tutorial 
+//  it's here for reference
+
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { LOGIN_USER } from '../utils/mutations';
@@ -28,6 +31,7 @@ const Login = props => {
       });
 
       Auth.login(data.login.token);
+      alert("success!")
     } catch (e) {
       console.error(e);
     }

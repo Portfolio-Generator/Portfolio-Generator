@@ -10,15 +10,10 @@ const typeDefs = gql`
     headshot: String
     aboutMe: String
     devSkills: [String]
-    preferences: [Preference]
+    colorPref: Int
+    fontPref:Int
     projects: [Project]
-    socialMedia: [socialMedia]
-  }
-
-  type Preference {
-    _id:ID
-    colorScheme:Int
-    fonts: String
+    socialMedia: [SocialMedia]
   }
 
   type Project {
@@ -59,24 +54,65 @@ const typeDefs = gql`
       password:String!
       firstname: String!
       lastname: String!
-      phone: String
       ): Auth
 
-    updateUser(
-      userId:ID!
-      email: String
-      firstname: String
-      lastname: String
-      phone: String
-      headshot: String
-      aboutMe: String
-      devSkills: [String]
-      projects: [Project]
-      socialMedia: [socialMedia]
-      ): Auth
-`;
+      updateUser(
+          _id:ID!
+          email: String
+          firstname: String
+          lastname: String
+          phone: String
+          headshot: String
+          aboutMe: String
+          devSkills: [String]
+          colorPref: Int
+          fontPref:Int
+          ): Auth
+
+      addProject(
+        title: String!
+        thumbnail: String
+        repoLink: String
+        deployedLink: String
+        videoLink: String
+        organization: String
+        blurb: String
+        projectSkills:[String]
+        ): User
+
+      addSocialMedia(
+        platform: String!
+        icon: String
+        accountLink: String!
+      ): User
+
+      editProject(
+        title: String!
+        thumbnail: String
+        repoLink: String
+        deployedLink: String
+        videoLink: String
+        organization: String
+        blurb: String
+        projectSkills:[String]
+      ): User
+
+      removeProject(_id:ID!): User     
+
+      removeSocialMedia(_id:ID!): User      
+
+    }
+  `;
+
 
 module.exports = typeDefs;
+
+// deleteSocialMedia(_id:ID!
+//   platform: String!
+//   icon: String
+//   accountLink: String!
+// ): User
+
 
 // ********* moved temporarily ************
 // addSocialMedia (
