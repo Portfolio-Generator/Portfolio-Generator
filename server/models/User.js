@@ -1,8 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 const socialMediaSchema = require('./SocialMedia');
-const projectSchema = require('./Projects');
-const preferenceSchema = require('./Preferences');
+const projectSchema = require('./Project');
 
 //USER: 
 // for data definitions, 
@@ -52,10 +51,13 @@ const userSchema = new Schema(
     devSkills: {
       type: [String]
     },
-    preferences: [preferenceSchema],
-    projects: [projectSchema],
+    colorPref: {
+      type: Number,
+    },
+    fontPref: {
+      type: Number,
+    },    projects: [projectSchema],
     socialMedia: [socialMediaSchema],
-
   },
   {
     toJSON: {

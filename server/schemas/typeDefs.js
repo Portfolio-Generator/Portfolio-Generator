@@ -10,15 +10,10 @@ const typeDefs = gql`
     headshot: String
     aboutMe: String
     devSkills: [String]
-    preferences: [Preference]
+    colorPref: Int
+    fontPref:Int
     projects: [Project]
-    socialMedia: [socialMedia]
-  }
-
-  type Preference {
-    _id:ID
-    colorScheme:Int
-    fonts: String
+    socialMedia: [SocialMedia]
   }
 
   type Project {
@@ -62,7 +57,7 @@ const typeDefs = gql`
       ): Auth
 
       updateUser(
-          userId:ID!
+          _id:ID!
           email: String
           firstname: String
           lastname: String
@@ -70,11 +65,23 @@ const typeDefs = gql`
           headshot: String
           aboutMe: String
           devSkills: [String]
-          preferences: [Preference]
-          projects: [Project]
-          socialMedia: [socialMedia]
+          colorPref: Int
+          fontPref:Int
           ): Auth
-        `;
+
+      addProject(
+        title: String!
+        thumbnail: String
+        repoLink: String
+        deployedLink: String
+        videoLink: String
+        organization: String
+        blurb: String
+        projectSkills:[String]
+        ): User
+    }
+  `;
+
 
 module.exports = typeDefs;
 
