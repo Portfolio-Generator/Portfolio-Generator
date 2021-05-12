@@ -79,6 +79,12 @@ const typeDefs = gql`
         blurb: String
         projectSkills:[String]
         ): User
+
+      addSocialMedia(
+        platform: String!
+        icon: String
+        accountLink: String!
+      ): User
     }
   `;
 

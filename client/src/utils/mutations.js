@@ -44,15 +44,25 @@ mutation updateUser($email: String!, $password: String!, $firstname: String!, $l
 export const ADD_PROJECT = gql`
 mutation addProject($title: String!, $thumbnail: String, $repoLink: String, $deployedLink: String,
   $videoLink: String, $organization: String, $blurb: String, $projectSkills: [String]) {
-    createUser(title: $title, thumbnail: $thumbnail, repoLink: $repolink, deployedLink: $deployedLink,
+    addProject(title: $title, thumbnail: $thumbnail, repoLink: $repolink, deployedLink: $deployedLink,
       videoLink: $videoLink, organization: $organization, blurb: $blurb, projectSkills: $projectSkills ) {
-        token
-        user {
-          _id
-          firstname
-          lastname
-          projects
-        }
+      _id
+      firstname
+      lastname
+      projects 
+    }
+}
+
+`;
+
+
+export const ADD_SOCIAL_MEDIA = gql`
+mutation addSocialMedia($platform: String!, $icon: String, $accountLink: String!) {
+    addSocialMedia(platform: $platform, icon: $icon, accountLink: $accountLink) {
+      _id
+      firstname
+      lastname
+      socialMedia
     }
 }
 

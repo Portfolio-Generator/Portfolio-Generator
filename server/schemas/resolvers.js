@@ -69,12 +69,23 @@ const resolvers = {
       return { token, user };
     },
     addProject: async (parent, args , context) => {
-      console.log(args, "*************")
-      console.log(context, "!!!!!!!!!!!!")
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { projects: args } },
+          { new: true, runValidators: true }
+        );
+
+        return  updatedUser ;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    addSocialMedia: async (parent, args , context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { socialMedia: args } },
           { new: true, runValidators: true }
         );
 
