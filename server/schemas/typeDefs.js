@@ -85,12 +85,22 @@ const typeDefs = gql`
         icon: String
         accountLink: String!
       ): User
+
+      removeProject(_id:ID!): User     
+
+      removeSocialMedia(_id:ID!): User      
+
     }
   `;
 
 
 module.exports = typeDefs;
 
+// deleteSocialMedia(_id:ID!
+//   platform: String!
+//   icon: String
+//   accountLink: String!
+// ): User
 
 
 // ********* moved temporarily ************

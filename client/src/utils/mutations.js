@@ -49,12 +49,16 @@ mutation addProject($title: String!, $thumbnail: String, $repoLink: String, $dep
       _id
       firstname
       lastname
-      projects 
+      projects{
+        _id
+        title
+        thumbnail
+        repoLink
+        deployedLink
+      }
     }
 }
-
 `;
-
 
 export const ADD_SOCIAL_MEDIA = gql`
 mutation addSocialMedia($platform: String!, $icon: String, $accountLink: String!) {
@@ -62,7 +66,43 @@ mutation addSocialMedia($platform: String!, $icon: String, $accountLink: String!
       _id
       firstname
       lastname
-      socialMedia
+      socialMedia {
+        _id
+        platform
+        icon
+        accountLink
+      }
+    }
+}
+`;
+
+export const REMOVE_PROJECT = gql`
+mutation removeProject($_id: ID!) {
+    removeProject(_id: $_id) {
+      _id
+      firstname
+      lastname
+      projects {
+        _id
+        title
+      }
+    }
+}
+
+`;
+
+export const REMOVE_SOCIAL_MEDIA = gql`
+mutation removeSocialMedia($_id: ID!) {
+    removeSocialMedia(_id: $_id) {
+      _id
+      firstname
+      lastname
+      socialMedia {
+        _id
+        platform
+        icon
+        accountLink
+      }
     }
 }
 
