@@ -9,7 +9,7 @@ const preferenceSchema = new Schema(
       type: Number,
     },
     fonts: {
-      type: String,
+      type: Number,
     },
   }
 

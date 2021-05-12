@@ -59,24 +59,26 @@ const typeDefs = gql`
       password:String!
       firstname: String!
       lastname: String!
-      phone: String
       ): Auth
 
-    updateUser(
-      userId:ID!
-      email: String
-      firstname: String
-      lastname: String
-      phone: String
-      headshot: String
-      aboutMe: String
-      devSkills: [String]
-      projects: [Project]
-      socialMedia: [socialMedia]
-      ): Auth
-`;
+      updateUser(
+          userId:ID!
+          email: String
+          firstname: String
+          lastname: String
+          phone: String
+          headshot: String
+          aboutMe: String
+          devSkills: [String]
+          preferences: [Preference]
+          projects: [Project]
+          socialMedia: [socialMedia]
+          ): Auth
+        `;
 
 module.exports = typeDefs;
+
+
 
 // ********* moved temporarily ************
 // addSocialMedia (
