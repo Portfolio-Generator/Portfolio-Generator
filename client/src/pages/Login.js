@@ -1,5 +1,4 @@
-// This is from the module 21 tutorial 
-//  it's here for reference
+
 
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
