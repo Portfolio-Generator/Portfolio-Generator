@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
-import SignUpForm from '../LoginForms/SignupForm';
 import LoginForm from '../LoginForms/LoginForm';
+import SignUpForm from '../LoginForms/SignupForm';
 
 import Auth from '../../utils/auth';
 
@@ -15,19 +15,24 @@ const AppNavbar = () => {
       <Navbar bg='dark' variant='dark' expand='lg'>
         <Container fluid>
           <Navbar.Brand as={Link} to='/'>
-            Portfolio Builder TESTBED
+            PROJECT TESTBED
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
           <Navbar.Collapse id='navbar'>
             <Nav className='ml-auto'>
+              {/* These links don't need user to be logged in */}
               <Nav.Link as={Link} to='/'>
-                Search For Books
+                Home
               </Nav.Link>
-              {/* if user is logged in show saved books and logout */}
+              <Nav.Link as={Link} to='/about'>
+                About
+              </Nav.Link>
+              {/* These links appear if user is logged in - 
+              otherwise they are sent to login  */}
               {Auth.loggedIn() ? (
                 <>
-                  <Nav.Link as={Link} to='/about'>
-                    Link to About
+                  <Nav.Link as={Link} to='/portfolio'>
+                    Portfolio Builder
                   </Nav.Link>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>
