@@ -18,20 +18,19 @@ function App() {
         <header className="bg-secondary mb-4 py-2 flex-row align-center">
           <div className="container flex-row justify-space-between-lg justify-center align-center">
 {/*  where's the path coming in? */}
-          <div className="container">
             <Switch>
-              <Route exact path="/" component={Home} />
+              {/* <Route exact path="/" component={Home} /> */}
               <Route exact path="/login" component={Login} />
-
               {/* <Route component={NoMatch} /> */}
             </Switch>
-          </div>
 
           </div>
         </header>
-       
+       <div><h2>Page content</h2></div>
         </div>
-        </Router>
+        <Home />
+      
+      </Router>
 
     </ApolloProvider>
   );
