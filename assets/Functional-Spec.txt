@@ -14,12 +14,11 @@ Portfolio-Generator
 *  projects[projectSchema]
 *  preferences[preferenceSchema]
 *  socialMedia[socialMediaSchema]  
+*  colorScheme
+*  fonts
 --- ^ MVP ^ -------------
 *  resume[workHistorySchema]
 
-PREFERENCE_SCHEMA
-* colorScheme
-* fonts
 
 PROJECT_SCHEMA:  
 * title!
@@ -70,6 +69,7 @@ Key
         {EMAIL} <CHANGE-EMAIL>  
         **{Password Edit}**  
         **{Email Edit}**  
+        **{UserName Edit}**
         **<?PAYMENT>**  
       **<? User Demo Display >**  
     < Logout link >    
