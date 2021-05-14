@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Portfolio } = require('../models');
+const { User, Project, SocialMedia } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -8,9 +8,8 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
-          // .populate('preferences')
-          // .populate('projects')
-          // .populate('socialMedia');
+          .populate('projects')
+          .populate('socialMedia');
         
         return userData;
       }
@@ -22,14 +21,14 @@ const resolvers = {
     users: async () => {
       return User.find()
         .select('-__v -password')
-        // .populate('socialMedia');
-    },
+        .populate('projects')
+        .populate('socialMedia');
+  },
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select('-__v -password')
-        // .populate('preferences')
-        // .populate('projects')
-        // .populate('socialMedia');
+        .populate('projects')
+        .populate('socialMedia');
     },
 
   },
@@ -62,17 +61,17 @@ const resolvers = {
     },
 
     //--updateUser  // where is the id?
-    updateUser: async (parent, args) => {
-      const user = await User.findOneAndUpdate(args);
-      const token = signToken(user);
+    // updateUser: async (parent, args) => {
+    //   const user = await User.findOneAndUpdate(args);
+    //   const token = signToken(user);
 
-      return { token, user };
-    },
-    addProject: async (parent, args , context) => {
+    //   return { token, user };
+    // },
+    updateUser: async (parent, args , context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { projects: args } },
+          { $set: { user: args } },
           { new: true, runValidators: true }
         );
 
@@ -81,14 +80,41 @@ const resolvers = {
     
       throw new AuthenticationError('You need to be logged in!');
     },
-    addSocialMedia: async (parent, args , context) => {
-      if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { socialMedia: args } },
-          { new: true, runValidators: true }
-        );
+    // updateProjects: async (parent, args , context) => {
+    //   if (context.user) {
+    //     const updatedUser = await User.findOneAndUpdate(
+    //       { _id: context.user._id },
+    //       { $set: { user: args } },
+    //       { new: true, runValidators: true }
+    //     );
 
+    //     return  updatedUser ;
+    //   }
+    
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
+    addProject: async (parent, args, context) => {
+      if (context.user) {
+        const newProject = await Project.create(args)
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { projects: newProject._id } },
+          { new: true }
+        ).populate('projects')
+        return  updatedUser ;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    addSocialMedia: async (parent, args, context) => {
+      if (context.user) {
+        const newSocialMedia = await SocialMedia.create(args)
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { socialMedia: newSocialMedia._id } },
+          { new: true }
+        ).populate('socialMedia')
+        console.log("*****", updatedUser)
         return  updatedUser ;
       }
     
@@ -98,8 +124,9 @@ const resolvers = {
     //   if (context.user) {
     //     const updatedUser = await User.findOneAndUpdate(
     //       { _id: context.user._id },
-    //       { $set: {name: args.name, dateUpdated: date}},
-    //       {  projects: { $elemMatch: {_id: args._id }}},
+    //       {$set: {projects: args.projects, title: args.title, }}
+    //       // { $set: {name: args.name, dateUpdated: date}},
+    //       // {  projects: { $elemMatch: {_id: args._id }}},
     //       { new: true }
     //       );
     //       return  updatedUser  ;

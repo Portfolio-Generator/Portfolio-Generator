@@ -18,14 +18,14 @@ const typeDefs = gql`
 
   type Project {
     _id: ID!
-    title: String!
+    title: String
     thumbnail: String
     repoLink: String
     deployedLink: String
     videoLink: String
     organization: String
     blurb: String
-    projectSkills: String    
+    projectSkills: [String]    
   }
 
   type SocialMedia {
@@ -46,8 +46,42 @@ const typeDefs = gql`
     user(email: String!): User
   }
 
+  input UserInput {
+    email: String
+    firstname: String
+    lastname: String
+    phone: String
+    headshot: String
+    aboutMe: String
+    devSkills: [String]
+    colorPref: Int
+    fontPref:Int
+   }
+
+   input ProjectInput {
+    title: String!
+    thumbnail: String
+    repoLink: String
+    deployedLink: String
+    videoLink: String
+    organization: String
+    blurb: String
+    projectSkills: [String]    
+   }
+
+   input SocialMediaInput {
+    platform: String
+    icon: String
+    accountLink: String
+
+   }
+
   type Mutation {
-    login(email: String!, password: String!): Auth
+    
+    login(
+      email: String!, 
+      password: String!
+      ): Auth
 
     createUser(
       email: String!
@@ -56,56 +90,68 @@ const typeDefs = gql`
       lastname: String!
       ): Auth
 
-      updateUser(
-          _id:ID!
-          email: String
-          firstname: String
-          lastname: String
-          phone: String
-          headshot: String
-          aboutMe: String
-          devSkills: [String]
-          colorPref: Int
-          fontPref:Int
-          ): Auth
+      updateUser(input: UserInput): User
 
-      addProject(
-        title: String!
-        thumbnail: String
-        repoLink: String
-        deployedLink: String
-        videoLink: String
-        organization: String
-        blurb: String
-        projectSkills:[String]
+      updateProjects(
+        _id: ID!
+        projectData: ProjectInput
         ): User
 
-      addSocialMedia(
-        platform: String!
-        icon: String
-        accountLink: String!
-      ): User
+      updateSocialMedia(
+        _id: ID!
+        socialMediaData: SocialMediaInput
+        ): User
 
-      editProject(
-        title: String!
+      addProject(
+        title: String
         thumbnail: String
         repoLink: String
         deployedLink: String
         videoLink: String
         organization: String
         blurb: String
-        projectSkills:[String]
+        projectSkills: [String]         
+      ): User
+
+      addSocialMedia(
+        platform: String
+        icon: String
+        accountLink: String
       ): User
 
       removeProject(_id:ID!): User     
 
       removeSocialMedia(_id:ID!): User      
-
     }
   `;
 
 
 module.exports = typeDefs;
+
+
+// input UserInput {
+//   email: String!
+//   firstname: String!
+//   lastname: String!
+//   phone: String
+//   headshot: String
+//   aboutMe: String
+//   devSkills: [String]
+//   colorPref: Int
+//   fontPref:Int
+//  }
+
+
+// editProject(
+//   title: String!
+//   thumbnail: String
+//   repoLink: String
+//   deployedLink: String
+//   videoLink: String
+//   organization: String
+//   blurb: String
+//   projectSkills:[String]
+// ): User
 
 // deleteSocialMedia(_id:ID!
 //   platform: String!

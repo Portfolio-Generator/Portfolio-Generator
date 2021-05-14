@@ -1,7 +1,5 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const socialMediaSchema = require('./SocialMedia');
-const projectSchema = require('./Project');
 
 //USER: 
 // for data definitions, 
@@ -56,8 +54,19 @@ const userSchema = new Schema(
     },
     fontPref: {
       type: Number,
-    },    projects: [projectSchema],
-    socialMedia: [socialMediaSchema],
+    },    
+    projects: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Project'
+      }
+    ],
+    socialMedia: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'SocialMedia'
+      }
+    ]
   },
   {
     toJSON: {

@@ -1,4 +1,4 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 //socialMediaSchema: see assets/FunctionalSpec
 
@@ -22,4 +22,6 @@ const socialMediaSchema = new Schema(
   }
 );
 
-module.exports = socialMediaSchema;
+const SocialMedia = model('SocialMedia', socialMediaSchema);
+
+module.exports = SocialMedia;

@@ -1,4 +1,4 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 // PROJECT: 
 // see assets/Functional-Spec for definitions
@@ -48,4 +48,6 @@ const projectSchema = new Schema(
 
 );
 
-module.exports = projectSchema;
+const Project = model('Project', projectSchema);
+
+module.exports = Project;
