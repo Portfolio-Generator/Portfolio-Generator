@@ -30,9 +30,9 @@ const typeDefs = gql`
 
   type SocialMedia {
     _id: ID!
-    platform: String!
+    platform: String
     icon: String
-    accountLink: String!
+    accountLink: String
   }
 
   type Auth {
