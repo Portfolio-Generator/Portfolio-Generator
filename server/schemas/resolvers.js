@@ -113,14 +113,18 @@ const resolvers = {
     },
     removeProject: async (parent, args , context) => {
       if (context.user) {
-        console.log("!!!!!", args._id)
-        const deleteProject = await Project.findByIdAndDelete({_id: args._id})
-        console.log("*****", deleteProject)
+        const deleteProjectId = args._id;
+        const deletedProject = await Project.findByIdAndDelete({_id: deleteProjectId})
+        console.log("&&&&&&&");
+        console.log("deletedProject", deletedProject)
+        console.log("deleteProjectId", deleteProjectId)
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { projects: {_id: deleteProject._id }} },
+          { $pull: { projects: {_id: deleteProjectId}} },
           { new: true }
           );
+          console.log("!!!!!")
+          console.log("updatedUser", updatedUser)
           return  updatedUser  ;
       }
     
