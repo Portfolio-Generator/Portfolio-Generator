@@ -23,13 +23,18 @@ const resolvers = {
         .select('-__v -password')
         .populate('projects')
         .populate('socialMedia');
-  },
+    },
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select('-__v -password')
         .populate('projects')
         .populate('socialMedia');
     },
+    projects: async () => {
+      return Project.find()
+        .select('-__v' );
+    },
+
 
   },
 
@@ -106,6 +111,22 @@ const resolvers = {
     
       throw new AuthenticationError('You need to be logged in!');
     },
+    removeProject: async (parent, args , context) => {
+      if (context.user) {
+        console.log("!!!!!", args._id)
+        const deleteProject = await Project.findByIdAndDelete({_id: args._id})
+        console.log("*****", deleteProject)
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { projects: {_id: deleteProject._id }} },
+          { new: true }
+          );
+          return  updatedUser  ;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
     addSocialMedia: async (parent, args, context) => {
       if (context.user) {
         const newSocialMedia = await SocialMedia.create(args)
@@ -114,7 +135,6 @@ const resolvers = {
           { $addToSet: { socialMedia: newSocialMedia._id } },
           { new: true }
         ).populate('socialMedia')
-        console.log("*****", updatedUser)
         return  updatedUser ;
       }
     
@@ -140,18 +160,6 @@ const resolvers = {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $pull: { socialMedia: {_id: args._id }} },
-          { new: true }
-          );
-          return  updatedUser  ;
-      }
-    
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removeProject: async (parent, args , context) => {
-      if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { projects: {_id: args._id }} },
           { new: true }
           );
           return  updatedUser  ;
