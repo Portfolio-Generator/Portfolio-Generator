@@ -74,13 +74,29 @@ const resolvers = {
     // },
     updateUser: async (parent, args , context) => {
       if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
+        const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $set: { user: args } },
+          // { $set: { user: args } },
+          args,
           { new: true, runValidators: true }
-        );
-
+        )
+        .populate('projects')
+        .populate('socialMedia');
+        console.log("updatedUser", updatedUser)
         return  updatedUser ;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    updateProject: async (parent, args , context) => {
+      if (context.user) {
+        const updatedProject = await Project.findByIdAndUpdate(
+          { _id: args._id },
+          args,
+          { new: true, runValidators: true }
+        )
+        console.log("updatedProject", updatedProject)
+        return  updatedProject ;
       }
     
       throw new AuthenticationError('You need to be logged in!');
@@ -149,11 +165,8 @@ const resolvers = {
     },
 
     removeSocialMedia: async (parent, args , context) => {
-      console.log("*****")
-      console.log(args)
       if (context.user) {
         const deleteSocialMediaId = args._id;
-        console.log("deleteSocialMediaId", deleteSocialMediaId)
         await SocialMedia.findByIdAndDelete({_id: deleteSocialMediaId})
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },

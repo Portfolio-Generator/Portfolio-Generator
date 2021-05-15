@@ -4,8 +4,8 @@ const typeDefs = gql`
   type User {
     _id: ID!
     email: String!
-    firstname: String!
-    lastname: String!
+    firstname: String
+    lastname: String
     phone: String
     headshot: String
     aboutMe: String
@@ -84,20 +84,18 @@ const typeDefs = gql`
       removeSocialMedia(_id:ID!): User  
 
       updateUser(
-        _id: ID!
         email: String
         firstname: String
-        lastname: String!
+        lastname: String
         phone: String
         headshot: String
         aboutMe: String
         devSkills: [String]
         colorPref: Int
         fontPref:Int
-        ): User
+      ): User
 
-
-      updateProjects(
+      updateProject(
         _id: ID!
         title: String
         thumbnail: String
@@ -107,7 +105,7 @@ const typeDefs = gql`
         organization: String
         blurb: String
         projectSkills: [String]         
-        ): User
+        ): Project
 
       updateSocialMedia(
         _id: ID!
@@ -115,8 +113,6 @@ const typeDefs = gql`
         icon: String
         accountLink: String
         ): User
-        
-        
       }
       `;
       

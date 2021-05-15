@@ -29,7 +29,7 @@ export const CREATE_USER = gql`
 export const UPDATE_USER = gql`
 mutation updateUser($email: String!, $password: String!, $firstname: String!, $lastname: String!,
   $phone: String, $headshot:String, $aboutMe: String) {
-    createUser(email: $email, password: $password, firstname: $firstname, lastname: $lastname,
+    updateUser(email: $email, password: $password, firstname: $firstname, lastname: $lastname,
       phone:$phone, headshot: $headshot, aboutMe: $aboutMe ) {
         token
         user {
@@ -77,9 +77,9 @@ mutation addSocialMedia($platform: String!, $icon: String, $accountLink: String!
 `;
 
 export const EDIT_PROJECT = gql`
-mutation editProject($_id: ID!, $title: String!, $thumbnail: String, $repoLink: String, $deployedLink: String,
+mutation updateProject($_id: ID!, $title: String!, $thumbnail: String, $repoLink: String, $deployedLink: String,
   $videoLink: String, $organization: String, $blurb: String, $projectSkills: [String]) {
-    editProject(_id: $_id, title: $title, thumbnail: $thumbnail, repoLink: $repolink, deployedLink: $deployedLink,
+    updateProject(_id: $_id, title: $title, thumbnail: $thumbnail, repoLink: $repolink, deployedLink: $deployedLink,
       videoLink: $videoLink, organization: $organization, blurb: $blurb, projectSkills: $projectSkills ) {
       _id
       firstname
@@ -96,8 +96,8 @@ mutation editProject($_id: ID!, $title: String!, $thumbnail: String, $repoLink: 
 `;
 
 export const EDIT_SOCIAL_MEDIA = gql`
-mutation editSocialMedia($_id: ID!, $platform: String!, $icon: String, $accountLink: String!) {
-    editSocialMedia(_id: $_id, platform: $platform, icon: $icon, accountLink: $accountLink) {
+mutation updateSocialMedia($_id: ID!, $platform: String!, $icon: String, $accountLink: String!) {
+    updateSocialMedia(_id: $_id, platform: $platform, icon: $icon, accountLink: $accountLink) {
       _id
       firstname
       lastname
