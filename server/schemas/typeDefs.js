@@ -84,7 +84,6 @@ const typeDefs = gql`
       removeSocialMedia(_id:ID!): User  
 
       updateUser(
-        email: String
         firstname: String
         lastname: String
         phone: String

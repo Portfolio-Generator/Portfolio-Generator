@@ -27,10 +27,10 @@ export const CREATE_USER = gql`
 `;
 
 export const UPDATE_USER = gql`
-mutation updateUser($email: String!, $firstname: String, $lastname: String,
+mutation updateUser($firstname: String, $lastname: String,
   $phone: String, $headshot:String, $aboutMe: String, $devSkills: [String], $colorPref: Int, 
   $fontPref: Int) {
-    updateUser(email: $email, firstname: $firstname, lastname: $lastname,
+    updateUser(firstname: $firstname, lastname: $lastname,
       phone:$phone, headshot: $headshot, aboutMe: $aboutMe devSkills: $devSkills, colorPref: $colorPref,
       fontPref: $fontPref) {
           _id
