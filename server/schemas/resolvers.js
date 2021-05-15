@@ -23,13 +23,18 @@ const resolvers = {
         .select('-__v -password')
         .populate('projects')
         .populate('socialMedia');
-  },
+    },
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select('-__v -password')
         .populate('projects')
         .populate('socialMedia');
     },
+    projects: async () => {
+      return Project.find()
+        .select('-__v' );
+    },
+
 
   },
 
@@ -69,13 +74,29 @@ const resolvers = {
     // },
     updateUser: async (parent, args , context) => {
       if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
+        const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $set: { user: args } },
+          // { $set: { user: args } },
+          args,
           { new: true, runValidators: true }
-        );
-
+        )
+        .populate('projects')
+        .populate('socialMedia');
+        console.log("updatedUser", updatedUser)
         return  updatedUser ;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    updateProject: async (parent, args , context) => {
+      if (context.user) {
+        const updatedProject = await Project.findByIdAndUpdate(
+          { _id: args._id },
+          args,
+          { new: true, runValidators: true }
+        )
+        console.log("updatedProject", updatedProject)
+        return  updatedProject ;
       }
     
       throw new AuthenticationError('You need to be logged in!');
@@ -100,12 +121,15 @@ const resolvers = {
           { _id: context.user._id },
           { $addToSet: { projects: newProject._id } },
           { new: true }
-        ).populate('projects')
+        )
+        .populate('projects')
+        .populate('socialMedia')
         return  updatedUser ;
       }
     
       throw new AuthenticationError('You need to be logged in!');
     },
+
     addSocialMedia: async (parent, args, context) => {
       if (context.user) {
         const newSocialMedia = await SocialMedia.create(args)
@@ -113,96 +137,49 @@ const resolvers = {
           { _id: context.user._id },
           { $addToSet: { socialMedia: newSocialMedia._id } },
           { new: true }
-        ).populate('socialMedia')
-        console.log("*****", updatedUser)
+        )
+        .populate('socialMedia')
+        .populate('projects')
         return  updatedUser ;
       }
     
       throw new AuthenticationError('You need to be logged in!');
     },
-    // editProject: async (parent, args , context) => {
-    //   if (context.user) {
-    //     const updatedUser = await User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       {$set: {projects: args.projects, title: args.title, }}
-    //       // { $set: {name: args.name, dateUpdated: date}},
-    //       // {  projects: { $elemMatch: {_id: args._id }}},
-    //       { new: true }
-    //       );
-    //       return  updatedUser  ;
-    //   }
+
+
+    removeProject: async (parent, args , context) => {
+      if (context.user) {
+        const deleteProjectId = args._id;
+        const deletedProject = await Project.findByIdAndDelete({_id: deleteProjectId})
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { projects: {_id: deleteProjectId}} },
+          { new: true }
+          )
+          .populate('projects')
+          .populate('socialMedia')
+          return  updatedUser  ;
+      }
     
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
+      throw new AuthenticationError('You need to be logged in!');
+    },
 
     removeSocialMedia: async (parent, args , context) => {
       if (context.user) {
+        const deleteSocialMediaId = args._id;
+        await SocialMedia.findByIdAndDelete({_id: deleteSocialMediaId})
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { socialMedia: {_id: args._id }} },
+          { $pull: { socialMedia: {_id: deleteSocialMediaId}} },
           { new: true }
-          );
+          )
+          .populate('projects')
+          .populate('socialMedia')
           return  updatedUser  ;
       }
     
       throw new AuthenticationError('You need to be logged in!');
     },
-    removeProject: async (parent, args , context) => {
-      if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { projects: {_id: args._id }} },
-          { new: true }
-          );
-          return  updatedUser  ;
-      }
-    
-      throw new AuthenticationError('You need to be logged in!');
-    },
-
-
-
-  //   addProject: async (parent, args, context) => {
-  //     if (context.user) {
-  //       const project = await Project.create({ ...args, username: context.user.username });
-
-  //       await User.findByIdAndUpdate(
-  //         { _id: context.user._id },
-  //         { $push: { projects: project._id } },
-  //         { new: true }
-  //       );
-
-  //       return project;
-  //     }
-
-  //     throw new AuthenticationError('You need to be logged in!');
-  //   },
-  //   addReaction: async (parent, { projectId, reactionBody }, context) => {
-  //     if (context.user) {
-  //       const updatedProject = await Project.findOneAndUpdate(
-  //         { _id: projectId },
-  //         { $push: { reactions: { reactionBody, username: context.user.username } } },
-  //         { new: true, runValidators: true }
-  //       );
-
-  //       return updatedProject;
-  //     }
-
-  //     throw new AuthenticationError('You need to be logged in!');
-  //   },
-  //   addFriend: async (parent, { friendId }, context) => {
-  //     if (context.user) {
-  //       const updatedUser = await User.findOneAndUpdate(
-  //         { _id: context.user._id },
-  //         { $addToSet: { friends: friendId } },
-  //         { new: true }
-  //       ).populate('friends');
-
-  //       return updatedUser;
-  //     }
-
-  //     throw new AuthenticationError('You need to be logged in!');
-  //   }
   }
 };
 
