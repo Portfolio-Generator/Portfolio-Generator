@@ -46,7 +46,7 @@ export const QUERY_ME = gql`
     phone
     headshot
     aboutMe
-    devSkill
+    devSkills
     colorPref
     fontPref
     projects {
@@ -71,23 +71,9 @@ export const QUERY_ME = gql`
 `;
 
 
-export const QUERY_ME_BASIC = gql`
-  {
-    me {
-      _id
-      email
-      firstname
-      lastname
-      phone
-      headshot
-      aboutMe
-      devSkills
-    }
-  }
-`;
 // not sure what you pass into this one?
 export const QUERY_USERS = gql`
-  query users() {
+  query users($email: String!) {
     user(email: $email) {
       _id
       email
@@ -97,6 +83,6 @@ export const QUERY_USERS = gql`
       headshot
       aboutMe
       devSkills
-          }
+    }
   }
 `;

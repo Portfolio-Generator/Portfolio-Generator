@@ -4,18 +4,20 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
+
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id })
-          .select('-__v -password')
-          .populate('projects')
-          .populate('socialMedia');
-        
+        const userData = await User.findOne({ _id: context.user._id }).
+        select('-__v -password')
+        .populate('projects')
+        .populate('socialMedia');
+
         return userData;
       }
 
       throw new AuthenticationError('Not logged in');
     },
+
     //vll: If you're getting all the users (as an admin, for example) you
     // probably don't want to see their portfolios
     users: async () => {
@@ -24,8 +26,8 @@ const resolvers = {
         .populate('projects')
         .populate('socialMedia');
     },
-    user: async (parent, { username }) => {
-      return User.findOne({ username })
+    user: async (parent, { email }) => {
+      return User.findOne({ email })
         .select('-__v -password')
         .populate('projects')
         .populate('socialMedia');
@@ -82,7 +84,6 @@ const resolvers = {
         )
         .populate('projects')
         .populate('socialMedia');
-        console.log("updatedUser", updatedUser)
         return  updatedUser ;
       }
     
@@ -95,7 +96,6 @@ const resolvers = {
           args,
           { new: true, runValidators: true }
         )
-        console.log("updatedProject", updatedProject)
         return  updatedProject ;
       }
     
