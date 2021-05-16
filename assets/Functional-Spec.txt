@@ -221,37 +221,42 @@ Font Families
 
 
  Skills Images - Name & Location
-  import L_HTML from "../../assets/images/skills/html-5.svg";
-  import L_CSS3 from "../../assets/images/skills/CSS3_logo.svg";
-  import L_EXPRESS from "../../assets/images/skills/express.svg";
+  import L_AJAX from "../../assets/images/skills/ajax.svg";
   import L_BOOTSTRAP from "../../assets/images/skills/bootstrap-4.svg";
-  import L_REACT from "../../assets/images/skills/react.svg";
-  import L_REACT_ROUTER from "../../assets/images/skills/react-router.svg";
-  import L_REACT_BOOTSTRAP from "../../assets/images/skills/react-bootstrap.svg";
-  import L_MYSQL from "../../assets/images/skills/mysql.svg";
-  import L_MONGODB from "../../assets/images/skills/mongodb.svg";
-  import L_NODE from "../../assets/images/skills/nodejs.svg";
-  import L_JAVASCRIPT from "../../assets/images/skills/javascript.svg";  
-  import L_HEROKU from "../../assets/images/skills/heroku.svg";  
+  import L_CSS3 from "../../assets/images/skills/CSS3_logo.svg";
   import L_GIT from "../../assets/images/skills/git-icon.svg";  
+  import L_GITHUIB_API from "../../assets/images/skills/github-api.svg";
   import L_GITHUB_PAGES from "../../assets/images/skills/github.svg";  
+  import L_HANDLEBARS from "../../assets/images/skills/handlebars.svg";
+  import L_HEROKU from "../../assets/images/skills/heroku.svg";  
+  import L_HTML from "../../assets/images/skills/html-5.svg";
+  import L_HTML5 from "../../assets/images/skills/html-5.svg";
+  import L_JAVASCRIPT from "../../assets/images/skills/javascript.svg";  
+  import L_JQUERY from "../../assets/images/skills/jquery.svg";
+  import L_EXPRESS from "../../assets/images/skills/express.svg";
+  import L_MATERLIZE from "../../assets/images/skills/materlize.svg";
+  import L_MOMENTJS from "../../assets/images/skills/momentjs.svg";
+  import L_MONGODB from "../../assets/images/skills/mongodb.svg";
+  import L_MYSQL from "../../assets/images/skills/mysql.svg";
+  import L_NODE from "../../assets/images/skills/nodejs.svg";
+  import L_NPM from "../../assets/images/skills/npm.svg";
+  import L_REACT from "../../assets/images/skills/react.svg";
+  import L_REACT_BOOTSTRAP from "../../assets/images/skills/react-bootstrap.svg";
+  import L_REACT_ROUTER from "../../assets/images/skills/react-router.svg";
   import L_REDUX from "../../assets/images/skills/redux.svg";  
-  import L_STYLED_COMPONENTS from "../../assets/images/skills/  styled-components.svg";  
-  import L_JQUERY from "../../assets/images/skills/jquery.svg";  
-  L_TAILWIND  
-  L_NPM  
-  L_MATERLIZE  
-  L_MOMENTJS  
+  import L_REST_API from "../../assets/images/skills/REST-API-icon.svg";
+  import L_STYLED_COMPONENTS from "../../assets/images/skills/styled-components.svg";  
+  import L_TAILWIND from "../../assets/images/skills/tailwindcss.svg";
   
 Social Media Icons  
-L_FACEBOOK  
-L_TWITTER  
-L_GITHUB  
-L_STACKOVERFLOW   
-L_LINKEDIN  
-L_YOUTUBE  
-L_INSTAGRAM  
-L_SPOTIFY   
-L_TWITCH  
-L_DISCORD  
-L_REDDIT   
+import L_DISCORD from ""../../assets/images/skills/discord.svg";
+import L_GITHUB from ""../../assets/images/skills/github.svg";
+import L_FACEBOOK from "../../assets/images/skills/facebook.svg";
+import L_INSTAGRAM from ""../../assets/images/skills/instagram.svg";
+import L_LINKEDIN from ""../../assets/images/skills/linkedin.svg";
+import L_REDDIT from ""../../assets/images/skills/reddit.svg";
+import L_SPOTIFY from ""../../assets/images/skills/spotify.svg";
+import L_STACKOVERFLOW from ""../../assets/images/skills/stack-overflow.svg";
+import L_TWITCH from ""../../assets/images/skills/twitch.svg";
+import L_TWITTER from ""../../assets/images/skills/twitter.svg";
+import L_YOUTUBE from ""../../assets/images/skills/youtube.svg";
