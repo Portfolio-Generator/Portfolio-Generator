@@ -50,22 +50,6 @@ const PortfolioBuilder = () => {
     return <h2>LOADING...</h2>;
   }
   else console.log(JSON.stringify(userData))
-  // const renderUserStuff = ()=>{
-  //   return userState ? (
-  //     <div className="col-12 col-lg-3 mb-3">
-  //       <div>
-  //         <p>QUERY DATA:</p>
-  //       </div>
-  //         <AboutMe userState={userState} setUserState={setUserState}/>
-  //       <ul>
-  //         <li>userState.email={userState.email}</li>
-  //         <li>userState.firstname={userState.firstname}</li>
-  //         <li>userState.lastname={userState.lastname}</li>
-  //         <li>userState.phone={userState.phone}</li>
-  //       </ul>
-  //     </div>
-  //   ) : (<div>No data available</div>)
-  // }
   return (
     <main>
       <button onClick={()=>testFunction()}>TEST</button>

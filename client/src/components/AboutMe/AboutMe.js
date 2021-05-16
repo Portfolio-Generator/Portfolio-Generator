@@ -25,10 +25,7 @@ const AboutMe = ({userState, setUserState}) => {
     const [showAlert, setShowAlert] = useState(false);
       
       
-  console.log("*****", userState.email);
-  console.log("!!!!", userFormData);
   const userData = {...userState}
-  console.log("&&&&", userData)
   useEffect(()=>{
     if(userData){
       setUserFormData(userData)
@@ -54,8 +51,9 @@ const AboutMe = ({userState, setUserState}) => {
     if (form.checkValidity() === false) {
      event.preventDefault();
       event.stopPropagation();
-  }
-
+    }
+    console.log("****", userFormData)
+    setUserState(userFormData)
   // try { 
   //   const { data } = await updateUser({
   //     variables: { ...userFormData },
@@ -85,19 +83,6 @@ const AboutMe = ({userState, setUserState}) => {
         </Alert>
  
         <Form.Group>
-          <Form.Label htmlFor='email'>Email</Form.Label>
-          <Form.Control
-            type='text'
-            placeholder='Email: Changes here also change your login email'
-            name='email'
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Email is required</Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group>
           <Form.Label htmlFor='firstname'>First name</Form.Label>
           <Form.Control
             type='firstname'
@@ -109,7 +94,6 @@ const AboutMe = ({userState, setUserState}) => {
           />
           <Form.Control.Feedback type='invalid'>First name is required</Form.Control.Feedback>
         </Form.Group>
-
 
         <Form.Group>
           <Form.Label htmlFor='lastname'>Last name</Form.Label>
@@ -131,11 +115,22 @@ const AboutMe = ({userState, setUserState}) => {
             placeholder='optional phone number'
             name='phone'
             onChange={handleInputChange}
+            value={userFormData.phone}
+          />
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label htmlFor='headShot'>headShot filename (optional)</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='optional headShot filename'
+            name='headShot'
+            onChange={handleInputChange}
             value={userFormData.headshot}
           />
         </Form.Group>
 
-        <Button disabled={!(userFormData.email && userFormData.password)} type='submit' variant='success'>
+        <Button disabled={!(userFormData.firstname && userFormData.lastname)} type='submit' variant='success'>
           Submit
         </Button>
       </Form>
