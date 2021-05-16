@@ -1,12 +1,18 @@
-// THIS IS A TEST COMPONENT FOR ABOUT ME INFORMATION
-// It is being loaded by the ProjectBilder component
+// About Me -
+// - accepts parent userState as props
+// - copies userState to userFormData 
+// - accepts input edits to userFormData
+// - on submit, copies userFormData to userState
+//NOTE: DO NOT CHANGE EMAIL HERE -
+// - it is our database key for user
+
+// todo: Style form - convert skills to checkboxes/array input
+
 
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-import Auth from '../../utils/auth';
-
-const AboutMe = ({userState, setUserState}) => {
+const AboutMe = ({ userState, setUserState }) => {
   const [userFormData, setUserFormData] =
     useState({
       email: '',
@@ -17,73 +23,62 @@ const AboutMe = ({userState, setUserState}) => {
       aboutMe: '',
       devSkills: [],
       colorPref: 0,
-      fontPref:0,
+      fontPref: 0,
       projects: [],
       socialMedia: []
     });
-    const [validated] = useState(false);
-    const [showAlert, setShowAlert] = useState(false);
-      
-      
-  const userData = {...userState}
-  useEffect(()=>{
-    if(userData){
+  const [validated] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+
+  // ----------------------------------------------
+  // ON LOAD, copy userState to userFormData     
+  // ----------------------------------------------
+  const userData = { ...userState }
+  useEffect(() => {
+    if (userData) {
       setUserFormData(userData)
     }
   }, [userState])
 
-  const token = Auth.loggedIn() ? Auth.getToken() : null;
-  if (!token) {
-    return false;
-  }
-  
-  // EVENT LISTENER: UPDATE FORM FIELD 
+
+  // ----------------------------------------------
+  // UPDATE FORM FIELD Event Listener 
+  // ----------------------------------------------
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
   };
 
-  // EVENT LISTENER: WRITE THE FORM TO DATABASE 
+  // ----------------------------------------------
+  // SUBMIT BUTTON event listener
+  // -validate form and copy to userState 
+  // ----------------------------------------------
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
-     event.preventDefault();
+      event.preventDefault();
       event.stopPropagation();
     }
-    console.log("****", userFormData)
+    console.log("**userFormData**", userFormData)
     setUserState(userFormData)
-  // try { 
-  //   const { data } = await updateUser({
-  //     variables: { ...userFormData },
-  //   });
-
-  //   console.log(data); // that's the return data now
-
-  // } catch (e) {
-  //   console.error(e);
-  // }
-
-  // // clear form values
-  // setUserFormData({
-  //   email: '',
-  //   password: '',
-  // });
-};
+  };
+  // ----------------------------------------------
 
 
 
-  return ( 
+  return (
     <>
-    {/* <Form onSubmit={handleFormSubmit}> */}
+      <p>About Section: Enter your personal information</p>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Error updating user "About Me" information.
         </Alert>
- 
+
         <Form.Group>
-          <Form.Label htmlFor='firstname'>First name</Form.Label>
+          <Form.Label htmlFor='firstname'>First Name</Form.Label>
           <Form.Control
             type='firstname'
             placeholder='required first name'
@@ -96,7 +91,7 @@ const AboutMe = ({userState, setUserState}) => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label htmlFor='lastname'>Last name</Form.Label>
+          <Form.Label htmlFor='lastname'>Last Name</Form.Label>
           <Form.Control
             type='lastname'
             placeholder='required last name'
@@ -120,15 +115,40 @@ const AboutMe = ({userState, setUserState}) => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label htmlFor='headShot'>headShot filename (optional)</Form.Label>
+          <Form.Label htmlFor='headshot'>Head Shot File Name (optional)</Form.Label>
           <Form.Control
             type='text'
-            placeholder='optional headShot filename'
-            name='headShot'
+            placeholder='do not include directory path'
+            name='headshot'
             onChange={handleInputChange}
             value={userFormData.headshot}
           />
         </Form.Group>
+
+
+        <Form.Group>
+          <Form.Label htmlFor='aboutMe'>Bio (optional)</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='A short bio to go with your headshot'
+            name='aboutMe'
+            onChange={handleInputChange}
+            value={userFormData.aboutMe}
+          />
+        </Form.Group>
+
+        
+        <Form.Group>
+          <Form.Label htmlFor='devSkills'>List your developer skills (optional)</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='have to set this up for an array'
+            name='devSkills'
+            onChange={handleInputChange}
+            value={userFormData.devSkills}
+          />
+        </Form.Group>
+
 
         <Button disabled={!(userFormData.firstname && userFormData.lastname)} type='submit' variant='success'>
           Submit

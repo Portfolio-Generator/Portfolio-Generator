@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { QUERY_ME } from '../../utils/queries';
+import { UPDATE_USER } from '../../utils/mutations';
+
 import Auth from '../../utils/auth';
 import AboutMe from '../AboutMe/AboutMe';
-// how do I destructure query data into userstate?
-// const setUserState: (data) => {
-//   userState.email = data.email;
-// }
+
+
 const PortfolioBuilder = () => {
   // Define State for  User and portfolio
   const [userState, setUserState] = useState({
@@ -22,7 +22,12 @@ const PortfolioBuilder = () => {
     projects: [],
     socialMedia: []
   });
+
+  // todo: set up a second state for projects
   // const [portfolioData, setPortfolioData] = usestate({});
+
+  const [updateUser] = useMutation(UPDATE_USER);
+
   let { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
   useEffect(()=>{
@@ -32,10 +37,26 @@ const PortfolioBuilder = () => {
     }
     console.log(userState)
   }, [data])
+
+  const handleSaveUser = async event => {
+    // event.preventDefault(); says not a function!
+    console.log('handleSaveUser data to save', userState);
+    try {
+      await updateUser({
+        variables: { ...userState },
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+
+
   const testFunction =  ()=>{
     console.log("userData:", userData)
     console.log("userState:", userState)
   }
+  
   const loggedIn = Auth.loggedIn();
   if (!loggedIn) {
     return (
@@ -49,27 +70,18 @@ const PortfolioBuilder = () => {
   if (loading) {
     return <h2>LOADING...</h2>;
   }
-  else console.log(JSON.stringify(userData))
   return (
     <main>
-      <button onClick={()=>testFunction()}>TEST</button>
+      <button onClick={() => testFunction()}>TEST</button>
+      <button onClick={()=>handleSaveUser(userState)}>Save Data</button>
+
       <div className="flex-row justify-space-between">
         <div className="container">
-            <div className="col-12 mb-3">
-              <h2>PORTFOLIO BUILDER </h2>
-            </div>
           {userData ? (
             <div className="col-12 col-lg-3 mb-3">
-              <div>
-                <p>QUERY DATA:</p>
-              </div>
               <AboutMe userState={userState} setUserState={setUserState}/>
-              <ul>
-                <li>userData.email={userState.email}</li>
-                <li>userData.firstname={userState.firstname}</li>
-                <li>userData.lastname={userState.lastname}</li>
-                <li>userData.phone={userState.phone}</li>
-              </ul>
+              <p> ************ End About me **********</p>
+              <hr></hr>
             </div>
           ) : (<div>No data available</div>)}
         </div>
