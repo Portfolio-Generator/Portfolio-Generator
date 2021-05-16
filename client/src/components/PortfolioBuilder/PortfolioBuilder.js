@@ -1,55 +1,80 @@
-import React from 'react';
-// import { useQuery } from '@apollo/react-hooks';
-// test: hardcode data
-// import Auth from '../utils/auth';
-// import { QUERY_ME_BASIC } from '../utils/queries';
-const userData = {
-  me : { email:  "anitabonita@email.tst" , firstname: "Anita", lastname: "Bonita" , phone: "1234567890"} ,
-  fred: { email: "anitabonita@email.tst" ,firstname: "Fred", lastname: "Dread" , phone: ""}
-}
-
+import React, { useState, useEffect } from 'react';
+import { useQuery } from '@apollo/react-hooks';
+import { QUERY_ME } from '../../utils/queries';
+import Auth from '../../utils/auth';
+import AboutMe from '../AboutMe/AboutMe';
+// how do I destructure query data into userstate?
+// const setUserState: (data) => {
+//   userState.email = data.email;
+// }
 const PortfolioBuilder = () => {
- // user has to be logged in for query_me
-  // const { data: userData } = useQuery(QUERY_ME_BASIC);
-  // const loggedIn = Auth.loggedIn();
-
-  // test: hard code loggedin and loading
-  const loggedIn = true;
-  const loading = false;
-
-
-  return (
-       <main>
+  // Define State for  User and portfolio
+  const [userState, setUserState] = useState({
+    email: '',
+    firstname: '',
+    lastname: '',
+    phone: '',
+    headshot: '',
+    aboutMe: '',
+    devSkills: [],
+    colorPref: 0,
+    fontPref:0,
+    projects: [],
+    socialMedia: []
+  });
+  // const [portfolioData, setPortfolioData] = usestate({});
+  let { loading, data } = useQuery(QUERY_ME);
+  const userData = data?.me || {};
+  useEffect(()=>{
+    console.log(data)
+    if(data){
+      setUserState(data.me)
+    }
+    console.log(userState)
+  }, [data])
+  const testFunction =  ()=>{
+    console.log("userData:", userData)
+    console.log("userState:", userState)
+  }
+  const loggedIn = Auth.loggedIn();
+  if (!loggedIn) {
+    return (
       <div className="flex-row justify-space-between">
-      <div className="container">
-
-        {loggedIn && (
-          <div className="col-12 mb-3">
-            <h2>PORTFOLIO BUILDER COMPONENT</h2>
-          </div>
-        )}
-        <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <div>
-                <p>Here is some hard-coded sample data</p>
-            </div>
-          )}
+        <div className="container">
+          Please log in to use PortfolioBuilder
         </div>
-        {loggedIn && userData ? (
-          <div className="col-12 col-lg-3 mb-3">
-            <ul>
-              <li>userData.me.email={userData.me.email}</li>
-              <li>userData.me.firstname={userData.me.firstname}</li>
-              <li>userData.me.lastname={userData.me.lastname}</li>
-            <li>userData.me.phone={userData.me.phone}</li>
-            </ul>
-          </div>
-          ) : null}
-          </div>
       </div>
-      </main>
+    )
+  }
+  if (loading) {
+    return <h2>LOADING...</h2>;
+  }
+  else console.log(JSON.stringify(userData))
+  return (
+    <main>
+      <button onClick={()=>testFunction()}>TEST</button>
+      <div className="flex-row justify-space-between">
+        <div className="container">
+            <div className="col-12 mb-3">
+              <h2>PORTFOLIO BUILDER </h2>
+            </div>
+          {userData ? (
+            <div className="col-12 col-lg-3 mb-3">
+              <div>
+                <p>QUERY DATA:</p>
+              </div>
+              <AboutMe userState={userState} setUserState={setUserState}/>
+              <ul>
+                <li>userData.email={userState.email}</li>
+                <li>userData.firstname={userState.firstname}</li>
+                <li>userData.lastname={userState.lastname}</li>
+                <li>userData.phone={userState.phone}</li>
+              </ul>
+            </div>
+          ) : (<div>No data available</div>)}
+        </div>
+      </div>
+    </main>
   );
 };
 
