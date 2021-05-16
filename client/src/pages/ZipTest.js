@@ -41,7 +41,7 @@ const ZipTest = () => {
         
       <section class="my-3" id="about">
         <h2 class="text-dark bg-primary p-2 display-inline-block">About Me</h2>
-        <p>Vicky is a very middling programmer</p>
+        <p>We are legion, for we are many!</p>
       </section>
     
         
@@ -56,7 +56,7 @@ const ZipTest = () => {
                 
               </h5>
               <p>Was better than the medium project</p>
-              <a href="http://yikes" class="btn"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
+              <a href="https://youtu.be/z0O32YA4Ibs?t=41" class="btn"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
             </div>
           
   
