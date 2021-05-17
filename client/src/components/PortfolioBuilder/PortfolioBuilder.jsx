@@ -13,7 +13,8 @@ import Card from "react-bootstrap/Card";
 
 function PortBuild() {
   return (
-    <div className="bg-green-100 rounded">
+    <section className="bg-green-100 rounded">
+    
       <Accordion>
 
         {/*  About Bio Form  */}
@@ -681,14 +682,14 @@ function PortBuild() {
           </Accordion.Collapse>
         </Card>
 
-        {/*  Contact Me & Social Media Form  */}
+        {/*  Contact Me Options Form  */}
 
         <Card>
           <Accordion.Toggle
             as={Card.Header}
             eventKey="3"
             className="montserrat-font">
-            Contact Me and Social Media Options
+            Contact Me 
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="3" className="raleway-font">
             <Card.Body className="raleway-font">
@@ -749,165 +750,14 @@ function PortBuild() {
 
 
 
-              
-              {/*  Facebook Page URL:   */}
-              <div className="flex-col w-full">
-              <label className="raleway-font text-gray-700 text-xl">
-                <span className="text-left">
-                  Facebook Page URL:
-                </span>
-              </label>
-              <input type="text" className="form-input px-4 py-3 rounded-full w-full mt-1">
-              </input>
-              </div>
-
-
-
-              
-              {/*  Twitter Page URL:   */}
-              <div className="flex-col w-full">
-              <label className="raleway-font text-gray-700 text-xl">
-                <span className="text-left">
-                  Twitter Page URL:
-                </span>
-              </label>
-              <input type="text" className="form-input px-4 py-3 rounded-full w-full mt-1">
-              </input>
-              </div>
-
-
-
-              
-              {/*  GitHub Page URL:   */}
-              <div className="flex-col w-full">
-              <label className="raleway-font text-gray-700 text-xl">
-                <span className="text-left">
-                  GitHub Page URL:
-                </span>
-              </label>
-              <input type="text" className="form-input px-4 py-3 rounded-full w-full mt-1">
-              </input>
-              </div>
-
-
-
-              
-              {/*  StackOverflow Page URL:   */}
-              <div className="flex-col w-full">
-              <label className="raleway-font text-gray-700 text-xl">
-                <span className="text-left">
-                  StackOverflow Page URL:
-                </span>
-              </label>
-              <input type="text" className="form-input px-4 py-3 rounded-full w-full mt-1">
-              </input>
-              </div>
-
-
-
-              
-              {/*  LinkedIn Page URL:   */}
-              <div className="flex-col w-full">
-              <label className="raleway-font text-gray-700 text-xl">
-                <span className="text-left">
-                  LinkedIn Page URL:
-                </span>
-              </label>
-              <input type="text" className="form-input px-4 py-3 rounded-full w-full mt-1">
-              </input>
-              </div>
-
-
-
-              
-              {/*  YouTube Page URL:   */}
-              <div className="flex-col w-full">
-              <label className="raleway-font text-gray-700 text-xl">
-                <span className="text-left">
-                  YouTube Page URL:
-                </span>
-              </label>
-              <input type="text" className="form-input px-4 py-3 rounded-full w-full mt-1">
-              </input>
-              </div>
-
-
-
-              
-              {/*  Instagram Page URL:   */}
-              <div className="flex-col w-full">
-              <label className="raleway-font text-gray-700 text-xl">
-                <span className="text-left">
-                  Instagram Page URL:
-                </span>
-              </label>
-              <input type="text" className="form-input px-4 py-3 rounded-full w-full mt-1">
-              </input>
-              </div>
-
-
-
-              
-              {/*  Spotify Page URL:   */}
-              <div className="flex-col w-full">
-              <label className="raleway-font text-gray-700 text-xl">
-                <span className="text-left">
-                  Spotify Page URL:
-                </span>
-              </label>
-              <input type="text" className="form-input px-4 py-3 rounded-full w-full mt-1">
-              </input>
-              </div>
-
-
-
-              
-              {/*  Twitch Page URL:   */}
-              <div className="flex-col w-full">
-              <label className="raleway-font text-gray-700 text-xl">
-                <span className="text-left">
-                  Twitch Page URL:
-                </span>
-              </label>
-              <input type="text" className="form-input px-4 py-3 rounded-full w-full mt-1">
-              </input>
-              </div>
-
-
-
-              
-              {/*  Discord Page URL:   */}
-              <div className="flex-col w-full">
-              <label className="raleway-font text-gray-700 text-xl">
-                <span className="text-left">
-                  Discord Page URL:
-                </span>
-              </label>
-              <input type="text" className="form-input px-4 py-3 rounded-full w-full mt-1">
-              </input>
-              </div>
-
-
-
-              
-              {/*  Reddit Page URL:   */}
-              <div className="flex-col w-full">
-              <label className="raleway-font text-gray-700 text-xl">
-                <span className="text-left">
-                  Reddit Page URL:
-                </span>
-              </label>
-              <input type="text" className="form-input px-4 py-3 rounded-full w-full mt-1">
-              </input>
-              </div>
-              
           </Accordion.Collapse>
         </Card>
       </Accordion>
 
     
     
-    </div>
+   
+    </section>
   );
 };
 
