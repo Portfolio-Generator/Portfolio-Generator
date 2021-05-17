@@ -5,6 +5,7 @@ import { UPDATE_USER } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 import AboutMe from '../AboutMe/AboutMe';
+import PortfolioBuildButton from '../PortfolioBuildButton/PortfolioBuildButton';
 
 
 const PortfolioBuilder = () => {
@@ -82,6 +83,7 @@ const PortfolioBuilder = () => {
               <AboutMe userState={userState} setUserState={setUserState}/>
               <p> ************ End About me **********</p>
               <hr></hr>
+              <PortfolioBuildButton userState={userState} setUserState={setUserState}/>
             </div>
           ) : (<div>No data available</div>)}
         </div>

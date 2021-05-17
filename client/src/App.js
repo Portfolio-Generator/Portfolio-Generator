@@ -9,7 +9,6 @@ import About from './components/About/About';
 import Home from './pages/Home';
 import Login from './components/LoginForms/LoginForm';
 import PortfolioBuilder from './components/PortfolioBuilder/PortfolioBuilder';
-import ZipTest from './pages/ZipTest';
 
 
 const client = new ApolloClient({
@@ -33,7 +32,6 @@ const client = new ApolloClient({
             <Navbar />
             <Switch>
               <Route exact path='/' component={Home} />
-              <Route exact path='/zipTest' component={ZipTest} />
               <Route exact path='/about' component={About} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/portfolio' component={PortfolioBuilder} />

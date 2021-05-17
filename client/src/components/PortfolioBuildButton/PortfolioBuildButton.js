@@ -1,9 +1,11 @@
 import React from 'react';
 import { saveAs } from 'file-saver';
-var JSZip = require("jszip");
+import { Button } from 'react-bootstrap';
+
+const JSZip = require("jszip");
 
 
-const ZipTest = () => {
+const PortfolioBuildButton = ({ userState, setUserState }) => {
   const handleCreateZip = async (bookId) => {
     // get token
     // const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -22,7 +24,7 @@ const ZipTest = () => {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>Portfolio Demo</title>
+      <title>${userState.firstname} ${userState.lastname} Portfolio</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
       <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="style.css">
@@ -1131,10 +1133,8 @@ const ZipTest = () => {
     <main>
       <div className="flex-row justify-space-between">
         <div className="container">
-          <h2>This is the HOME PAGE</h2>
-          <p> Everything else is a component</p>
 
-          <button type="button" onClick={() => handleCreateZip()}>Create Portfolio Zip File</button>
+          <Button type="button" variant="success" onClick={() => handleCreateZip()}>Create Portfolio Zip File</Button>
 
           {/* <p>Does not work in IE, has restrictions on the length.</p>
           <button id="data_uri" className="btn btn-primary">click to download</button> */}
@@ -1144,4 +1144,4 @@ const ZipTest = () => {
   );
 };
 
-export default ZipTest;
+export default PortfolioBuildButton;
