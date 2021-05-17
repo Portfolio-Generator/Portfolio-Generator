@@ -236,7 +236,7 @@ Font Families
   import L_FLUTTER from "../../assets/images/skills/flutter.svg";
   import L_GOOGLEFIREBASE from "../../assets/images/skills/googlefirebase.svg";
   import L_GIT from "../../assets/images/skills/git-icon.svg";  
-  import L_GITHUIB_API from "../../assets/images/skills/github-api.svg";
+  import L_GITHUB_API from "../../assets/images/skills/github-api.svg";
   import L_GITHUB_PAGES from "../../assets/images/skills/github.svg";  
   import L_HANDLEBARS from "../../assets/images/skills/handlebars.svg";
   import L_HEROKU from "../../assets/images/skills/heroku.svg";  
