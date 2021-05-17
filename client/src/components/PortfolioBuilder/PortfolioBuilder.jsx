@@ -1017,23 +1017,12 @@ function PortBuild() {
               <input type="text" className="form-input px-4 py-3 rounded-full w-full mt-1">
               </input>
               </div>
-
-
-
               
-
-
-
-
-
           </Accordion.Collapse>
         </Card>
-
-
-
       </Accordion>
     </div>
   );
-}
+};
 
 export default PortBuild;
