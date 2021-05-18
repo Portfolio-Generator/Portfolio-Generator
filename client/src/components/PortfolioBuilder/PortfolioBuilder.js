@@ -34,7 +34,7 @@ const PortfolioBuilder = () => {
   useEffect(()=>{
     console.log(data)
     if(data){
-      setUserState(data.me)
+      setUserState({...data.me, devSkills: ['Android', 'AWS']})
     }
     console.log(userState)
   }, [data])
@@ -81,7 +81,6 @@ const PortfolioBuilder = () => {
           {userData ? (
             <div className="col-12 col-lg-3 mb-3">
               <AboutMe userState={userState} setUserState={setUserState}/>
-              <p> ************ End About me **********</p>
               <hr></hr>
               <PortfolioBuildButton userState={userState} setUserState={setUserState}/>
             </div>
