@@ -1,6 +1,5 @@
 // About Me -
 // - accepts parent userState as props
-// - copies userState to userState 
 // - accepts input edits to userState
 // - on submit, copies userState to userState
 //NOTE: DO NOT CHANGE EMAIL HERE -
@@ -63,7 +62,7 @@ const AboutMe = ({ userState, setUserState }) => {
       event.preventDefault();
       event.stopPropagation();
     }
-    setUserState(userState)
+    // setUserState(userState)
     console.log("*******", userState)
   };
 

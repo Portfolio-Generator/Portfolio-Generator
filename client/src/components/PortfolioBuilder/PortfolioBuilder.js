@@ -34,7 +34,7 @@ const PortfolioBuilder = () => {
   useEffect(()=>{
     console.log(data)
     if(data){
-      setUserState({...data.me, devSkills: ['Android', 'AWS']})
+      setUserState(data.me)
     }
     console.log(userState)
   }, [data])
