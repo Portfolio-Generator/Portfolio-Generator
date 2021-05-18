@@ -81,7 +81,6 @@ const PortfolioBuilder = () => {
           {userData ? (
             <div className="col-12 col-lg-3 mb-3">
               <AboutMe userState={userState} setUserState={setUserState}/>
-              <p> ************ End About me **********</p>
               <hr></hr>
               <PortfolioBuildButton userState={userState} setUserState={setUserState}/>
             </div>
