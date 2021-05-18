@@ -754,9 +754,6 @@ function PortBuild() {
         </Card>
       </Accordion>
 
-    
-    
-   
     </section>
   );
 };
