@@ -22,37 +22,9 @@ const AboutMe = ({ userState, setUserState }) => {
     'Materialize', 'Moment.js', 'Mongo DB', 'MySQL', 'Node.js', 'NPM', 'PostgreSQL', 'RasberryPi', 
     'React', 'React Bootstrap', 'React Router', 'Redux', 'Rest API', 'Tailwinds CSS', 'Typescript', 
     'Vue.js', 'Webpack'];
-  // const [userState, setuserState] =
-  //   useState({
-  //     email: '',
-  //     firstname: '',
-  //     lastname: '',
-  //     phone: '',
-  //     headshot: '',
-  //     aboutMe: '',
-  //     devSkills: [],
-  //     colorPref: 0,
-  //     fontPref: 0,
-  //     projects: [],
-  //     socialMedia: []
-  //   });
+
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-
-  
-
-  // ----------------------------------------------
-  // ON LOAD, copy userState to userState     
-  // ----------------------------------------------
-  // useEffect(() => {
-  //   const userData = { ...userState }
-  //   if (userData) {
-
-  //     // mock devSkills for testing
-  //     // setuserState(userData);
-  //     setUserState(userData);
-  //   }
-  // }, [])
 
     const [devSkillsChoices, setDevSkillsChoices] = useState([]);
     useEffect(() => {
@@ -94,9 +66,25 @@ const AboutMe = ({ userState, setUserState }) => {
     setUserState(userState)
     console.log("*******", userState)
   };
+
+  const aboutMeField = (description, fieldName, value) => {
+    return (<div className="flex-col w-full">
+    <label className="raleway-font text-gray-700 text-xl" >
+      <span className="text-left">
+        {description}
+      </span>
+    </label>
+    <input 
+      type = "text"
+      name = {fieldName}
+      required onChange={handleInputChange} 
+      value = {value}
+      className="form-input px-4 py-3 rounded-full w-full mt-1">
+    </input>
+  </div>
+    )
+  }
   // ----------------------------------------------
-
-
 
   return (
     <section className="bg-green-100 rounded">
@@ -117,76 +105,11 @@ const AboutMe = ({ userState, setUserState }) => {
           </Accordion.Toggle>
             <Accordion.Collapse eventKey="0" className="raleway-font">
               <Card.Body className="raleway-font">
-
-                {/*  First Name:   */}
-                <div className="flex-col w-full">
-                  <label className="raleway-font text-gray-700 text-xl" >
-                    <span className="text-left">
-                      First Name:
-                </span>
-                  </label>
-                  <input 
-                    type="text" 
-                    placeholder='required first name' 
-                    name='firstname'
-                    required onChange={handleInputChange} 
-                    value={userState.firstname} 
-                    className="form-input px-4 py-3 rounded-full w-full mt-1">
-                  </input>
-                </div>
-
-                {/*  Profile Image Name:   */}
-                <div className="flex-col w-full">
-                  <label className="raleway-font text-gray-700 text-xl">
-                    <span className="text-left">
-                      Profile Image Name:(Case Sensitive)
-                </span>
-                  </label>
-                  <input 
-                    type="text" 
-                    placeholder='required last name' 
-                    name='lastname'
-                    required onChange={handleInputChange} 
-                    value={userState.lastname} 
-                    className="form-input px-4 py-3 rounded-full w-full mt-1">
-                  </input>
-                </div>
-
-                {/*  Profile Image Name:   */}
-                <div className="flex-col w-full">
-                  <label className="raleway-font text-gray-700 text-xl">
-                    <span className="text-left">
-                      Profile Image Name:(Case Sensitive)
-                </span>
-                  </label>
-                  <input                     
-                    type="text" 
-                    placeholder='profile image name' 
-                    name='headshot'
-                    required onChange={handleInputChange} 
-                    value={userState.headshot} 
-                    className="form-input px-4 py-3 rounded-full w-full mt-1">
-                  </input>
-                </div>
-
-                {/*  Phone Number:   */}
-                <div className="flex-col w-full">
-                  <label className="raleway-font text-gray-700 text-xl">
-                    <span className="text-left">
-                      Phone Number:
-                    </span>
-                  </label>
-                  <input 
-                    type="tel" 
-                    placeholder='phone number'
-                    name='phone'
-                    onChange={handleInputChange} 
-                    value={userState.phone} 
-                    className="form-input px-4 py-3 rounded-full w-full mt-1">
-                  </input>
-                </div>
-
-                {/*  About Me Bio:   */}
+                {aboutMeField("First Name:", "firstname", userState.firstname)}
+                {aboutMeField("Last Name:", "lastname", userState.lastname)}
+                {aboutMeField("Profile Image Name(case sensitive):", "headshot", userState.headshot)}
+                {aboutMeField("Phone Number:", "phone", userState.phone)}
+                 {/* About Me Bio:   */}
                 <div className="flex-col w-full">
                   <label className="raleway-font text-gray-700 text-xl">
                     <span className="text-left">
