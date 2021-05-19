@@ -19,8 +19,8 @@ if (userState.phone) {
 
 let emailString = ``;
 if (userState.email) {
-  emailString = emailString + `<div class="col-4 rounded-pill text-center overflow-hidden text-white" 
-  style="background:#4f1b94">${userState.email}</div>`;
+  emailString = emailString + `<a class="col-4 rounded-pill text-center overflow-hidden text-white email" 
+  style="background:#4f1b94" href="${userState.email}">${userState.email}</a>`;
 }
 
 let aboutMeString = ``;
@@ -151,30 +151,6 @@ if (userState.devSkills?.length) {
         </div>
       </div>
     </div>
-    <!-- Contact Form -->
-    <div id="contact" class="container border border-2 rounded " style="max-width: 1700px; background:#C4C4C4">
-      <h2 class="d-flex justify-content-center"> Contact Me </h2>
-      <div class=" d-flex justify-content-between ">
-        <div class="container mx-3" style="max-width: 600px">
-          <div class="input-group mb-1">
-            <span class="input-group-text" id="basic-addon1">Name:</span>
-            <input type="text" class="form-control" placeholder="Please enter your name" aria-label="Name"
-              aria-describedby="basic-addon1">
-          </div>
-          <div class="input-group mb-1">
-            <span class="input-group-text">Your email:</span>
-            <input type="text" class="form-control" placeholder="Please enter your preferred contact email"
-              aria-label="Recipient's email" aria-describedby="basic-addon2">
-            <span class="input-group-text" id="basic-addon2">@example.com</span>
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text ">Message:</span>
-            <textarea class="form-control" aria-label="With textarea" placeholder="Questions or feedback"></textarea>
-          </div>
-          <div class="text-center ml-2 align-self-end text-md-left">
-              <a class="btn btn-primary email" href='${userState.email}'>Send</a>
-          </div>
-        </div>
         <div class="container d-flex">
           <div class="mx-auto mb-50">
             <h3 class="justify-content-center ">Social Media</h3>
