@@ -15,8 +15,6 @@ import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card"
 import { UPDATE_USER } from '../../utils/mutations';
 
-
-
 const AboutMe = ({ userState, setUserState }) => {
   
   const devSkillsOptions = ['AJAX', 'Android', 'Apollo Graph QL', 'AWS', 'Azure', 'Bash', 'Bootstrap', 

@@ -6,7 +6,6 @@ import Auth from '../../utils/auth';
 import AboutMe from '../AboutMe/AboutMe';
 import PortfolioBuildButton from '../PortfolioBuildButton/PortfolioBuildButton';
 
-
 const PortfolioBuilder = () => {
   // Define State for  User and portfolio
   const [userState, setUserState] = useState({
@@ -25,7 +24,6 @@ const PortfolioBuilder = () => {
 
   // todo: set up a second state for projects
   // const [portfolioData, setPortfolioData] = usestate({});
-
 
   let { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
