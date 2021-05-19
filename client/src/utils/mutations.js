@@ -63,9 +63,9 @@ mutation updateUser($firstname: String, $lastname: String,
 `;
 
 export const ADD_PROJECT = gql`
-mutation addProject($_id: ID!, $title: String, $thumbnail: String, $repoLink: String, $deployedLink: String,
+mutation addProject($title: String, $thumbnail: String, $repoLink: String, $deployedLink: String,
   $videoLink: String, $organization: String, $blurb: String, $projectSkills: [String]) {
-    addProject(_id: $_id, title: $title, thumbnail: $thumbnail, repoLink: $repolink, deployedLink: $deployedLink,
+    addProject(title: $title, thumbnail: $thumbnail, repoLink: $repoLink, deployedLink: $deployedLink,
       videoLink: $videoLink, organization: $organization, blurb: $blurb, projectSkills: $projectSkills ) {
       _id
       firstname
