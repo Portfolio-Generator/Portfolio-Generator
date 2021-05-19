@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ME } from '../../utils/queries';
-import { UPDATE_USER } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 import AboutMe from '../AboutMe/AboutMe';
@@ -27,7 +26,6 @@ const PortfolioBuilder = () => {
   // todo: set up a second state for projects
   // const [portfolioData, setPortfolioData] = usestate({});
 
-  const [updateUser] = useMutation(UPDATE_USER);
 
   let { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
@@ -38,25 +36,6 @@ const PortfolioBuilder = () => {
     }
     console.log(userState)
   }, [data])
-
-  const handleSaveUser = async event => {
-    // event.preventDefault(); says not a function!
-    console.log('handleSaveUser data to save', userState);
-    try {
-      await updateUser({
-        variables: { ...userState },
-      });
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-
-
-  const testFunction =  ()=>{
-    console.log("userData:", userData)
-    console.log("userState:", userState)
-  }
   
   const loggedIn = Auth.loggedIn();
   if (!loggedIn) {
@@ -73,8 +52,6 @@ const PortfolioBuilder = () => {
   }
   return (
     <main>
-      <button onClick={() => testFunction()}>TEST</button>
-      <button onClick={()=>handleSaveUser(userState)}>Save Data</button>
 
       <div className="flex-row justify-space-between">
         <div className="container">

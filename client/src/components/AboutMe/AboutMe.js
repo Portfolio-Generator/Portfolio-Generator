@@ -8,29 +8,33 @@
 // todo: Style form - convert skills to checkboxes/array input
 
 import React, { useState, useEffect } from 'react';
+import { useMutation } from '@apollo/react-hooks';
 import { Form, Button, Alert } from 'react-bootstrap';
 
 import Accordion from "react-bootstrap/Accordion";
-import Card from "react-bootstrap/Card";
+import Card from "react-bootstrap/Card"
+import { UPDATE_USER } from '../../utils/mutations';
+
+
 
 const AboutMe = ({ userState, setUserState }) => {
- 
+  
   const devSkillsOptions = ['AJAX', 'Android', 'Apollo Graph QL', 'AWS', 'Azure', 'Bash', 'Bootstrap', 
-    'C++', 'CSS3', 'Docker', 'Express', 'Flutter', 'Google Firebase', 'Git', 'GitHub', 'GitHub API', 
-    'GitHub Pages', 'Handlebars', 'Heroku', 'HTML5', 'Java', 'JavaScript',  'jQuery', 'Linux Tux', 
-    'Materialize', 'Moment.js', 'Mongo DB', 'MySQL', 'Node.js', 'NPM', 'PostgreSQL', 'RasberryPi', 
-    'React', 'React Bootstrap', 'React Router', 'Redux', 'Rest API', 'Tailwinds CSS', 'Typescript', 
-    'Vue.js', 'Webpack'];
-
+  'C++', 'CSS3', 'Docker', 'Express', 'Flutter', 'Google Firebase', 'Git', 'GitHub', 'GitHub API', 
+  'GitHub Pages', 'Handlebars', 'Heroku', 'HTML5', 'Java', 'JavaScript',  'jQuery', 'Linux Tux', 
+  'Materialize', 'Moment.js', 'Mongo DB', 'MySQL', 'Node.js', 'NPM', 'PostgreSQL', 'RasberryPi', 
+  'React', 'React Bootstrap', 'React Router', 'Redux', 'Rest API', 'Tailwinds CSS', 'Typescript', 
+  'Vue.js', 'Webpack'];
+  
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [updateUser] = useMutation(UPDATE_USER);
 
     const [devSkillsChoices, setDevSkillsChoices] = useState([]);
     useEffect(() => {
       setDevSkillsChoices(devSkillsOptions.map(skill => ({name: skill, selected: userState.devSkills.includes(skill)})));
     }, [userState])
 
-    
     // ----------------------------------------------
     // UPDATE FORM FIELD Event Listener 
     // ----------------------------------------------
@@ -62,6 +66,14 @@ const AboutMe = ({ userState, setUserState }) => {
       event.preventDefault();
       event.stopPropagation();
     }
+    try {
+      await updateUser({
+        variables: { ...userState },
+      });
+    } catch (e) {
+      console.error(e);
+    }
+
     // setUserState(userState)
     console.log("*******", userState)
   };
@@ -87,7 +99,6 @@ const AboutMe = ({ userState, setUserState }) => {
 
   return (
     <section className="bg-green-100 rounded">
-      {/* <Accordion noValidate validated={validated} onSubmit={handleFormSubmit}> */}
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Accordion>
           <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
@@ -167,7 +178,7 @@ const AboutMe = ({ userState, setUserState }) => {
           </Card>
 
           <Button disabled={!(userState.firstname && userState.lastname)} type='submit' variant='success'>
-            Submit
+            Save
         </Button>
 
         </Accordion>
