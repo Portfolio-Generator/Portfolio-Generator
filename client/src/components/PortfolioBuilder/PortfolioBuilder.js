@@ -4,6 +4,7 @@ import { QUERY_ME } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 import AboutMe from '../AboutMe/AboutMe';
+import Projects from '../Projects/Projects'
 import PortfolioBuildButton from '../PortfolioBuildButton/PortfolioBuildButton';
 
 const PortfolioBuilder = () => {
@@ -17,24 +18,21 @@ const PortfolioBuilder = () => {
     aboutMe: '',
     devSkills: [],
     colorPref: 0,
-    fontPref:0,
+    fontPref: 0,
     projects: [],
     socialMedia: []
   });
 
-  // todo: set up a second state for projects
   // const [portfolioData, setPortfolioData] = usestate({});
 
   let { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
-  useEffect(()=>{
-    console.log(data)
-    if(data){
+  useEffect(() => {
+    if (data) {
       setUserState(data.me)
     }
-    console.log(userState)
   }, [data])
-  
+
   const loggedIn = Auth.loggedIn();
   if (!loggedIn) {
     return (
@@ -55,9 +53,11 @@ const PortfolioBuilder = () => {
         <div className="container">
           {userData ? (
             <div className="col-12 col-lg-3 mb-3">
-              <AboutMe userState={userState} setUserState={setUserState}/>
+              <AboutMe userState={userState} setUserState={setUserState} />
               <hr></hr>
-              <PortfolioBuildButton userState={userState} setUserState={setUserState}/>
+              <Projects userState={userState} setUserState={setUserState} />
+              <hr></hr>
+              <PortfolioBuildButton userState={userState} setUserState={setUserState} />
             </div>
           ) : (<div>No data available</div>)}
         </div>

@@ -7,15 +7,14 @@ const projectSchema = new Schema(
   {
     title: {
       type: String,
-      required: 'Each project needs a title',
+      required: '',
       minlength: 1,
       maxlength: 280
     },
     thumbnail: {
       type: String,
       required: false,
-      maxlength: 280,
-      default: 'https://via.placeholder.com/300'
+      maxlength: 280
     },
     repoLink: {
       type: String,
@@ -40,8 +39,7 @@ const projectSchema = new Schema(
     blurb: {
       type: String,
       required: false,
-      trim: true,
-      default: 'Optional text description'
+      trim: true
     },
     projectSkills: [String]
   },

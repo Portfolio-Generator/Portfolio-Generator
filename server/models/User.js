@@ -37,14 +37,12 @@ const userSchema = new Schema(
     },
     headshot: {
       type: String,
-      required: false,
-      default: 'https://via.placeholder.com/150'
+      required: false
     },
     aboutMe: {
       type: String,
       required: false,
-      trim: true,
-      default: 'Enter a short, optional bio'
+      trim: true
     },
     devSkills: {
       type: [String]
