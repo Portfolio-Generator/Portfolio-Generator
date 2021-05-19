@@ -3,17 +3,29 @@
 // uses projectForm component to add new project 
 
 import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 import NewProject from './NewProject';
+import { useMutation } from '@apollo/react-hooks';
+import { REMOVE_PROJECT } from '../../utils/mutations';
 
 const Projects = ({ userState, setuserState }) => {
   const [NewProjectRequest, setNewProjectRequest] = useState(false);
+  const [deleteId, setDeleteId]=useState('')
+  const [removeProject] = useMutation(REMOVE_PROJECT);
 
+  async function handleDeleteProject(event) {
+    event.preventDefault();
+    console.log('Delete button clicked with Id:', deleteId);
+    //  todo *************************************************************
+    try { 
+      const data = await removeProject({_id: deleteId })
+      // const data = await removeProject({_id:pId})
 
-  // useEffect(() => {
-  //   if (userData) {
-  //     console.log("----")
-  //   }
-  // }, [userState]);
+    //  todo *************************************************************
+  } catch (err) {
+      console.error(err);
+    }
+  }
 
   console.log("VICKY userState", userState)
 
@@ -22,16 +34,18 @@ const Projects = ({ userState, setuserState }) => {
     <div className="flex-row justify-space-between">
       <div className="container" >
         <div>
-          <button onClick={() => setNewProjectRequest(true)} style={{ backgroundColor: 'green' }}>Add New Project</button>
+          <Button onClick={() => setNewProjectRequest(true)} style={{ backgroundColor: 'green' }}>Add New Project</Button>
           {NewProjectRequest ? (
             <div>
               <NewProject />
             </div>
-          ) : (<div>null</div>)}
+          ) : null}
           {userState.projects.map((proj) => 
-           
-              <ul key={proj._id}>
-                <li>{proj.title}</li>
+          <ul key={proj._id} style={{ listStyle: 'none' }}>
+              {/* {setDeleteId(proj._id)} */}
+              <li><Button onClick={handleDeleteProject}>Delete Project</Button></li>
+                {/* <li><Button onClick={()=>handleDeleteProject}>Delete Project</Button></li> */}
+                <li style={{ fontWeight: 'bold' }}>{proj.title}</li>
                 <li>_id: {proj._id}</li>
                 <li>thumbnail: {proj.thumbnail}</li>
                 <li>repoLink: {proj.repoLink}</li>
