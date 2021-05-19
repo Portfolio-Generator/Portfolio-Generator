@@ -171,6 +171,9 @@ if (userState.devSkills?.length) {
             <span class="input-group-text ">Message:</span>
             <textarea class="form-control" aria-label="With textarea" placeholder="Questions or feedback"></textarea>
           </div>
+          <div class="text-center ml-2 align-self-end text-md-left">
+              <a class="btn btn-primary email" href='${userState.email}'>Send</a>
+          </div>
         </div>
         <div class="container d-flex">
           <div class="mx-auto mb-50">

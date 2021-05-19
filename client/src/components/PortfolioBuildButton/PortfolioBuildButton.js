@@ -8,7 +8,7 @@ import UserPortfolioHtml from '../UserPortfolioHtml/UserPortfolioHtml';
 const JSZip = require("jszip");
 
 const PortfolioBuildButton = ({ userState, setUserState }) => {
-  const handleCreateZip = async (bookId) => {
+  const handleCreateZip = async () => {
     // get token
     // const token = Auth.loggedIn() ? Auth.getToken() : null;
 
