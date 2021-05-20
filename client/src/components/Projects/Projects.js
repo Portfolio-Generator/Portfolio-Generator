@@ -3,8 +3,9 @@
 // uses projectForm component to add new project 
 
 import React, { useState } from 'react';
-import {  Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import Accordion from "react-bootstrap/Accordion";
+import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 import Card from "react-bootstrap/Card"
 
 import AddProject from './AddProject';
@@ -27,49 +28,49 @@ const Projects = ({ userState, setuserState }) => {
   return (
     <section className="bg-green-100 rounded">
       <Accordion>
-      <Card>
-            <Accordion.Toggle
-              as={Card.Header}
-              eventKey="2"
-              className="montserrat-font">
-              Projects
+        <Card>
+          <Accordion.Toggle
+            as={Card.Header}
+            eventKey="1"
+            className="montserrat-font">
+            Projects
           </Accordion.Toggle>
-          <Accordion.Collapse eventKey="2" className="raleway-font">
-          <Card.Body className="raleway-font">
-   
 
-        <Button onClick={() => setAddProjectRequest(true)} >Add New Project</Button>
-        {addProjectRequest ? (
-          <div>
-            <AddProject />
-          </div>
-        ) : null}
-        {userState.projects.map((proj) =>
-          <ul key={proj._id} style={{ listStyle: 'none' }}>
-            <li><Button onClick={() => handleDeleteProject(proj._id)} >Delete Project</Button></li>
-            <li style={{ fontWeight: 'bold' }}>{proj.title}</li>
-            {proj.thumbnail ? (<li>thumbnail image: {proj.thumbnail}</li>) : null}
-            {proj.deployedLink ? (<li>deployed link: {proj.deployedLink}</li>) : null}
-            {proj.repoLink ? (<li>github repository: {proj.repoLink}</li>) : null}
-            {proj.videoLink ? (<li>video link: {proj.videoLink}</li>) : null}
-            {proj.organization ? (<li>organization: {proj.organization}</li>) : null}
-            {proj.blurb ? (<li>description: {proj.blurb}</li>) : null}
-            {(!proj.projectSkills === []) ? (<li>skills: {proj.projectSkills}</li>) : null}
-          </ul>
+          <Accordion.Collapse eventKey="1" className="raleway-font">
+            <Card.Body className="raleway-font">
+
+              <Button onClick={() => setAddProjectRequest(true)} >Add New Project</Button>
+              {addProjectRequest ? (
+                <div>
+                  <AddProject />
+                </div>
+              ) : null}
+              {userState.projects.map((proj) =>
+                <ul key={proj._id} style={{ listStyle: 'none' }}>
+                  <li><Button onClick={() => handleDeleteProject(proj._id)} >Delete Project</Button></li>
+                  <li style={{ fontWeight: 'bold' }}>{proj.title}</li>
+                  {proj.thumbnail ? (<li>thumbnail image: {proj.thumbnail}</li>) : null}
+                  {proj.deployedLink ? (<li>deployed link: {proj.deployedLink}</li>) : null}
+                  {proj.repoLink ? (<li>github repository: {proj.repoLink}</li>) : null}
+                  {proj.videoLink ? (<li>video link: {proj.videoLink}</li>) : null}
+                  {proj.organization ? (<li>organization: {proj.organization}</li>) : null}
+                  {proj.blurb ? (<li>description: {proj.blurb}</li>) : null}
+                  {(!proj.projectSkills === []) ? (<li>skills: {proj.projectSkills}</li>) : null}
+                </ul>
               )}
-              
-
-
-              </Card.Body>
-            </Accordion.Collapse>
-
-          </Card>
 
 
 
+            </Card.Body>
+          </Accordion.Collapse>
 
-        </Accordion>
-      </section>
+        </Card>
+
+
+
+
+      </Accordion>
+    </section>
   )
 }
 
