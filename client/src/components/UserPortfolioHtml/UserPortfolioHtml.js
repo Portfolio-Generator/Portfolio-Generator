@@ -78,13 +78,6 @@ const UserPortfolioHtml = ({ userState }) => {
 
 
   let projectsString = ``;
-  let projectTitleString = ``;
-  let projectOrganizationString = ``;
-  let projectThumbnailString = ``;
-  let projectRepoLinkString = ``;
-  let projectDeployedLinkString = ``;
-  let projectVideoLinkString = ``;
-  let projectBlurbString = ``;
 
   if (userState.projects?.length) {
     userState.projects.forEach((project, i) => {
@@ -95,9 +88,10 @@ const UserPortfolioHtml = ({ userState }) => {
       let projectDeployedLinkString = ``;
       let projectVideoLinkString = ``;
       let projectBlurbString = ``;
+
       if (project.thumbnail?.length > 0) {
         projectThumbnailString = projectThumbnailString + `<img class="col order-first px-0 align-self-end img-fluid mr-3 
-      my-4 rounded shadow-lg" src="../assets/assets/images/comingsoon.gif" style="width:405px">`
+      my-4 rounded shadow-lg" src="./assets/images/${project.thumbnail}" style="width:405px">`
       }
 
       if (project.title?.length > 0) {
