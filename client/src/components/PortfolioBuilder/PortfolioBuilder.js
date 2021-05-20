@@ -6,7 +6,7 @@ import Auth from '../../utils/auth';
 import AboutMe from '../AboutMe/AboutMe';
 import Projects from '../Projects/Projects'
 import PortfolioBuildButton from '../PortfolioBuildButton/PortfolioBuildButton';
-
+import './PortfolioBuilder.css'
 const PortfolioBuilder = () => {
   // Define State for  User and portfolio
   const [userState, setUserState] = useState({

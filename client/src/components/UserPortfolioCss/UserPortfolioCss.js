@@ -8,6 +8,12 @@ const UserPortfolioCss =
   display:flex;
   flex-wrap: nowrap;
 }
+
+#img {
+  width: 55px;
+  height: 55px;
+}
+
 `
 
 export default UserPortfolioCss;
