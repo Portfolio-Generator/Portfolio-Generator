@@ -124,10 +124,8 @@ const AddProject = () => {
 
 
         <Button disabled={!(projectFormData.title)} type='submit' variant='success'>
-          Save
+          Save Project
         </Button>
-        
-      
 
     </Form >
   </section >
