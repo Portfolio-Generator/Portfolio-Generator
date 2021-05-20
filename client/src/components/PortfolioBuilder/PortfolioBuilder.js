@@ -52,7 +52,7 @@ const PortfolioBuilder = () => {
       <div className="flex-row justify-space-between">
         <div className="container">
           {userData ? (
-            <div className="col-12 col-lg-3 mb-3">
+            <div className="col-12 mb-3">
               <AboutMe userState={userState} setUserState={setUserState} />
               <hr></hr>
               <Projects userState={userState} setUserState={setUserState} />
