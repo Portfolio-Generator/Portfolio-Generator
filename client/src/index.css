@@ -1,18 +1,89 @@
+:any-link {
+  text-decoration: none;
+}
+:any-link:hover {
+  text-decoration: none;
+}
+
+
+
 :root {
-  --primary: #497573;
-  --secondary: #99f7f2;
-  --tertiary: #b2c2c1;
-  --quatrinary: #cadbda;
-  --light: #e1f5f4;
-  --dark: #6c7575;
-  --error: rgb(228, 46, 1);
+  --sienna: #561725;
+  --dark-blue: #01172F;
+  --dark-green: #003844;
+  --cyann: #76EAFB;
+  --bright-blue: #446DF6;
+  --dark-gray: #4D4D4D;
+  --lite-gray: #E0E0E0;
   --border-radius: 0.3rem;
   --spacing-one: calc(1rem * 0.25);
   --spacing-two: calc(1rem * 0.5);
   --spacing-three: 1rem;
   --spacing-four: calc(1rem * 1.5);
   --spacing-five: calc(1rem * 3);
+  background-color: var(--cyann);
 }
+
+/* Background Color Scheme */
+
+.bg-sienna {
+  background-color: var(--sienna);
+}
+
+.bg-dark-blue {
+  background-color: var(--dark-blue);
+}
+
+.bg-dark-green {
+  background-color: var(--dark-green);
+}
+
+.bg-cyann {
+  background-color: var(--cyann);
+}
+
+.bg-bright-blue {
+  background-color: var(--bright-blue);
+}
+
+.bg-dark-gray {
+  background-color: var(--dark-gray);
+}
+
+.bg-lite-gray {
+  background-color: var(--lite-gray);
+}
+
+/* Font Color Scheme */
+
+.font-sienna {
+  color: var(--sienna);
+}
+
+.font-dark-blue {
+  color: var(--dark-blue);
+}
+
+.font-dark-green {
+  color: var(--dark-green);
+}
+
+.font-cyann {
+  color: var(--cyann);
+}
+
+.font-bright-blue {
+  color: var(--bright-blue);
+}
+
+.font-dark-gray {
+  color: var(--dark-gray);
+}
+
+.font-lite-gray {
+  color: var(--lite-gray);
+}
+
 
 
 * {

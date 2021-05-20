@@ -9,6 +9,7 @@ import About from './components/About/About';
 import Home from './pages/Home';
 import Login from './components/LoginForms/LoginForm';
 import PortfolioBuilder from './components/PortfolioBuilder/PortfolioBuilder';
+import Contact from './components/Contact/Contact';
 
 
 const client = new ApolloClient({
@@ -38,6 +39,7 @@ const client = new ApolloClient({
 
               <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
             </Switch>
+            <Contact />
             <Footer />
           </>
         </Router>
