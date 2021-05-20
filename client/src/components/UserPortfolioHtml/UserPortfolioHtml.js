@@ -89,7 +89,6 @@ const UserPortfolioHtml = ({ userState }) => {
   if (userState.projects?.length) {
     userState.projects.forEach((project, i) => {
 
-
       if (project.thumbnail?.length > 0) {
         projectThumbnailString = projectThumbnailString + `<img class="col order-first px-0 align-self-end img-fluid mr-3 
       my-4 rounded shadow-lg" src="../assets/assets/images/comingsoon.gif" style="width:405px">`
@@ -138,7 +137,7 @@ const UserPortfolioHtml = ({ userState }) => {
       // individual projects added through forEach loop
       projectsString = projectsString + `<div class="d-flex align-self-center">`
         + projectThumbnailString +
-        + projectTitleString +
+        projectTitleString +
         `<div class="d-grid gap-3 col-4 align-self-start">`
         + projectTitleString +
         projectOrganizationString +
@@ -155,14 +154,13 @@ const UserPortfolioHtml = ({ userState }) => {
     </div>`
     })
   }
+
   // includes end of projects container code
   if (userState.projects?.length) {
     projectsString = projectsString + `</div>
-</div>
-`
+    </div>
+    `
   }
-
-
 
   return `<!DOCTYPE html>
   <html lang="en">
@@ -203,10 +201,9 @@ const UserPortfolioHtml = ({ userState }) => {
         </div>
       </div>
     </nav>`
-    + aboutMeString
-    + devSkillsString +
-
-    + projectsString +
+    + aboutMeString +
+    devSkillsString +
+    projectsString +
 
     `<div class="container d-flex">
           <div class="mx-auto mb-50">
