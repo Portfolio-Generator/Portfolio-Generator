@@ -115,62 +115,36 @@ const AboutMe = ({ userState, setUserState }) => {
               <span className="text-left">
                 Short Bio:
                     </span>
-                  </label>
-                  <textarea 
-                    type="textarea" 
-                    placeholder='about me text'
-                    name='aboutMe'
-                    onChange={handleInputChange} 
-                    value={userState.aboutMe}
-                      className="form-textarea px-4 py-3 rounded-full w-full mt-1" rows="6">
-                  </textarea>
-                </div>
+            </label>
+            <textarea
+              type="textarea"
+              placeholder=''
+              name='aboutMe'
+              onChange={handleInputChange}
+              value={userState.aboutMe}
+              className="form-textarea px-4 py-3 rounded-full w-full mt-1" rows="6">
+            </textarea>
+          </div>
 
-              </Card.Body>
-            </Accordion.Collapse>
+          {/*  Developer Skills  */}
 
-          </Card>
-
-          {/*  Developer Skills List Form  */}
-          <Card>
-            <Accordion.Toggle
-              as={Card.Header}
-              eventKey="1"
-              className="montserrat-font">
-              Developer Skills List Options:
-          </Accordion.Toggle>
-            <Accordion.Collapse eventKey="1" className="raleway-font">
-              <Card.Body>
-                {console.log(devSkillsChoices, "devSkillChoices")}
-                {devSkillsChoices.map((choice, index) => 
-                  <div key={index}>
-                  <label>
-                    <input type="checkbox" 
-                      checked={choice.selected} 
-                      onChange={() => updateChoice(index)}/>
+          <div>
+            {devSkillsChoices.map((choice, index) =>
+              <div key={index}>
+                <label>
+                  <input type="checkbox"
+                    checked={choice.selected}
+                    onChange={() => updateChoice(index)} />
                   <span className="text-left">
-                    {choice.name} 
+                    {choice.name}:
                     {console.log("path", choice.url)}
-
                     <img id="img" src={choice.url}/>
-                    </span>
-                  </label>
-                  </div>
-                  // <Form.Check 
-                  //   key={index}
-                  //   type="switch" 
-                  //   id="custom-switch" 
-                  //   label={choice.name} 
-                  //   checked={choice.selected} 
-                  //   onChange={() => updateChoice(index)}
-                  // />
-                )}
-
-              </Card.Body>
-            </Accordion.Collapse>
-
-          </Card>
-
+                        </span>
+                </label>
+              </div>
+            )}
+          </div>
+          {/* Save personal info and dev skills to db with one button */}
           <Button disabled={!(userState.firstname && userState.lastname)} type='submit' variant='success'>
             Save
                 </Button>
