@@ -9,6 +9,7 @@ import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { Form, Button, Alert } from 'react-bootstrap';
 
+import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card"
 import { UPDATE_USER } from '../../utils/mutations';
 
@@ -74,7 +75,7 @@ const AboutMe = ({ userState, setUserState }) => {
   };
   // ----------------------------------------------
   // define the fields for the aboutMe form
-  // ----------------------------------------------
+ // ----------------------------------------------
 
 
   const aboutMeField = (description, fieldName, value) => {
@@ -98,58 +99,92 @@ const AboutMe = ({ userState, setUserState }) => {
 
   return (
     <section className="bg-green-100 rounded">
-      <Card.Body className="raleway-font">
-        <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+        <Accordion>
           <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-            Error updating developer information.
-          </Alert>
+            Error updating user "About Me" information.
+        </Alert>
 
           {/*  Personal Information  */}
-
-
-          {aboutMeField("First Name:", "firstname", userState.firstname)}
-          {aboutMeField("Last Name:", "lastname", userState.lastname)}
-          {aboutMeField("Profile Image Filename (case sensitive):", "headshot", userState.headshot)}
-          {aboutMeField("Phone Number:", "phone", userState.phone)}
-          {/* About Me Bio:   */}
-          <div className="flex-col w-full">
-            <label className="raleway-font text-gray-700 text-xl">
-              <span className="text-left">
-                Short Bio:
+          <Card>
+            <Accordion.Toggle
+              as={Card.Header}
+              eventKey="0"
+              className="montserrat-font">
+              Personal Information
+          </Accordion.Toggle>
+            <Accordion.Collapse eventKey="0" className="raleway-font">
+              <Card.Body className="raleway-font">
+                {aboutMeField("First Name:", "firstname", userState.firstname)}
+                {aboutMeField("Last Name:", "lastname", userState.lastname)}
+                {aboutMeField("Profile Image Filename (case sensitive):", "headshot", userState.headshot)}
+                {aboutMeField("Phone Number:", "phone", userState.phone)}
+                {/* About Me Bio:   */}
+                <div className="flex-col w-full">
+                  <label className="raleway-font text-gray-700 text-xl">
+                    <span className="text-left">
+                      Short Bio:
                     </span>
-            </label>
-            <textarea
-              type="textarea"
-              placeholder=''
-              name='aboutMe'
-              onChange={handleInputChange}
-              value={userState.aboutMe}
-              className="form-textarea px-4 py-3 rounded-full w-full mt-1" rows="6">
-            </textarea>
-          </div>
+                  </label>
+                  <textarea
+                    type="textarea"
+                    placeholder='about me text'
+                    name='aboutMe'
+                    onChange={handleInputChange}
+                    value={userState.aboutMe}
+                    className="form-textarea px-4 py-3 rounded-full w-full mt-1" rows="6">
+                  </textarea>
+                </div>
+               
+              </Card.Body>
+            </Accordion.Collapse>
 
-          {/*  Developer Skills  */}
+          </Card>
 
-          <div>
-            {devSkillsChoices.map((choice, index) =>
-              <div key={index}>
-                <label>
-                  <input type="checkbox"
-                    checked={choice.selected}
-                    onChange={() => updateChoice(index)} />
-                  <span className="text-left">
-                    {choice.name}:
-                        </span>
-                </label>
-              </div>
-            )}
-          </div>
-          {/* Save personal info and dev skills to db with one button */}
-          <Button disabled={!(userState.firstname && userState.lastname)} type='submit' variant='success'>
-            Save
+          {/*  Developer Skills List Form  */}
+          <Card>
+            <Accordion.Toggle
+              as={Card.Header}
+              eventKey="1"
+              className="montserrat-font">
+              Developer Skills List Options:
+          </Accordion.Toggle>
+            <Accordion.Collapse eventKey="1" className="raleway-font">
+              <Card.Body>
+                {devSkillsChoices.map((choice, index) =>
+                  <div key={index}>
+                    <label>
+                      <input type="checkbox"
+                        checked={choice.selected}
+                        onChange={() => updateChoice(index)} />
+                      <span className="text-left">
+                        {choice.name}:
+                    </span>
+                    </label>
+                  </div>
+                  // <Form.Check 
+                  //   key={index}
+                  //   type="switch" 
+                  //   id="custom-switch" 
+                  //   label={choice.name} 
+                  //   checked={choice.selected} 
+                  //   onChange={() => updateChoice(index)}
+                  // />
+                )}
+
+              <Button disabled={!(userState.firstname && userState.lastname)} type='submit' variant='success'>
+                Save 
+
                 </Button>
-        </Form>
-      </Card.Body>
+                </Card.Body>
+
+          </Card>
+
+            </Accordion.Collapse>
+
+        </Accordion>
+      </Form>
+
     </section>
   );
 };
