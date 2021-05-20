@@ -5,8 +5,6 @@
 //NOTE: DO NOT CHANGE EMAIL HERE -
 // - it is our database key for user
 
-// todo: Style form - convert skills to checkboxes/array input
-
 import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { Form, Button, Alert } from 'react-bootstrap';
