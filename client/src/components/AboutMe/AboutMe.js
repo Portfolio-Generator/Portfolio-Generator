@@ -9,7 +9,6 @@ import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card"
 import { UPDATE_USER } from '../../utils/mutations';
 
@@ -71,53 +70,50 @@ const AboutMe = ({ userState, setUserState }) => {
     // setUserState(userState)
     console.log("*******", userState)
   };
+  // ----------------------------------------------
+  // define the fields for the aboutMe form
+  // ----------------------------------------------
+
 
   const aboutMeField = (description, fieldName, value) => {
     return (<div className="flex-col w-full">
-    <label className="raleway-font text-gray-700 text-xl" >
-      <span className="text-left">
-        {description}
-      </span>
-    </label>
-    <input 
-      type = "text"
-      name = {fieldName}
-      required onChange={handleInputChange} 
-      value = {value}
-      className="form-input px-4 py-3 rounded-full w-full mt-1">
-    </input>
-  </div>
+      <label className="raleway-font text-gray-700 text-xl" >
+        <span className="text-left">
+          {description}
+        </span>
+      </label>
+      <input
+        type="text"
+        name={fieldName}
+        required onChange={handleInputChange}
+        value={value}
+        className="form-input px-4 py-3 rounded-full w-full mt-1">
+      </input>
+    </div>
     )
   }
   // ----------------------------------------------
 
   return (
     <section className="bg-green-100 rounded">
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        <Accordion>
+      <Card.Body className="raleway-font">
+        <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
           <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-            Error updating user "About Me" information.
-        </Alert>
+            Error updating developer information.
+          </Alert>
 
-          {/*  About Bio Form  */}
-          <Card>
-            <Accordion.Toggle
-              as={Card.Header}
-              eventKey="0"
-              className="montserrat-font">
-              About Bio
-          </Accordion.Toggle>
-            <Accordion.Collapse eventKey="0" className="raleway-font">
-              <Card.Body className="raleway-font">
-                {aboutMeField("First Name:", "firstname", userState.firstname)}
-                {aboutMeField("Last Name:", "lastname", userState.lastname)}
-                {aboutMeField("Profile Image Name(case sensitive):", "headshot", userState.headshot)}
-                {aboutMeField("Phone Number:", "phone", userState.phone)}
-                 {/* About Me Bio:   */}
-                <div className="flex-col w-full">
-                  <label className="raleway-font text-gray-700 text-xl">
-                    <span className="text-left">
-                      About Me Bio:
+          {/*  Personal Information  */}
+
+
+          {aboutMeField("First Name:", "firstname", userState.firstname)}
+          {aboutMeField("Last Name:", "lastname", userState.lastname)}
+          {aboutMeField("Profile Image Filename (case sensitive):", "headshot", userState.headshot)}
+          {aboutMeField("Phone Number:", "phone", userState.phone)}
+          {/* About Me Bio:   */}
+          <div className="flex-col w-full">
+            <label className="raleway-font text-gray-700 text-xl">
+              <span className="text-left">
+                Short Bio:
                     </span>
                   </label>
                   <textarea 
@@ -177,11 +173,9 @@ const AboutMe = ({ userState, setUserState }) => {
 
           <Button disabled={!(userState.firstname && userState.lastname)} type='submit' variant='success'>
             Save
-        </Button>
-
-        </Accordion>
-      </Form>
-
+                </Button>
+        </Form>
+      </Card.Body>
     </section>
   );
 };

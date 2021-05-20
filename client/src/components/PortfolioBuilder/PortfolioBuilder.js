@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ME } from '../../utils/queries';
+import Accordion from "react-bootstrap/Accordion";
+import Card from "react-bootstrap/Card"
+
 
 import Auth from '../../utils/auth';
 import AboutMe from '../AboutMe/AboutMe';
-import Projects from '../Projects/Projects'
+import Projects from '../Projects/Projects';
+import SocialMedia from '../SocialMedia/SocialMedia';
 import PortfolioBuildButton from '../PortfolioBuildButton/PortfolioBuildButton';
 import './PortfolioBuilder.css'
 const PortfolioBuilder = () => {
@@ -49,19 +53,63 @@ const PortfolioBuilder = () => {
   return (
     <main>
 
-      <div className="flex-row justify-space-between">
         <div className="container">
           {userData ? (
-            <div className="col-12 mb-3">
-              <AboutMe userState={userState} setUserState={setUserState} />
-              <hr></hr>
-              <Projects userState={userState} setUserState={setUserState} />
+            <div className="col-12 col-lg-12 mb-12">
+
+
+              {/* developer information */}
+              <Accordion>
+                <Card>
+                  <Accordion.Toggle
+                    as={Card.Header}
+                    eventKey="0"
+                    className="montserrat-font">
+                    Developer Information
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="0" className="raleway-font">
+                    <AboutMe userState={userState} setUserState={setUserState} />
+                  </Accordion.Collapse>
+                </Card>
+                {/* Social Media information */}
+                <Card>
+                  <Accordion.Toggle
+                    as={Card.Header}
+                    eventKey="1"
+                    className="montserrat-font">
+                    Social Media
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="1" className="raleway-font">
+                    <SocialMedia userState={userState} setUserState={setUserState} />
+                  </Accordion.Collapse>
+              </Card>
+              
+                {/* project information */}
+                <Card>
+                  <Accordion.Toggle
+                    as={Card.Header}
+                    eventKey="2"
+                    className="montserrat-font">
+                    Projects
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="2" className="raleway-font">
+                    <Projects userState={userState} setUserState={setUserState} />
+                  </Accordion.Collapse>
+                </Card>
+
+
+
+
+              </Accordion>
+
               <hr></hr>
               <PortfolioBuildButton userState={userState} setUserState={setUserState} />
+
+
             </div>
+
           ) : (<div>No data available</div>)}
         </div>
-      </div>
     </main>
   );
 };
