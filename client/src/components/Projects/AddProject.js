@@ -9,7 +9,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_PROJECT } from '../../utils/mutations';
 
-const NewProject = () => {
+const AddProject = () => {
   const [projectFormData, setprojectFormData] =
     useState({
       _id: '',
@@ -176,4 +176,4 @@ return (
 );
 };
 
-export default NewProject;
+export default AddProject;

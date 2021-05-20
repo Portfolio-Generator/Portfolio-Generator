@@ -3,17 +3,13 @@
 // uses projectForm component to add new project 
 
 import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
-import Accordion from "react-bootstrap/Accordion";
-import Card from "react-bootstrap/Card"
-
-import AddProject from './AddProject';
-
+import { Button } from 'react-bootstrap';
+import NewProject from './NewProject';
 import { useMutation } from '@apollo/react-hooks';
 import { REMOVE_PROJECT } from '../../utils/mutations';
 
 const Projects = ({ userState, setuserState }) => {
-  const [addProjectRequest, setAddProjectRequest] = useState(false);
+  const [NewProjectRequest, setNewProjectRequest] = useState(false);
   const [removeProject] = useMutation(REMOVE_PROJECT);
 
   async function handleDeleteProject(deleteId) {
@@ -29,10 +25,10 @@ const Projects = ({ userState, setuserState }) => {
     <div className="flex-row justify-space-between">
       <div className="container" >
         <div>
-          <Button onClick={() => setAddProjectRequest(true)} >Add New Project</Button>
-          {addProjectRequest ? (
+          <Button onClick={() => setNewProjectRequest(true)} >Add New Project</Button>
+          {NewProjectRequest ? (
             <div>
-              <AddProject />
+              <NewProject />
             </div>
           ) : null}
           {userState.projects.map((proj) => 
@@ -45,9 +41,10 @@ const Projects = ({ userState, setuserState }) => {
               {proj.videoLink ? (<li>video link: {proj.videoLink}</li>) : null}
               {proj.organization ? (<li>organization: {proj.organization}</li>) : null}
               {proj.blurb ? (<li>description: {proj.blurb}</li>) : null}
-              {(!proj.projectSkills ==[]) ? (<li>skills: {proj.projectSkills}</li>) : null}            
+              {proj.projectSkills ? (<li>skills: {proj.projectSkills}</li>) : null}            
               </ul>
-          )}
+          )
+          }
         </div>
       </div>
     </div>
