@@ -5,13 +5,13 @@
 
 
 import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Accordion } from 'react-bootstrap';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_PROJECT } from '../../utils/mutations';
 import Card from "react-bootstrap/Card"
 
 const AddProject = () => {
-  const [projectFormData, setprojectFormData] =
+  const [projectFormData, setProjectFormData] =
     useState({
       _id: '',
       title: '',
@@ -37,7 +37,7 @@ const AddProject = () => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setprojectFormData({ ...projectFormData, [name]: value });
+    setProjectFormData({ ...projectFormData, [name]: value });
   };
 
   // ----------------------------------------------
@@ -55,7 +55,7 @@ const AddProject = () => {
       event.stopPropagation();
     }
     console.log("**Saving projectFormData** ", projectFormData)
-
+    
     // create project in database
     // automatically updates logged in user with this project
     try {
@@ -126,6 +126,9 @@ const AddProject = () => {
         <Button disabled={!(projectFormData.title)} type='submit' variant='success'>
           Save Project
         </Button>
+
+
+
 
     </Form >
   </section >

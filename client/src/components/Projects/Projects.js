@@ -3,9 +3,8 @@
 // uses projectForm component to add new project 
 
 import React, { useState } from 'react';
-import { Button } from 'react-bootstrap';
-import Accordion from "react-bootstrap/Accordion";
-import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
+import { Button, Accordion } from 'react-bootstrap';
+
 import Card from "react-bootstrap/Card"
 
 import AddProject from './AddProject';
@@ -27,18 +26,9 @@ const Projects = ({ userState, setuserState }) => {
 
   return (
     <section className="bg-green-100 rounded">
-      <Accordion>
-        <Card>
-          <Accordion.Toggle
-            as={Card.Header}
-            eventKey="1"
-            className="montserrat-font">
-            Projects
-          </Accordion.Toggle>
-
-          <Accordion.Collapse eventKey="1" className="raleway-font">
-            <Card.Body className="raleway-font">
-
+   
+      <Card.Body className="raleway-font">
+        
               <Button onClick={() => setAddProjectRequest(true)} >Add New Project</Button>
               {addProjectRequest ? (
                 <div>
@@ -62,14 +52,7 @@ const Projects = ({ userState, setuserState }) => {
 
 
             </Card.Body>
-          </Accordion.Collapse>
-
-        </Card>
-
-
-
-
-      </Accordion>
+         
     </section>
   )
 }

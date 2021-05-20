@@ -9,10 +9,8 @@ import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card"
 import { UPDATE_USER } from '../../utils/mutations';
-import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 
 const AboutMe = ({ userState, setUserState }) => {
 
@@ -100,71 +98,58 @@ const AboutMe = ({ userState, setUserState }) => {
 
   return (
     <section className="bg-green-100 rounded">
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        <Accordion>
+      <Card.Body className="raleway-font">
+        <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
           <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
             Error updating developer information.
           </Alert>
 
           {/*  Personal Information  */}
-          <Card>
-            <Accordion.Toggle
-              as={Card.Header}
-              eventKey="0"
-              className="montserrat-font">
-              Developer Information
-            </Accordion.Toggle>
 
-            <Accordion.Collapse eventKey="0" className="raleway-font">
-              <Card.Body className="raleway-font">
 
-                {aboutMeField("First Name:", "firstname", userState.firstname)}
-                {aboutMeField("Last Name:", "lastname", userState.lastname)}
-                {aboutMeField("Profile Image Filename (case sensitive):", "headshot", userState.headshot)}
-                {aboutMeField("Phone Number:", "phone", userState.phone)}
-                {/* About Me Bio:   */}
-                <div className="flex-col w-full">
-                  <label className="raleway-font text-gray-700 text-xl">
-                    <span className="text-left">
-                      Short Bio:
+          {aboutMeField("First Name:", "firstname", userState.firstname)}
+          {aboutMeField("Last Name:", "lastname", userState.lastname)}
+          {aboutMeField("Profile Image Filename (case sensitive):", "headshot", userState.headshot)}
+          {aboutMeField("Phone Number:", "phone", userState.phone)}
+          {/* About Me Bio:   */}
+          <div className="flex-col w-full">
+            <label className="raleway-font text-gray-700 text-xl">
+              <span className="text-left">
+                Short Bio:
                     </span>
-                  </label>
-                  <textarea
-                    type="textarea"
-                    placeholder=''
-                    name='aboutMe'
-                    onChange={handleInputChange}
-                    value={userState.aboutMe}
-                    className="form-textarea px-4 py-3 rounded-full w-full mt-1" rows="6">
-                  </textarea>
-                </div>
+            </label>
+            <textarea
+              type="textarea"
+              placeholder=''
+              name='aboutMe'
+              onChange={handleInputChange}
+              value={userState.aboutMe}
+              className="form-textarea px-4 py-3 rounded-full w-full mt-1" rows="6">
+            </textarea>
+          </div>
 
-                {/*  Developer Skills  */}
+          {/*  Developer Skills  */}
 
-                <div>
-                  {devSkillsChoices.map((choice, index) =>
-                    <div key={index}>
-                      <label>
-                        <input type="checkbox"
-                          checked={choice.selected}
-                          onChange={() => updateChoice(index)} />
-                        <span className="text-left">
-                          {choice.name}:
+          <div>
+            {devSkillsChoices.map((choice, index) =>
+              <div key={index}>
+                <label>
+                  <input type="checkbox"
+                    checked={choice.selected}
+                    onChange={() => updateChoice(index)} />
+                  <span className="text-left">
+                    {choice.name}:
                         </span>
-                      </label>
-                    </div>
-                  )}
-                </div>
-                {/* Save personal info and dev skills to db with one button */}
-                <Button disabled={!(userState.firstname && userState.lastname)} type='submit' variant='success'>
-                  Save
+                </label>
+              </div>
+            )}
+          </div>
+          {/* Save personal info and dev skills to db with one button */}
+          <Button disabled={!(userState.firstname && userState.lastname)} type='submit' variant='success'>
+            Save
                 </Button>
-              </Card.Body>
-            </Accordion.Collapse>
-          </Card>
-        </Accordion>
-      </Form>
-
+        </Form>
+      </Card.Body>
     </section>
   );
 };
