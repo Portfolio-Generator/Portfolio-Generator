@@ -46,7 +46,6 @@ const Projects = ({ userState, setuserState }) => {
         ) : null}
         {userState.projects.map((proj) =>
           <ul key={proj._id} style={{ listStyle: 'none' }}>
-            {console.log(proj)}
             <li><Button onClick={() => handleDeleteProject(proj._id)} >Delete Project</Button></li>
             <li style={{ fontWeight: 'bold' }}>{proj.title}</li>
             {proj.thumbnail ? (<li>thumbnail image: {proj.thumbnail}</li>) : null}
