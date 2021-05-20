@@ -58,7 +58,7 @@ if (userState.devSkills?.length) {
           <h3 class="d-flex justify-content-center">Skills</h3>
           <div class="row mt-2">`
     }
-    devSkillsString = devSkillsString + `          <div class="col-1 d-sm-none d-md-block">
+    devSkillsString = devSkillsString + `<div class="col-1 d-sm-none d-md-block">
     <p>${skill}</p>
   </div>
 `
