@@ -2,7 +2,7 @@
 const UserPortfolioHtml = ({ userState }) => {
 
   let headShotString = ``;
-  if (userState.headshot?.length > 0 ) {
+  if (userState.headshot?.length > 0) {
     headShotString = headShotString + `<figure class="mt-5 align-self-center ">
   <figcaption>Hello!</figcaption>
   <div>
@@ -12,13 +12,13 @@ const UserPortfolioHtml = ({ userState }) => {
   }
 
   let phoneString = ``;
-  if (userState.phone?.length > 0 ) {
+  if (userState.phone?.length > 0) {
     phoneString = phoneString + `<div class="col-4 rounded-pill text-center text-wrap text-white" 
   style="background:#4f1b94">${userState.phone}</div>`;
   }
 
   let emailString = ``;
-  if (userState.email?.length > 0 ) {
+  if (userState.email?.length > 0) {
     emailString = emailString + `<a class="col-4 rounded-pill text-center overflow-hidden text-white email" 
   style="background:#4f1b94" href="${userState.email}">${userState.email}</a>`;
   }
@@ -76,7 +76,7 @@ const UserPortfolioHtml = ({ userState }) => {
 `;
   }
 
-  
+
   let projectsString = ``;
   let projectTitleString = ``;
   let projectOrganizationString = ``;
@@ -85,10 +85,16 @@ const UserPortfolioHtml = ({ userState }) => {
   let projectDeployedLinkString = ``;
   let projectVideoLinkString = ``;
   let projectBlurbString = ``;
-  
+
   if (userState.projects?.length) {
     userState.projects.forEach((project, i) => {
-
+      let projectTitleString = ``;
+      let projectOrganizationString = ``;
+      let projectThumbnailString = ``;
+      let projectRepoLinkString = ``;
+      let projectDeployedLinkString = ``;
+      let projectVideoLinkString = ``;
+      let projectBlurbString = ``;
       if (project.thumbnail?.length > 0) {
         projectThumbnailString = projectThumbnailString + `<img class="col order-first px-0 align-self-end img-fluid mr-3 
       my-4 rounded shadow-lg" src="../assets/assets/images/comingsoon.gif" style="width:405px">`
@@ -98,46 +104,44 @@ const UserPortfolioHtml = ({ userState }) => {
         projectTitleString = projectTitleString + ` <h3 class="p-2"> ${project.title} </h3>`;
       }
 
-      if (project.organization?.length >0) {
-        projectOrganizationString = projectOrganizationString + ` <h3 class="p-2"> ${project.organization} </h3>`;
+      if (project.organization?.length > 0) {
+        projectOrganizationString = projectOrganizationString + ` <h4 class="p-2"> ${project.organization} </h4>`;
       }
 
-      if (project.repoLink?.length >0) {
+      if (project.repoLink?.length > 0) {
         projectRepoLinkString = projectRepoLinkString +
           `<div class="p-1 rounded-pill text-center text-wrap text-white mt-0" style="background:#4f1b94">
       ${project.repoLink} </div>`;
       }
 
-      if (project.deployedLink?.length >0) {
+      if (project.deployedLink?.length > 0) {
         projectDeployedLinkString = projectDeployedLinkString +
           `<div class="p-1 rounded-pill text-center text-wrap text-white mt-0" style="background:#4f1b94">
       ${project.deployedLink} </div>`;
       }
 
-      if (project.videoLink?.length >0) {
+      if (project.videoLink?.length > 0) {
         projectVideoLinkString = projectVideoLinkString +
           `<div class="p-1 rounded-pill text-center text-wrap text-white mt-0" style="background:#4f1b94">
       ${project.videoLink} </div>`;
       }
 
-      if (project.blurb?.length >0) {
+      if (project.blurb?.length > 0) {
         projectBlurbString = projectBlurbString +
-          `<div class="p-1 rounded-pill text-center text-wrap text-white mt-0" style="background:#4f1b94">
-      ${project.videoLink} </div>`;
+          `${project.blurb}`;
       }
 
       // includes starting html of projects container
       if (i === 0) {
         projectsString = projectsString + `<!-- Project names -->
       <div id="projects" class="container-fluid my-3 border-2 rounded " style="max-width: 1700px; background:#C4C4C4">
-        <div class="mx-5 d-flex">
         `
       }
 
       // individual projects added through forEach loop
-      projectsString = projectsString + `<div class="d-flex align-self-center">`
+      projectsString = projectsString + `<div class="mx-5 d-flex">
+      <div class="d-flex align-self-center">`
         + projectThumbnailString +
-        projectTitleString +
         `<div class="d-grid gap-3 col-4 align-self-start">`
         + projectTitleString +
         projectOrganizationString +
@@ -151,13 +155,15 @@ const UserPortfolioHtml = ({ userState }) => {
       <p class="">`
         + projectBlurbString +
         `</p>
+    </div>
     </div>`
     })
   }
 
   // includes end of projects container code
   if (userState.projects?.length) {
-    projectsString = projectsString + `</div>
+    projectsString = projectsString +
+      `
     </div>
     `
   }
