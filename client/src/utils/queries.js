@@ -15,6 +15,13 @@ export const QUERY_ME = gql` {
   projects {
     _id
     title
+    thumbnail
+    repoLink
+    deployedLink
+    videoLink
+    organization
+    blurb
+    projectSkills
   }
   socialMedia {
     _id
