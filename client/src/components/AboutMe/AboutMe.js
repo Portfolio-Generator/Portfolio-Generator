@@ -77,7 +77,7 @@ const AboutMe = ({ userState, setUserState }) => {
 
   const aboutMeField = (description, fieldName, value) => {
     return (<div className="flex-col w-full">
-      <label className="raleway-font font-lite-gray  text-xl" >
+      <label className="raleway-font  font-dark-blue  text-xl" >
         <span className="text-left">
           {description}
         </span>
@@ -95,9 +95,8 @@ const AboutMe = ({ userState, setUserState }) => {
   // ----------------------------------------------
 
   return (
-    <section className=" rounded font-lite-gray ">
-      <Card.Body className="raleway-font font-lite
-      -gray ">
+    <section className=" rounded  font-dark-blue  ">
+      <Card.Body className="raleway-font  font-dark-blue  ">
         <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
           <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
             Error updating developer information.
@@ -105,7 +104,7 @@ const AboutMe = ({ userState, setUserState }) => {
 
           {/*  Personal Information  */}
 
-          <div className="font-dark-gray koho-font">
+          <div className=" font-dark-blue  koho-font">
           {aboutMeField("First Name:", "firstname", userState.firstname)}
           {aboutMeField("Last Name:", "lastname", userState.lastname)}
           {aboutMeField("Profile Image Filename (case sensitive):", "headshot", userState.headshot)}
@@ -113,7 +112,7 @@ const AboutMe = ({ userState, setUserState }) => {
           </div>
           {/* About Me Bio:   */}
           <div className="flex-col w-full">
-            <label className="raleway-font font-lite-gray text-xl">
+            <label className="raleway-font  font-dark-blue text-xl">
               <span className="text-left">
                 Short Bio:
                     </span>

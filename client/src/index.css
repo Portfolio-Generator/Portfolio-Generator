@@ -11,11 +11,13 @@
   --sienna: #561725;
   --dark-blue: #01172F;
   --dark-green: #003844;
-  --cyann: #76EAFB;
+  --cyann: #cbf2f8;
   --bright-blue: #446df6;
   --dark-gray: #4D4D4D;
   --lite-gray: #f3f3f3;
   --white: #FFF;
+  --black: #000;
+  --cream: #f1e7cd;
   --lite-shadow: 0 35px 60px -15px rgba(224, 224, 224, 0.883);
   --bg-lite-shadow:  rgba(224, 224, 224, 0.883);
   --border-radius: 0.3rem;
@@ -29,6 +31,14 @@
 
 .rounded-3xl {
   border-radius: 1.5rem;
+}
+
+.font-black {
+  color: var(--black);
+}
+
+.bg-cream {
+  background-color: var(--cream);
 }
 
 .accordian-header {
@@ -69,7 +79,7 @@
 
 .icon-style {
   box-shadow: var(--lite-shadow);
-  background-color: var(--bg-lite-shadow);
+  background-color: var(--cream);
   width: 58px;
   height: 58px;
 }
@@ -228,9 +238,9 @@ font-family: 'Cedarville Cursive', cursive;
 }
 
 .Dancing-cursive {
-  font-family: 'Dancing Script', cursive;}
+font-family: 'Dancing Script', cursive;}
   
-  .Homemade-Apple-cursive {
+.Homemade-Apple-cursive {
 font-family: 'Homemade Apple', cursive;}
 
 .LaBelle-cursive {
