@@ -105,7 +105,7 @@ const AboutMe = ({ userState, setUserState }) => {
 
           {/*  Personal Information  */}
 
-          <div className="font-dark-gray">
+          <div className="font-dark-gray koho-font">
           {aboutMeField("First Name:", "firstname", userState.firstname)}
           {aboutMeField("Last Name:", "lastname", userState.lastname)}
           {aboutMeField("Profile Image Filename (case sensitive):", "headshot", userState.headshot)}

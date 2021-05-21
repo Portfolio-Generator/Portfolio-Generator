@@ -66,7 +66,7 @@ const PortfolioBuilder = () => {
                   <Accordion.Toggle
                     
                     eventKey="0"
-                    className="raleway-font text-left bg-dark-gray font-lite-gray font-dark-blue header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
+                    className="raleway-font text-left font-lite-gray accordian-header header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
                     Developer Information
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0" className="raleway-font bg-dark-green p-1 font-lite-gray ">
@@ -78,7 +78,7 @@ const PortfolioBuilder = () => {
                   <Accordion.Toggle
                     
                     eventKey="1"
-                    className="raleway-font text-left bg-dark-gray font-lite-gray font-dark-blue header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
+                    className="raleway-font text-left font-lite-gray accordian-header header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
                     Social Media
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="1" className="raleway-font bg-dark-green p-1">
@@ -91,7 +91,7 @@ const PortfolioBuilder = () => {
                   <Accordion.Toggle
                   
                     eventKey="2"
-                    className="raleway-font text-left bg-dark-gray font-lite-gray font-dark-blue header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
+                    className="raleway-font text-left font-lite-gray accordian-header header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
                     Projects
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="2" className="raleway-font bg-dark-green p-1">

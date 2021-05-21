@@ -27,8 +27,8 @@ const Projects = ({ userState, setuserState }) => {
   return (
     <section>
    
-      <Card.Body className="raleway-font">
-        
+      <Card.Body className="raleway-font font-lite-gray rounded ">
+        <div className="m-2 bg-dark-gray rounded p-1">
               <Button onClick={() => setAddProjectRequest(true)} >Add New Project</Button>
               {addProjectRequest ? (
                 <div>
@@ -48,7 +48,8 @@ const Projects = ({ userState, setuserState }) => {
                   {(!proj.projectSkills === []) ? (<li>skills: {proj.projectSkills}</li>) : null}
                 </ul>
               )}
-
+        </div>
+        
 
 
             </Card.Body>

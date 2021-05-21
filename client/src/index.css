@@ -12,9 +12,9 @@
   --dark-blue: #01172F;
   --dark-green: #003844;
   --cyann: #76EAFB;
-  --bright-blue: #446DF6;
+  --bright-blue: #446df6;
   --dark-gray: #4D4D4D;
-  --lite-gray: #e0e0e0;
+  --lite-gray: #f3f3f3;
   --white: #FFF;
   --lite-shadow: 0 35px 60px -15px rgba(224, 224, 224, 0.883);
   --bg-lite-shadow:  rgba(224, 224, 224, 0.883);
@@ -31,14 +31,18 @@
   border-radius: 1.5rem;
 }
 
+.accordian-header {
+  background: linear-gradient(45deg, rgba(1,23,47,1) 0%, rgba(0,26,110,1) 50%, rgba(1,23,47,1) 100%);
+}
+
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-  background-color: var(--sienna) !important;
+  background-color: var(--bright-blue) !important;
   border-color: var(--dark-blue) !important;
   font-family: 'Raleway', sans-serif;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-  background-color: var(--sienna) !important;
+  background-color: var(--bright-blue) !important;
   border-color: var(--dark-blue) !important;
   font-family: 'Raleway', sans-serif;
 }
@@ -200,6 +204,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=KoHo&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Architects+Daughter&family=Caveat+Brush&family=Cedarville+Cursive&family=Dancing+Script:wght@500;600;700&family=Homemade+Apple&family=La+Belle+Aurore&family=Nothing+You+Could+Do&family=Over+the+Rainbow&family=Parisienne&family=Poiret+One&family=Raleway:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Reenie+Beanie&family=Rock+Salt&family=The+Girl+Next+Door&family=Waiting+for+the+Sunrise&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Architects+Daughter&family=Caveat+Brush&family=Cedarville+Cursive&family=Dancing+Script:wght@500;600;700&family=Homemade+Apple&family=La+Belle+Aurore&family=Nothing+You+Could+Do&family=Over+the+Rainbow&family=Parisienne&family=Poiret+One&family=Raleway:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Reenie+Beanie&family=Rock+Salt&family=The+Girl+Next+Door&family=Waiting+for+the+Sunrise&display=swap');
@@ -217,10 +223,14 @@ font-family: 'Caveat Brush', cursive;}
 font-family: 'Cedarville Cursive', cursive;
 }
 
-.Dancing-cursive {
-font-family: 'Dancing Script', cursive;}
+.koho-font {
+  font-family: 'KoHo', sans-serif;
+}
 
-.Homemade-Apple-cursive {
+.Dancing-cursive {
+  font-family: 'Dancing Script', cursive;}
+  
+  .Homemade-Apple-cursive {
 font-family: 'Homemade Apple', cursive;}
 
 .LaBelle-cursive {
