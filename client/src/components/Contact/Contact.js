@@ -4,7 +4,7 @@ import L_GITHUB from "../../assets/images/skills/github.svg";
 const Contact = () => {
   return (
     <section  className="bg-dark-blue font-lite-gray p-2">
-      <div className="flex flex-row  justify-center w-full p-2">
+      <div className="flex  justify-around w-full p-2">
 
         {/* Vicky Loebel */}
         <div className="flex-col justify-center w-full m-1 ">

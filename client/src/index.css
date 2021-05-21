@@ -14,14 +14,41 @@
   --cyann: #76EAFB;
   --bright-blue: #446DF6;
   --dark-gray: #4D4D4D;
-  --lite-gray: #E0E0E0;
+  --lite-gray: #e0e0e0;
+  --lite-shadow: 0 35px 60px -15px rgba(224, 224, 224, 0.883);
+  --bg-lite-shadow:  rgba(224, 224, 224, 0.883);
   --border-radius: 0.3rem;
   --spacing-one: calc(1rem * 0.25);
   --spacing-two: calc(1rem * 0.5);
   --spacing-three: 1rem;
   --spacing-four: calc(1rem * 1.5);
   --spacing-five: calc(1rem * 3);
-  background-color: var(--cyann);
+  background-color: var(--dark-blue);
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: var(--sienna) !important;
+  border-color: var(--dark-blue) !important;
+}
+
+.boxsize {
+  width: 20px;
+  height: 20px;
+}
+
+.lite-shadow {
+  box-shadow: var(--lite-shadow);
+}
+
+.bg-lite-shadow {
+  background-color: var(--bg-lite-shadow);
+}
+
+.icon-style {
+  box-shadow: var(--lite-shadow);
+  background-color: var(--bg-lite-shadow);
+  width: 58px;
+  height: 58px;
 }
 
 /* Background Color Scheme */

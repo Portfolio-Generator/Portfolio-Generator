@@ -47,7 +47,7 @@ const PortfolioBuildButton = ({ userState, setUserState }) => {
       <div className="flex-row justify-space-between">
         <div className="container">
 
-          <Button type="button" variant="success" onClick={() => handleCreateZip()}>Create Portfolio Zip File</Button>
+          <Button type="button" className="btn-primary" onClick={() => handleCreateZip()}>Create Portfolio Zip File</Button>
 
           {/* <p>Does not work in IE, has restrictions on the length.</p>
           <button id="data_uri" className="btn btn-primary">click to download</button> */}

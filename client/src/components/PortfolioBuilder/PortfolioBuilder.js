@@ -55,7 +55,7 @@ const PortfolioBuilder = () => {
 
         <div className="container bg-dark-green ">
           {userData ? (
-            <div className="col-12 col-lg-12 mb-12 bg-dark-green">
+            <div className="col-12 col-lg-12 bg-dark-green font-lite-gray ">
 
 
               {/* developer information */}
@@ -64,10 +64,10 @@ const PortfolioBuilder = () => {
                   <Accordion.Toggle
                     
                     eventKey="0"
-                    className="raleway-font text-left bg-bright-blue font-dark-blue header-bold h4 m-0 p-2 rounded bd-dark-blue border-2">
+                    className="raleway-font text-left bg-dark-gray font-lite-gray font-dark-blue header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
                     Developer Information
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="0" className="raleway-font ">
+                  <Accordion.Collapse eventKey="0" className="raleway-font bg-dark-green p-1 font-lite-gray ">
                     <AboutMe userState={userState} setUserState={setUserState} />
                   </Accordion.Collapse>
                 </Card>
@@ -76,10 +76,10 @@ const PortfolioBuilder = () => {
                   <Accordion.Toggle
                     
                     eventKey="1"
-                    className="raleway-font text-left bg-bright-blue font-dark-blue header-bold h4 m-0 p-2 rounded bd-dark-blue border-2">
+                    className="raleway-font text-left bg-dark-gray font-lite-gray font-dark-blue header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
                     Social Media
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="1" className="raleway-font">
+                  <Accordion.Collapse eventKey="1" className="raleway-font bg-dark-green p-1">
                     <SocialMedia userState={userState} setUserState={setUserState} />
                   </Accordion.Collapse>
               </Card>
@@ -89,10 +89,10 @@ const PortfolioBuilder = () => {
                   <Accordion.Toggle
                   
                     eventKey="2"
-                    className="raleway-font text-left bg-bright-blue font-dark-blue header-bold h4 m-0 p-2 rounded bd-dark-blue border-2">
+                    className="raleway-font text-left bg-dark-gray font-lite-gray font-dark-blue header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
                     Projects
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="2" className="raleway-font">
+                  <Accordion.Collapse eventKey="2" className="raleway-font bg-dark-green p-1">
                     <Projects userState={userState} setUserState={setUserState} />
                   </Accordion.Collapse>
                 </Card>

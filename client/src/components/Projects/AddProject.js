@@ -72,7 +72,7 @@ const AddProject = () => {
 
   const projectField = (description, fieldName, value) => {
     return (<div className="flex-col w-full">
-      <label className="raleway-font text-gray-700 text-xl" >
+      <label className="raleway-font  font-lite-gray text-xl" >
         <span className="text-left">
           {description}
         </span>
@@ -105,7 +105,7 @@ const AddProject = () => {
           {projectField("Organization:", "organization", projectFormData.organization)}
           {/* Project Blurb:   */}
           <div className="flex-col w-full">
-            <label className="raleway-font text-gray-700 text-xl">
+            <label className="raleway-font font-lite-gray text-xl">
               <span className="text-left">
                 Short Description:
                     </span>
@@ -123,7 +123,7 @@ const AddProject = () => {
         </Card.Body>
 
 
-        <Button disabled={!(projectFormData.title)} type='submit' variant='success'>
+        <Button disabled={!(projectFormData.title)} type='submit' className="btn-primary">
           Save Project
         </Button>
 

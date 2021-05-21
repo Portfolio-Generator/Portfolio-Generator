@@ -1,14 +1,14 @@
 import React from 'react';
 
 
-const About = () => {
+const Setup = () => {
 
 
   return (
     <div className="bg-cyann">
       <div className="flex-row justify-center">
       <div className="bg-cyann">
-        <h2>Test About Page</h2>
+        <h2>Test Setup Page</h2>
         <p>This page currently does not require login</p>
         
         </div>
@@ -17,4 +17,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Setup;

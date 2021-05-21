@@ -77,7 +77,7 @@ const AboutMe = ({ userState, setUserState }) => {
 
   const aboutMeField = (description, fieldName, value) => {
     return (<div className="flex-col w-full">
-      <label className="raleway-font text-gray-700 text-xl" >
+      <label className="raleway-font font-lite-gray  text-xl" >
         <span className="text-left">
           {description}
         </span>
@@ -87,7 +87,7 @@ const AboutMe = ({ userState, setUserState }) => {
         name={fieldName}
         required onChange={handleInputChange}
         value={value}
-        className="form-input px-4 py-3 rounded-full w-full mt-1">
+        className="form-input px-4 py-3 w-full mt-1">
       </input>
     </div>
     )
@@ -95,8 +95,9 @@ const AboutMe = ({ userState, setUserState }) => {
   // ----------------------------------------------
 
   return (
-    <section className=" rounded">
-      <Card.Body className="raleway-font">
+    <section className=" rounded font-lite-gray ">
+      <Card.Body className="raleway-font font-lite
+      -gray ">
         <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
           <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
             Error updating developer information.
@@ -104,14 +105,15 @@ const AboutMe = ({ userState, setUserState }) => {
 
           {/*  Personal Information  */}
 
-
+          <div className="font-dark-gray">
           {aboutMeField("First Name:", "firstname", userState.firstname)}
           {aboutMeField("Last Name:", "lastname", userState.lastname)}
           {aboutMeField("Profile Image Filename (case sensitive):", "headshot", userState.headshot)}
           {aboutMeField("Phone Number:", "phone", userState.phone)}
+          </div>
           {/* About Me Bio:   */}
           <div className="flex-col w-full">
-            <label className="raleway-font text-gray-700 text-xl">
+            <label className="raleway-font font-lite-gray text-xl">
               <span className="text-left">
                 Short Bio:
                     </span>
@@ -122,30 +124,34 @@ const AboutMe = ({ userState, setUserState }) => {
               name='aboutMe'
               onChange={handleInputChange}
               value={userState.aboutMe}
-              className="form-textarea px-4 py-3 rounded-full w-full mt-1" rows="6">
+              className="form-textarea px-4 py-3 w-full my-3 font-dark-gray" rows="6">
             </textarea>
           </div>
 
           {/*  Developer Skills  */}
 
-          <div>
+          <div className="grid  flex-wrap">
             {devSkillsChoices.map((choice, index) =>
-              <div key={index}>
+              <div key={index} className="flex-col">
+                <div className="flex-row">
                 <label>
-                  <input type="checkbox"
+                  <input className="text-2xl boxsize" type="checkbox"
                     checked={choice.selected}
                     onChange={() => updateChoice(index)} />
-                  <span className="text-left">
+                </label>
+                <span className="text-left  px-3">
                     {choice.name}:
                     {console.log("path", choice.url)}
-                    <img id="img" src={choice.url}/>
-                        </span>
-                </label>
+                </span>
+                </div>
+                <div className="icon-style flex justify-center content-center justify-items-center text-center mb-2 pt-0.5">
+                  <img id="img" src={choice.url}/>
+                </div>
               </div>
             )}
           </div>
           {/* Save personal info and dev skills to db with one button */}
-          <Button disabled={!(userState.firstname && userState.lastname)} type='submit' variant='success'>
+          <Button disabled={!(userState.firstname && userState.lastname)} type='submit' className="btn-primary mt-4">
             Save
                 </Button>
         </Form>

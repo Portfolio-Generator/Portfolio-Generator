@@ -10,6 +10,8 @@ import Home from './pages/Home';
 import Login from './components/LoginForms/LoginForm';
 import PortfolioBuilder from './components/PortfolioBuilder/PortfolioBuilder';
 import Contact from './components/Contact/Contact';
+import Setup from './components/Setup/Setup';
+import Directions from './components/Directions/Directions';
 
 
 const client = new ApolloClient({
