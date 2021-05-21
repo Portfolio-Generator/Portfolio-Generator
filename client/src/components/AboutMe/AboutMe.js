@@ -18,8 +18,8 @@ const AboutMe = ({ userState, setUserState }) => {
     'C++', 'CSS3', 'Docker', 'Express', 'Flutter', 'Google Firebase', 'Git', 'GitHub', 'GitHub API',
     'GitHub Pages', 'Handlebars', 'Heroku', 'HTML5', 'Java', 'JavaScript', 'jQuery', 'Linux Tux',
     'Materialize', 'Moment.js', 'Mongo DB', 'MySQL', 'Node.js', 'NPM', 'PostgreSQL', 'Python', 'RasberryPi',
-    'React', 'React Bootstrap', 'React Router', 'Redux', 'Rest API', 'Tailwinds CSS', 'Typescript',
-    'Vue.js', 'Webpack'];
+    'React', 'React Bootstrap', 'React Router', 'Redux', 'Rest API', 'Styled Components', 'Tailwind CSS', 
+    'Typescript', 'Vue.js', 'Webpack'];
 
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
