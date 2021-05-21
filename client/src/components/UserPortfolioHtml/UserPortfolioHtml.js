@@ -36,7 +36,7 @@ const UserPortfolioHtml = ({ userState }) => {
     { name: 'GitHub Pages', url: 'https://portfolio-generator.github.io/icon-page/github-icon.svg' },
     { name: 'Handlebars', url: 'https://portfolio-generator.github.io/icon-page/handlebars.svg' },
     { name: 'Heroku', url: 'https://portfolio-generator.github.io/icon-page/heroku.svg' },
-    { name: 'HTML5', url: 'https://portfolio-generator.github.io/icon-page/html55.svg' },
+    { name: 'HTML5', url: 'https://portfolio-generator.github.io/icon-page/html-5.svg' },
     { name: 'Java', url: 'https://portfolio-generator.github.io/icon-page/java.svg' },
     { name: 'JavaScript', url: 'https://portfolio-generator.github.io/icon-page/javascript.svg' },
     { name: 'jQuery', url: 'https://portfolio-generator.github.io/icon-page/jquery.svg' },
@@ -115,6 +115,7 @@ const UserPortfolioHtml = ({ userState }) => {
   // START OF LOGIC TO CREATE TEMPLATE LITERAL FOR DEVSKILLS
   let devSkillsString = ``;
   if (userState.devSkills?.length) {
+    console.log("*****", userState.devSkills)
     userState.devSkills.forEach((skill, i) => {
       // includes starting html of devSkills container
       let devSkillsUrl = devSkillsOptions.filter(skillOption => skillOption.name == skill).map(skillOptionUrl => skillOptionUrl.url)[0]
