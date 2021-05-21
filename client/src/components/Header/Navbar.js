@@ -12,9 +12,9 @@ const AppNavbar = () => {
 
   return (
     <>
-      <Navbar  variant='dark' expand='lg' className="bg-dark-blue raleway-font font-white">
+      <Navbar  variant='dark' expand='lg' className="bg-dark-blue raleway-font">
         <Container fluid>
-          <Navbar.Brand as={Link} to='/' className="montserrat-font font-2xl">
+          <Navbar.Brand as={Link} to='/' className="montserrat-font font-2xl title">
             Profile Generator
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />

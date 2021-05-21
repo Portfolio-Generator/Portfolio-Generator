@@ -123,22 +123,30 @@ const AboutMe = ({ userState, setUserState }) => {
               name='aboutMe'
               onChange={handleInputChange}
               value={userState.aboutMe}
-              className="form-textarea px-4 py-3 w-full my-3 font-dark-gray" rows="6">
+              className="form-textarea px-4 py-3 w-full my-3 mb-4 font-dark-blue bd-dark-blue border-2 rounded" rows="6">
             </textarea>
           </div>
 
           {/*  Developer Skills  */}
 
-          <div className="grid  flex-wrap">
+          <div className="flex-col w-full">
+            <label className="raleway-font  font-dark-blue  py-3">
+              <span className="text-left text-2xl">
+                Choose Your Optional Developer Skills:
+                    </span>
+            </label>
+          </div>
+
+          <div className="flex flex-wrap">
             {devSkillsChoices.map((choice, index) =>
-              <div key={index} className="flex-col">
+              <div key={index} className="flex-col icon-box m-1">
                 <div className="flex-row">
                 <label>
                   <input className="text-2xl boxsize" type="checkbox"
                     checked={choice.selected}
                     onChange={() => updateChoice(index)} />
                 </label>
-                <span className="text-left  px-3">
+                <span className="text-left  pl-3">
                     {choice.name}:
                     {console.log("path", choice.url)}
                 </span>

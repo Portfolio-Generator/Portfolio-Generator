@@ -72,7 +72,7 @@ const AddProject = () => {
 
   const projectField = (description, fieldName, value) => {
     return (<div className="flex-col w-full">
-      <label className="raleway-font  font-lite-gray text-xl" >
+      <label className="raleway-font  font-dark-blue text-xl" >
         <span className="text-left">
           {description}
         </span>
@@ -96,7 +96,7 @@ const AddProject = () => {
           Error entering project information.
         </Alert>
 
-        <Card.Body className="raleway-font">
+        <Card.Body className="raleway-font font-dark-blue">
           {projectField("Title (required)", "title", projectFormData.title)}
           {projectField("Thumnail Image File (case sensitive)", projectFormData.thumbnail)}
           {projectField("Link to deployed application:", "deployedLink", projectFormData.deployedLink)}
@@ -105,7 +105,7 @@ const AddProject = () => {
           {projectField("Organization:", "organization", projectFormData.organization)}
           {/* Project Blurb:   */}
           <div className="flex-col w-full">
-            <label className="raleway-font font-lite-gray text-xl">
+            <label className="raleway-font font-dark-blue text-xl">
               <span className="text-left">
                 Short Description:
                     </span>
@@ -116,7 +116,7 @@ const AddProject = () => {
               name='blurb'
               onChange={handleInputChange}
               value={projectFormData.blurb}
-              className="form-textarea px-4 py-3 w-full mt-1 border-1" rows="6">
+              className="form-textarea px-4 py-3 w-full my-3 mb-4 font-dark-blue bd-dark-blue border-2 rounded" rows="6">
             </textarea>
           </div>
 

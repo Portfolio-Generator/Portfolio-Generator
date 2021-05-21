@@ -40,13 +40,13 @@ const Projects = ({ userState, setuserState }) => {
                 <ul key={proj._id} style={{ listStyle: 'none' }}>
                   <li><Button onClick={() => handleDeleteProject(proj._id)} >Delete Project</Button></li>
                   <li style={{ fontWeight: 'bold' }}>{proj.title}</li>
-                  {proj.thumbnail ? (<li>thumbnail image: {proj.thumbnail}</li>) : null}
-                  {proj.deployedLink ? (<li>deployed link: {proj.deployedLink}</li>) : null}
-                  {proj.repoLink ? (<li>github repository: {proj.repoLink}</li>) : null}
-                  {proj.videoLink ? (<li>video link: {proj.videoLink}</li>) : null}
-                  {proj.organization ? (<li>organization: {proj.organization}</li>) : null}
-                  {proj.blurb ? (<li>description: {proj.blurb}</li>) : null}
-                  {(!proj.projectSkills === []) ? (<li>skills: {proj.projectSkills}</li>) : null}
+                  {proj.thumbnail ? (<li><b>Project Thumbnail Img:</b> {proj.thumbnail}</li>) : null}
+                  {proj.deployedLink ? (<li><b>Live Site URL:</b> {proj.deployedLink}</li>) : null}
+                  {proj.repoLink ? (<li><b>Source Code URL:</b> {proj.repoLink}</li>) : null}
+                  {proj.videoLink ? (<li><b>Video Demo URL:</b> {proj.videoLink}</li>) : null}
+                  {proj.organization ? (<li><b>Organization:</b> {proj.organization}</li>) : null}
+                  {proj.blurb ? (<li><b>Project Description:</b> {proj.blurb}</li>) : null}
+                  {(!proj.projectSkills === []) ? (<li><b>Skills:</b> {proj.projectSkills}</li>) : null}
                 </ul>
               )}
               </div>

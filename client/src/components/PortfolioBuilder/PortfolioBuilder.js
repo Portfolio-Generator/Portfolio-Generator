@@ -12,6 +12,9 @@ import Projects from '../Projects/Projects';
 import SocialMedia from '../SocialMedia/SocialMedia';
 import PortfolioBuildButton from '../PortfolioBuildButton/PortfolioBuildButton';
 import './PortfolioBuilder.css'
+
+
+
 const PortfolioBuilder = () => {
   // Define State for  User and portfolio
   const [userState, setUserState] = useState({
@@ -67,7 +70,7 @@ const PortfolioBuilder = () => {
                     
                     eventKey="0"
                     className="raleway-font text-left font-lite-gray accordian-header header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
-                    Developer Information
+                    Developer Information  <span></span>
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0" className="raleway-font bg-cream font-dark-blue  p-1 font-lite-gray ">
                     <AboutMe userState={userState} setUserState={setUserState} />
@@ -79,7 +82,7 @@ const PortfolioBuilder = () => {
                     
                     eventKey="1"
                     className="raleway-font text-left font-lite-gray accordian-header header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
-                    Social Media
+                    Social Media  <span></span>  
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="1" className="raleway-font bg-cream font-dark-blue  p-1">
                     <SocialMedia userState={userState} setUserState={setUserState} />
@@ -92,7 +95,7 @@ const PortfolioBuilder = () => {
                   
                     eventKey="2"
                     className="raleway-font text-left font-lite-gray accordian-header header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
-                    Projects
+                    Projects  <span></span>  
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="2" className="raleway-font bg-cream font-dark-blue p-1">
                     <Projects userState={userState} setUserState={setUserState} />
