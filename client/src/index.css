@@ -37,6 +37,12 @@
   font-family: 'Raleway', sans-serif;
 }
 
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  background-color: var(--sienna) !important;
+  border-color: var(--dark-blue) !important;
+  font-family: 'Raleway', sans-serif;
+}
+
 .navbar-dark .navbar-nav .nav-link {
   color: var(--white) !important;
   font-family: 'Raleway', sans-serif;
@@ -346,6 +352,8 @@ nav a:hover {
   margin: 0;
   font-size: 2.5rem;
 }
+
+
 
 .btn,
 .pill {
