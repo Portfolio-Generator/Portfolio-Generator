@@ -2,17 +2,17 @@
 const UserPortfolioHtml = ({ userState }) => {
 
   // const socialMediaOptions = [
-  //   { name: 'Discord', icon: 'fab fa-discord' },
-  //   { name: 'GitHub', icon: 'fab fa-github' },
-  //   { name: 'Facebook', icon: 'fab fa-facebook' },
-  //   { name: 'Instagram', icon: 'fab fa-instagram' },
-  //   { name: 'LinkedIn', icon: 'fab fa-linkedin' },
-  //   { name: 'Reddit', icon: 'fab fa-reddit' },
-  //   { name: 'Spotify', icon: 'fab fa-spotify' },
-  //   { name: 'StackOverflow', icon: 'fab fa-stackoverflow' },
-  //   { name: 'Twitch', icon: 'fab fa-twitch' },
-  //   { name: 'Twitter', icon: 'fab fa-twitter' },
-  //   { name: 'YouTube', icon: 'fab fa-youtube' }
+  //   { name: 'Discord', url: 'https://portfolio-generator.github.io/icon-page/discord.svg' },
+  //   { name: 'GitHub', url: 'https://portfolio-generator.github.io/icon-page/github.svg },
+  //   { name: 'Facebook', url: 'https://portfolio-generator.github.io/icon-page/facebook.svg' },
+  //   { name: 'Instagram', url: 'https://portfolio-generator.github.io/icon-page/instagram.svg },
+  //   { name: 'LinkedIn', url: 'https://portfolio-generator.github.io/icon-page/linkedin.svg' },
+  //   { name: 'Reddit', url: 'https://portfolio-generator.github.io/icon-page/reddit.svg' },
+  //   { name: 'Spotify', url: 'https://portfolio-generator.github.io/icon-page/spotify.svg' },
+  //   { name: 'StackOverflow', url: 'https://portfolio-generator.github.io/icon-page/stack-overflow.svg' },
+  //   { name: 'Twitch', url: 'https://portfolio-generator.github.io/icon-page/twitch.svg },
+  //   { name: 'Twitter', url: 'fhttps://portfolio-generator.github.io/icon-page/twitter.svg' },
+  //   { name: 'YouTube', url: 'https://portfolio-generator.github.io/icon-page/youtube.svg' }
   // ];
 
 
