@@ -9,7 +9,6 @@ import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card"
 import { UPDATE_USER } from '../../utils/mutations';
 
@@ -71,117 +70,86 @@ const AboutMe = ({ userState, setUserState }) => {
     // setUserState(userState)
     console.log("*******", userState)
   };
+  // ----------------------------------------------
+  // define the fields for the aboutMe form
+  // ----------------------------------------------
+
 
   const aboutMeField = (description, fieldName, value) => {
     return (<div className="flex-col w-full">
-    <label className="raleway-font text-gray-700 text-xl" >
-      <span className="text-left">
-        {description}
-      </span>
-    </label>
-    <input 
-      type = "text"
-      name = {fieldName}
-      required onChange={handleInputChange} 
-      value = {value}
-      className="form-input px-4 py-3 rounded-full w-full mt-1">
-    </input>
-  </div>
+      <label className="raleway-font text-gray-700 text-xl" >
+        <span className="text-left">
+          {description}
+        </span>
+      </label>
+      <input
+        type="text"
+        name={fieldName}
+        required onChange={handleInputChange}
+        value={value}
+        className="form-input px-4 py-3 rounded-full w-full mt-1">
+      </input>
+    </div>
     )
   }
   // ----------------------------------------------
 
   return (
-    <section className="bg-green-100 rounded">
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        <Accordion>
+    <section className=" rounded">
+      <Card.Body className="raleway-font">
+        <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
           <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-            Error updating user "About Me" information.
-        </Alert>
+            Error updating developer information.
+          </Alert>
 
-          {/*  About Bio Form  */}
-          <Card>
-            <Accordion.Toggle
-              as={Card.Header}
-              eventKey="0"
-              className="montserrat-font">
-              About Bio
-          </Accordion.Toggle>
-            <Accordion.Collapse eventKey="0" className="raleway-font">
-              <Card.Body className="raleway-font">
-                {aboutMeField("First Name:", "firstname", userState.firstname)}
-                {aboutMeField("Last Name:", "lastname", userState.lastname)}
-                {aboutMeField("Profile Image Name(case sensitive):", "headshot", userState.headshot)}
-                {aboutMeField("Phone Number:", "phone", userState.phone)}
-                 {/* About Me Bio:   */}
-                <div className="flex-col w-full">
-                  <label className="raleway-font text-gray-700 text-xl">
-                    <span className="text-left">
-                      About Me Bio:
+          {/*  Personal Information  */}
+
+
+          {aboutMeField("First Name:", "firstname", userState.firstname)}
+          {aboutMeField("Last Name:", "lastname", userState.lastname)}
+          {aboutMeField("Profile Image Filename (case sensitive):", "headshot", userState.headshot)}
+          {aboutMeField("Phone Number:", "phone", userState.phone)}
+          {/* About Me Bio:   */}
+          <div className="flex-col w-full">
+            <label className="raleway-font text-gray-700 text-xl">
+              <span className="text-left">
+                Short Bio:
                     </span>
-                  </label>
-                  <textarea 
-                    type="textarea" 
-                    placeholder='about me text'
-                    name='aboutMe'
-                    onChange={handleInputChange} 
-                    value={userState.aboutMe}
-                      className="form-textarea px-4 py-3 rounded-full w-full mt-1" rows="6">
-                  </textarea>
-                </div>
+            </label>
+            <textarea
+              type="textarea"
+              placeholder=''
+              name='aboutMe'
+              onChange={handleInputChange}
+              value={userState.aboutMe}
+              className="form-textarea px-4 py-3 rounded-full w-full mt-1" rows="6">
+            </textarea>
+          </div>
 
-              </Card.Body>
-            </Accordion.Collapse>
+          {/*  Developer Skills  */}
 
-          </Card>
-
-          {/*  Developer Skills List Form  */}
-          <Card>
-            <Accordion.Toggle
-              as={Card.Header}
-              eventKey="1"
-              className="montserrat-font">
-              Developer Skills List Options:
-          </Accordion.Toggle>
-            <Accordion.Collapse eventKey="1" className="raleway-font">
-              <Card.Body className="row mt-2">
-                {console.log(devSkillsChoices, "devSkillChoices")}
-                {devSkillsChoices.map((choice, index) => 
-                  <div key={index}>
-                  <label>
-                    <input type="checkbox" 
-                      checked={choice.selected} 
-                      onChange={() => updateChoice(index)}/>
+          <div>
+            {devSkillsChoices.map((choice, index) =>
+              <div key={index}>
+                <label>
+                  <input type="checkbox"
+                    checked={choice.selected}
+                    onChange={() => updateChoice(index)} />
                   <span className="text-left">
-                    {choice.name} 
+                    {choice.name}:
                     {console.log("path", choice.url)}
-
                     <img id="img" src={choice.url}/>
-                    </span>
-                  </label>
-                  </div>
-                  // <Form.Check 
-                  //   key={index}
-                  //   type="switch" 
-                  //   id="custom-switch" 
-                  //   label={choice.name} 
-                  //   checked={choice.selected} 
-                  //   onChange={() => updateChoice(index)}
-                  // />
-                )}
-
-              </Card.Body>
-            </Accordion.Collapse>
-
-          </Card>
-
+                        </span>
+                </label>
+              </div>
+            )}
+          </div>
+          {/* Save personal info and dev skills to db with one button */}
           <Button disabled={!(userState.firstname && userState.lastname)} type='submit' variant='success'>
             Save
-        </Button>
-
-        </Accordion>
-      </Form>
-
+                </Button>
+        </Form>
+      </Card.Body>
     </section>
   );
 };

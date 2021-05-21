@@ -5,12 +5,13 @@
 
 
 import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Accordion } from 'react-bootstrap';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_PROJECT } from '../../utils/mutations';
+import Card from "react-bootstrap/Card"
 
 const AddProject = () => {
-  const [projectFormData, setprojectFormData] =
+  const [projectFormData, setProjectFormData] =
     useState({
       _id: '',
       title: '',
@@ -25,7 +26,7 @@ const AddProject = () => {
 
   const [addProject] = useMutation(ADD_PROJECT);
 
-//input form validation
+  //input form validation
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
@@ -36,7 +37,7 @@ const AddProject = () => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setprojectFormData({ ...projectFormData, [name]: value });
+    setProjectFormData({ ...projectFormData, [name]: value });
   };
 
   // ----------------------------------------------
@@ -54,7 +55,7 @@ const AddProject = () => {
       event.stopPropagation();
     }
     console.log("**Saving projectFormData** ", projectFormData)
-
+    
     // create project in database
     // automatically updates logged in user with this project
     try {
@@ -63,116 +64,74 @@ const AddProject = () => {
       });
       console.log("**returned project** ", data)
     } catch (e) {
-    console.error(e);
+      console.error(e);
+    }
+  };
+
+  // ---FORM SETUP-------------------------------------------
+
+  const projectField = (description, fieldName, value) => {
+    return (<div className="flex-col w-full">
+      <label className="raleway-font text-gray-700 text-xl" >
+        <span className="text-left">
+          {description}
+        </span>
+      </label>
+      <input
+        type="text"
+        name={fieldName}
+        required onChange={handleInputChange}
+        value={value}
+        className="form-input px-4 py-3 w-full mt-1">
+      </input>
+    </div>
+    )
   }
-};
+  // ----------------------------------------------
 
-
-return (
-  <>
-    <p>Project Information</p>
-    <Form noValidate validated={validated} onSubmit={handleSaveProject}>
-      <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-        Error updating project information.
+  return (
+    <section>
+      <Form noValidate validated={validated} onSubmit={handleSaveProject}>
+        <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+          Error entering project information.
         </Alert>
 
-      <Form.Group>
-        <Form.Label htmlFor='title'>Title</Form.Label>
-        <Form.Control
-          type='title'
-          placeholder=''
-          name='title'
-          onChange={handleInputChange}
-          value={projectFormData.title}
-          required
-        />
-        <Form.Control.Feedback type='invalid'>Project must have a title</Form.Control.Feedback>
-      </Form.Group>
+        <Card.Body className="raleway-font">
+          {projectField("Title (required)", "title", projectFormData.title)}
+          {projectField("Thumnail Image File (case sensitive)", projectFormData.thumbnail)}
+          {projectField("Link to deployed application:", "deployedLink", projectFormData.deployedLink)}
+          {projectField("Github Repository Link (optional)", "repoLink", projectFormData.repoLink)}
+          {projectField("Video Link (optional):", "videoLink", projectFormData.videoLink)}
+          {projectField("Organization:", "organization", projectFormData.organization)}
+          {/* Project Blurb:   */}
+          <div className="flex-col w-full">
+            <label className="raleway-font text-gray-700 text-xl">
+              <span className="text-left">
+                Short Description:
+                    </span>
+            </label>
+            <textarea
+              type="textarea"
+              placeholder='Project Description'
+              name='blurb'
+              onChange={handleInputChange}
+              value={projectFormData.blurb}
+              className="form-textarea px-4 py-3 w-full mt-1 border-1" rows="6">
+            </textarea>
+          </div>
 
-      <Form.Group>
-        <Form.Label htmlFor='thumbnail'>Thumbnail File Name (optional)</Form.Label>
-        <Form.Control
-          type='thumbnail'
-          placeholder='do not include directory path'
-          name='thumbnail'
-          onChange={handleInputChange}
-          value={projectFormData.thumbnail}
-        />
-        <Form.Control.Feedback type='invalid'>Last name is required</Form.Control.Feedback>
-      </Form.Group>
-
-      <Form.Group>
-        <Form.Label htmlFor='repoLink'>Github Repository Link (optional)</Form.Label>
-        <Form.Control
-          type='text'
-          placeholder=''
-          name='repoLink'
-          onChange={handleInputChange}
-          value={projectFormData.repoLink}
-        />
-      </Form.Group>
-
-      <Form.Group>
-        <Form.Label htmlFor='deployedLink'>Link to Deployed Application (optional)</Form.Label>
-        <Form.Control
-          type='text'
-          placeholder=''
-          name='deployedLink'
-          onChange={handleInputChange}
-          value={projectFormData.deployedLink}
-        />
-      </Form.Group>
-
-      <Form.Group>
-        <Form.Label htmlFor='videoLink'>Video Link (optional)</Form.Label>
-        <Form.Control
-          type='text'
-          placeholder=''
-          name='videoLink'
-          onChange={handleInputChange}
-          value={projectFormData.videoLink}
-        />
-      </Form.Group>
-
-      <Form.Group>
-        <Form.Label htmlFor='organization'>Organization (optional)</Form.Label>
-        <Form.Control
-          type='text'
-          placeholder=''
-          name='organization'
-          onChange={handleInputChange}
-          value={projectFormData.organization}
-        />
-      </Form.Group>
-
-      <Form.Group>
-        <Form.Label htmlFor='blurb'>Short Blurb (optional)</Form.Label>
-        <Form.Control
-          type='text'
-          placeholder=''
-          name='blurb'
-          onChange={handleInputChange}
-          value={projectFormData.blurb}
-        />
-      </Form.Group>
-
-      <Form.Group>
-        <Form.Label htmlFor='projectSkills'>List of skills (optional)</Form.Label>
-        <Form.Control
-          type='text'
-          placeholder=''
-          name='projectSkills'
-          onChange={handleInputChange}
-          value={projectFormData.projectSkills}
-        />
-      </Form.Group>
+        </Card.Body>
 
 
-      <Button disabled={!(projectFormData.title)} type='submit' variant='success'>
-        Save Project
+        <Button disabled={!(projectFormData.title)} type='submit' variant='success'>
+          Save Project
         </Button>
-    </Form>
-  </>
+
+
+
+
+    </Form >
+  </section >
 );
 };
 
