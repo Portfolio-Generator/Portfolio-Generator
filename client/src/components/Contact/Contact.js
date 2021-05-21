@@ -3,18 +3,18 @@ import L_GITHUB from "../../assets/images/skills/github.svg";
 
 const Contact = () => {
   return (
-    <section  className="bg-dark-blue font-lite-gray p-2">
-      <div className="flex  justify-around w-full p-2">
+    <section  className=" font-lite-gray bg-cyann">
+      <div className="flex justify-center bg-dark-blue">
 
         {/* Vicky Loebel */}
-        <div className="flex-col justify-center w-full m-1 ">
-          <div className="flex justify-center text-center m-1">
+        <div className="flex-col justify-center   px-28 pt-4">
+          <div className="flex justify-center text-center ">
           <a href="https://github.com/vloebel" target="_blank">
           <img alt="GitHub Profile" src={L_GITHUB}
           width="60" height="60" />
           </a>
           </div>
-          <div className="text-center raleway-font font-lite-gray m-1">
+          <div className="text-center raleway-font font-lite-gray ">
           <a href="https://github.com/vloebel" target="_blank">
           Vicky Loebel
           </a>
@@ -22,14 +22,14 @@ const Contact = () => {
         </div>
 
         {/* Stephanie Giel */}
-        <div className="flex-col justify-center w-full m-1">
-          <div className="flex justify-center text-center m-1">
+        <div className="flex-col justify-center  px-28 pt-4">
+          <div className="flex justify-center text-center">
           <a href="https://github.com/SGiel" target="_blank">
           <img alt="GitHub Profile" src={L_GITHUB}
           width="60" height="60"/>
           </a>
           </div>
-          <div className="text-center raleway-font font-lite-gray m-1">
+          <div className="text-center raleway-font font-lite-gray ">
           <a href="https://github.com/SGiel" target="_blank">
           Stephanie Giel
           </a>
@@ -37,14 +37,14 @@ const Contact = () => {
         </div>
 
         {/* Dan Arbelo */}
-        <div className="flex-col justify-center w-full  m-1">
-          <div className="flex justify-center text-center m-1">
+        <div className="flex-col justify-center  px-28 pt-4">
+          <div className="flex justify-center text-center ">
           <a href="https://github.com/Govepitr" target="_blank">
           <img alt="GitHub Profile" src={L_GITHUB}
           width="60" height="60"/>
           </a>
           </div>
-          <div className="text-center raleway-font font-lite-gray m-1">
+          <div className="text-center raleway-font font-lite-gray ">
           <a href="https://github.com/Govepitr" target="_blank">
           Dan Arbelo
           </a>
@@ -52,14 +52,14 @@ const Contact = () => {
         </div>
 
         {/* Kashay Arbelo */}
-        <div className="flex-col justify-center w-full  m-1">
-          <div className="flex justify-center text-center m-1">
+        <div className="flex-col justify-center  px-28 pt-4">
+          <div className="flex justify-center text-center ">
           <a href="https://github.com/KashCodes" target="_blank">
           <img alt="GitHub Profile" src={L_GITHUB}
           width="60" height="60"/>
           </a>
           </div>
-          <div className="text-center raleway-font font-lite-gray m-1">
+          <div className="text-center raleway-font font-lite-gray ">
           <a href="https://github.com/KashCodes" target="_blank">
           Kashay Arbelo
           </a>

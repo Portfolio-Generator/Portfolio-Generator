@@ -14,6 +14,7 @@ import Setup from './components/Setup/Setup';
 import Directions from './components/Directions/Directions';
 
 
+
 const client = new ApolloClient({
   request: (operation) => {
     const token = localStorage.getItem('id_token');
@@ -34,8 +35,10 @@ const client = new ApolloClient({
           <>
             <Navbar />
             <Switch>
-              <Route exact path='/' component={Home} />
+              {/* <Route exact path='/' component={Home} /> */}
+              <Route exact path='/' component={About} />
               <Route exact path='/about' component={About} />
+              <Route exact path='/setup' component={Setup} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/portfolio' component={PortfolioBuilder} />
 

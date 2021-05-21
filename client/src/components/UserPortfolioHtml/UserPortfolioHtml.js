@@ -1,6 +1,68 @@
 // CSS template literal to be used in Generated Portfolio
 const UserPortfolioHtml = ({ userState }) => {
 
+  // const socialMediaOptions = [
+  //   { name: 'Discord', icon: 'fab fa-discord' },
+  //   { name: 'GitHub', icon: 'fab fa-github' },
+  //   { name: 'Facebook', icon: 'fab fa-facebook' },
+  //   { name: 'Instagram', icon: 'fab fa-instagram' },
+  //   { name: 'LinkedIn', icon: 'fab fa-linkedin' },
+  //   { name: 'Reddit', icon: 'fab fa-reddit' },
+  //   { name: 'Spotify', icon: 'fab fa-spotify' },
+  //   { name: 'StackOverflow', icon: 'fab fa-stackoverflow' },
+  //   { name: 'Twitch', icon: 'fab fa-twitch' },
+  //   { name: 'Twitter', icon: 'fab fa-twitter' },
+  //   { name: 'YouTube', icon: 'fab fa-youtube' }
+  // ];
+
+
+  const devSkillsOptions = [
+    { name: 'AJAX', url: 'https://portfolio-generator.github.io/icon-page/ajax.svg' },
+    { name: 'Android', url: 'https://portfolio-generator.github.io/icon-page/android.svg' },
+    { name: 'Apollo Graph QL', url: 'https://portfolio-generator.github.io/icon-page/apollo-graphql.svg' },
+    { name: 'AWS', url: 'https://portfolio-generator.github.io/icon-page/aws.svg' },
+    { name: 'Azure', url: 'https://portfolio-generator.github.io/icon-page/azure.svg' },
+    { name: 'Bash', url: 'https://portfolio-generator.github.io/icon-page/bash.svg' },
+    { name: 'Bootstrap', url: 'https://portfolio-generator.github.io/icon-page/bootstrap.svg' },
+    { name: 'C++', url: 'https://portfolio-generator.github.io/icon-page/c++.svg' },
+    { name: 'CSS3', url: 'https://portfolio-generator.github.io/icon-page/CSS3_logo.svg' },
+    { name: 'Docker', url: 'https://portfolio-generator.github.io/icon-page/docker.svg' },
+    { name: 'Express', url: 'https://portfolio-generator.github.io/icon-page/express.svg' },
+    { name: 'Flutter', url: 'https://portfolio-generator.github.io/icon-page/flutter.svg' },
+    { name: 'Google Firebase', url: 'https://portfolio-generator.github.io/icon-page/googlefirebase.svg' },
+    { name: 'Git', url: 'https://portfolio-generator.github.io/icon-page/git-icon.svg' },
+    { name: 'GitHub', url: 'https://portfolio-generator.github.io/icon-page/github.svg' },
+    { name: 'GitHub API', url: 'https://portfolio-generator.github.io/icon-page/github-api.svg' },
+    { name: 'GitHub Pages', url: 'https://portfolio-generator.github.io/icon-page/github-icon.svg' },
+    { name: 'Handlebars', url: 'https://portfolio-generator.github.io/icon-page/handlebars.svg' },
+    { name: 'Heroku', url: 'https://portfolio-generator.github.io/icon-page/heroku.svg' },
+    { name: 'HTML5', url: 'https://portfolio-generator.github.io/icon-page/html55.svg' },
+    { name: 'Java', url: 'https://portfolio-generator.github.io/icon-page/java.svg' },
+    { name: 'JavaScript', url: 'https://portfolio-generator.github.io/icon-page/javascript.svg' },
+    { name: 'jQuery', url: 'https://portfolio-generator.github.io/icon-page/jquery.svg' },
+    { name: 'Linux Tux', url: 'https://portfolio-generator.github.io/icon-page/linuxtux.svg' },
+    { name: 'Materialize', url: 'https://portfolio-generator.github.io/icon-page/materialize.svg' },
+    { name: 'Moment.js', url: 'https://portfolio-generator.github.io/icon-page/momentjs.svg' },
+    { name: 'Mongo DB', url: 'https://portfolio-generator.github.io/icon-page/mongodb.svg' },
+    { name: 'MySQL', url: 'https://portfolio-generator.github.io/icon-page/mysql.svg' },
+    { name: 'Node.js', url: 'https://portfolio-generator.github.io/icon-page/nodejs.svg' },
+    { name: 'NPM', url: 'https://portfolio-generator.github.io/icon-page/npm.svg' },
+    { name: 'PostgreSQL', url: 'https://portfolio-generator.github.io/icon-page/postgresql.svg' },
+    { name: 'Python', url: 'https://portfolio-generator.github.io/icon-page/python.svg' },
+    { name: 'RasberryPi', url: 'https://portfolio-generator.github.io/icon-page/raspberrypi.svg' },
+    { name: 'React', url: 'https://portfolio-generator.github.io/icon-page/react.svg' },
+    { name: 'React Bootstrap', url: 'https://portfolio-generator.github.io/icon-page/react-bootstrap.svg' },
+    { name: 'React Router', url: 'https://portfolio-generator.github.io/icon-page/react-router.svg' },
+    { name: 'Redux', url: 'https://portfolio-generator.github.io/icon-page/redux.svg' },
+    { name: 'Rest API', url: 'https://portfolio-generator.github.io/icon-page/REST-API-icon.svg' },
+    { name: 'Styled Components', url: 'https://portfolio-generator.github.io/icon-page/styled-components.svg' },
+    { name: 'Tailwind CSS', url: 'https://portfolio-generator.github.io/icon-page/tailwindcss.svg' },
+    { name: 'Typescript', url: 'https://portfolio-generator.github.io/icon-page/typescript.svg' },
+    { name: 'Vue.js', url: 'https://portfolio-generator.github.io/icon-page/vuejs.svg' },
+    { name: 'Webpack', url: 'https://portfolio-generator.github.io/icon-page/webpack.svg' }
+  ];
+
+  // START OF LOGIC TO CREATE TEMPLATE LITERAL FOR ABOUTME
   let headShotString = ``;
   if (userState.headshot?.length > 0) {
     headShotString = headShotString + `<figure class="mt-5 align-self-center ">
@@ -47,13 +109,15 @@ const UserPortfolioHtml = ({ userState }) => {
   </div>
 `;
   }
+  // END OF LOGIC TO CREATE TEMPLATE LITERAL FOR ABOUTME
 
-  // add after first div of closing string on aboutMe after line 43
 
+  // START OF LOGIC TO CREATE TEMPLATE LITERAL FOR DEVSKILLS
   let devSkillsString = ``;
   if (userState.devSkills?.length) {
     userState.devSkills.forEach((skill, i) => {
       // includes starting html of devSkills container
+      let devSkillsUrl = devSkillsOptions.filter(skillOption => skillOption.name == skill).map(skillOptionUrl => skillOptionUrl.url)[0]
       if (i === 0) {
         devSkillsString = devSkillsString + `<!-- Skills -->
       <div id="skills" class="container border-2 rounded" style="max-width: 1700px; background:#C4C4C4">
@@ -61,9 +125,9 @@ const UserPortfolioHtml = ({ userState }) => {
           <h3 class="d-flex justify-content-center">Skills</h3>
           <div class="row mt-2">`
       }
-      devSkillsString = devSkillsString + `<div class="col-1 d-sm-none d-md-block">
-    <p>${skill}</p>
-  </div>
+      devSkillsString = devSkillsString + `<div class="col-1 d-none d-lg-block ">
+      <img class="border rounded img-fluid" src=${devSkillsUrl}>
+    </div>
 `
     })
   }
@@ -75,8 +139,10 @@ const UserPortfolioHtml = ({ userState }) => {
 </div>
 `;
   }
+  // END OF LOGIC TO CREATE TEMPLATE LITERAL FOR DEVSKILLS
 
 
+  // START OF LOGIC TO CREATE TEMPLATE LITERAL FOR PROJECTS
   let projectsString = ``;
 
   if (userState.projects?.length) {
@@ -161,6 +227,38 @@ const UserPortfolioHtml = ({ userState }) => {
     </div>
     `
   }
+  // END OF LOGIC TO CREATE TEMPLATE LITERAL FOR PROJECTS
+
+  // START OF LOGIC TO CREATE TEMPLATE LITERAL FOR SOCIALMEDIA
+  let socialMediaString = ``;
+  if (userState.socialMedia?.length) {
+    userState.socialMedia.forEach((media, i) => {
+      let mediaIcon = "fab fa-" + media.platform.toLowerCase().trim();
+      if (mediaIcon === "fab fa-stackoverflow") {
+        mediaIcon = "fab fa-stack-overflow"
+      }
+      // includes starting html of socialMedia container
+      if (i === 0) {
+        socialMediaString = socialMediaString + `<div class="container d-flex">
+        <div class="mx-auto mb-50">
+          <h3 class="justify-content-center ">Social Media</h3>`
+      }
+      socialMediaString = socialMediaString + `<div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option8">
+      <label class="form-check-label" for="inlineCheckbox3"><i class="${mediaIcon}"></i></label>
+    </div>
+  `
+    })
+  }
+  // includes ending html of socialMedia container
+  if (userState.socialMedia?.length) {
+    socialMediaString = socialMediaString +
+      `</div>
+    </div>
+  `;
+  }
+  // END OF LOGIC TO CREATE TEMPLATE LITERAL FOR SOCIALMEDIA
+
 
   return `<!DOCTYPE html>
   <html lang="en">
@@ -204,47 +302,8 @@ const UserPortfolioHtml = ({ userState }) => {
     + aboutMeString +
     devSkillsString +
     projectsString +
-
-    `<div class="container d-flex">
-          <div class="mx-auto mb-50">
-            <h3 class="justify-content-center ">Social Media</h3>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-              <label class="form-check-label" for="inlineCheckbox1"><i class="fab fa-facebook"></i></label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-              <label class="form-check-label" for="inlineCheckbox2"><i class="fab fa-instagram"></i></label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-              <label class="form-check-label" for="inlineCheckbox3"><i class="fab fa-discord"></i></label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option4">
-              <label class="form-check-label" for="inlineCheckbox3"><i class="fab fa-linkedin"></i></label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option5">
-              <label class="form-check-label" for="inlineCheckbox1"><i class="fab fa-reddit-alien"></i></label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option6">
-              <label class="form-check-label" for="inlineCheckbox2"><i class="fab fa-twitch"></i></label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option7">
-              <label class="form-check-label" for="inlineCheckbox3"><i class="fab fa-twitter"></i></label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option8">
-              <label class="form-check-label" for="inlineCheckbox3"><i class="fab fa-youtube"></i></label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Footer -->
+    socialMediaString +
+    `<!-- Footer -->
     <footer id="projects" class="container mt-3 mb-2 border border-2 rounded"
       style="max-width: 1700px; background:#C4C4C4">
       <p class="d-flex justify-content-center">©Legion Incorporated Est ∞</p>

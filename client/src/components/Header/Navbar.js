@@ -12,32 +12,47 @@ const AppNavbar = () => {
 
   return (
     <>
-      <Navbar  variant='dark' expand='lg' className="bg-dark-blue raleway-font font-lite-gray">
+      <Navbar  variant='dark' expand='lg' className="bg-dark-blue raleway-font font-white">
         <Container fluid>
-          <Navbar.Brand as={Link} to='/' className="rock-salt-cursive">
+          <Navbar.Brand as={Link} to='/' className="rock-salt-cursive font-2xl">
             Profile Generator
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
           <Navbar.Collapse id='navbar'>
             <Nav className='ml-auto'>
               {/* These links don't need user to be logged in */}
+              <Navbar.Text>
               <Nav.Link as={Link} to='/'>
-                Home
-              </Nav.Link>
-              <Nav.Link as={Link} to='/about'>
                 About
               </Nav.Link>
+              </Navbar.Text>
+              <Navbar.Text>
+              <Nav.Link href="https://portfolio-generator.github.io/Demo-Portfolios/" target="_blank" rel="noreferrer">
+                Demo
+              </Nav.Link>
+              </Navbar.Text>
+              <Navbar.Text>
+              <Nav.Link as={Link} to='/setup'>
+                How to Setup
+              </Nav.Link>
+              </Navbar.Text>
               {/* These links appear if user is logged in - 
               otherwise they are sent to login  */}
               {Auth.loggedIn() ? (
                 <>
+                  <Navbar.Text>
                   <Nav.Link as={Link} to='/portfolio'>
                     Portfolio Builder
                   </Nav.Link>
+                  </Navbar.Text>
+                  <Navbar.Text>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                  </Navbar.Text>
                 </>
               ) : (
+                <Navbar.Text>
                 <Nav.Link onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
+                </Navbar.Text>
               )}
             </Nav>
           </Navbar.Collapse>

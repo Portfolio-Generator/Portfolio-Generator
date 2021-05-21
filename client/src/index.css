@@ -15,6 +15,7 @@
   --bright-blue: #446DF6;
   --dark-gray: #4D4D4D;
   --lite-gray: #e0e0e0;
+  --white: #FFF;
   --lite-shadow: 0 35px 60px -15px rgba(224, 224, 224, 0.883);
   --bg-lite-shadow:  rgba(224, 224, 224, 0.883);
   --border-radius: 0.3rem;
@@ -26,9 +27,21 @@
   background-color: var(--dark-blue);
 }
 
+.rounded-3xl {
+  border-radius: 1.5rem;
+}
+
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
   background-color: var(--sienna) !important;
   border-color: var(--dark-blue) !important;
+  font-family: 'Raleway', sans-serif;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: var(--white) !important;
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .boxsize {
@@ -51,7 +64,36 @@
   height: 58px;
 }
 
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.px-28 {
+  padding-left: 7rem;
+  padding-right: 7rem;
+}
+
+.px-32 {
+  padding-left: 8rem;
+  padding-right: 8rem;
+}
+
+.px-36 {
+  padding-left: 9rem;
+  padding-right: 9rem;
+}
+
+.px-40 {
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+
 /* Background Color Scheme */
+
+.font-white {
+  color: var(--white);
+}
 
 .bg-sienna {
   background-color: var(--sienna);
@@ -332,6 +374,7 @@ nav a:hover {
 /* CARDS */
 .card {
   margin: 0 0 20px 0;
+  border: 1px solid rgba(52,58,64,.9)!important;
   border: 3px solid var(--dark);
   border-radius: var(--border-radius);
   background-color: var(--light);
@@ -339,9 +382,9 @@ nav a:hover {
 }
 
 .card-header {
-  color: var(--secondary);
+  /* color: var(--secondary); */
   margin: 0;
-  background-color: var(--dark);
+  /* background-color: var(--dark); */
   padding: 0.625rem;
   border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
 }

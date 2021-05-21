@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ME } from '../../utils/queries';
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card"
+import Directions from "../Directions/Directions"
 
 
 import Auth from '../../utils/auth';
@@ -51,16 +52,17 @@ const PortfolioBuilder = () => {
     return <h2>LOADING...</h2>;
   }
   return (
-    <main className="bg-cyann">
-
-        <div className="container bg-dark-green ">
+    <main className="bg-cyann ">
+      <Directions />
+        <div className="container bg-dark-green py-5 rounded-t-2xl">
           {userData ? (
             <div className="col-12 col-lg-12 bg-dark-green font-lite-gray ">
 
+              
 
               {/* developer information */}
-              <Accordion>
-                <Card>
+              <Accordion >
+                <Card className="rounded">
                   <Accordion.Toggle
                     
                     eventKey="0"
@@ -72,7 +74,7 @@ const PortfolioBuilder = () => {
                   </Accordion.Collapse>
                 </Card>
                 {/* Social Media information */}
-                <Card>
+                <Card className="rounded">
                   <Accordion.Toggle
                     
                     eventKey="1"
@@ -85,7 +87,7 @@ const PortfolioBuilder = () => {
               </Card>
               
                 {/* project information */}
-                <Card>
+                <Card className="rounded">
                   <Accordion.Toggle
                   
                     eventKey="2"
