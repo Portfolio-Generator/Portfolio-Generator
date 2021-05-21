@@ -95,7 +95,7 @@ const AboutMe = ({ userState, setUserState }) => {
   // ----------------------------------------------
 
   return (
-    <section className="bg-green-100 rounded">
+    <section className=" rounded">
       <Card.Body className="raleway-font">
         <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
           <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>

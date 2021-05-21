@@ -54,6 +54,36 @@
   background-color: var(--lite-gray);
 }
 
+/* Border Color Scheme */
+
+.bd-sienna {
+  border-color: var(--sienna);
+}
+
+.bd-dark-blue {
+  border-color: var(--dark-blue);
+}
+
+.bd-dark-green {
+  border-color: var(--dark-green);
+}
+
+.bd-cyann {
+  border-color: var(--cyann);
+}
+
+.bd-bright-blue {
+  border-color: var(--bright-blue);
+}
+
+.bd-dark-gray {
+  border-color: var(--dark-gray);
+}
+
+.bd-lite-gray {
+  border-color: var(--lite-gray);
+}
+
 /* Font Color Scheme */
 
 .font-sienna {
@@ -82,6 +112,74 @@
 
 .font-lite-gray {
   color: var(--lite-gray);
+}
+
+.header-bold {
+  font-weight: bold;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+/* ./src/App.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Architects+Daughter&family=Caveat+Brush&family=Cedarville+Cursive&family=Dancing+Script:wght@500;600;700&family=Homemade+Apple&family=La+Belle+Aurore&family=Nothing+You+Could+Do&family=Over+the+Rainbow&family=Parisienne&family=Poiret+One&family=Raleway:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Reenie+Beanie&family=Rock+Salt&family=The+Girl+Next+Door&family=Waiting+for+the+Sunrise&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Architects+Daughter&family=Caveat+Brush&family=Cedarville+Cursive&family=Dancing+Script:wght@500;600;700&family=Homemade+Apple&family=La+Belle+Aurore&family=Nothing+You+Could+Do&family=Over+the+Rainbow&family=Parisienne&family=Poiret+One&family=Raleway:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Reenie+Beanie&family=Rock+Salt&family=The+Girl+Next+Door&family=Waiting+for+the+Sunrise&display=swap');
+
+.annie-tele-cursive {
+font-family: 'Annie Use Your Telescope', cursive;}
+
+.Architects-cursive {
+font-family: 'Architects Daughter', cursive;}
+
+.Caveat-cursive {
+font-family: 'Caveat Brush', cursive;}
+
+.Cedarville-cursive {
+font-family: 'Cedarville Cursive', cursive;
+}
+
+.Dancing-cursive {
+font-family: 'Dancing Script', cursive;}
+
+.Homemade-Apple-cursive {
+font-family: 'Homemade Apple', cursive;}
+
+.LaBelle-cursive {
+font-family: 'La Belle Aurore', cursive;}
+
+.nothing-you-can-do-cursive {
+font-family: 'Nothing You Could Do', cursive;}
+
+.over-the-rainbow-cursive {
+font-family: 'Over the Rainbow', cursive;}
+
+.Parisienne-cursive {
+font-family: 'Parisienne', cursive;}
+
+.Poiret-cursive {
+font-family: 'Poiret One', cursive;}
+
+.raleway-font {
+font-family: 'Raleway', sans-serif;}
+
+.reenie-beanie-cursive {
+font-family: 'Reenie Beanie', cursive;}
+
+.rock-salt-cursive {
+font-family: 'Rock Salt', cursive;}
+
+.girl-nextdoor-cursive {
+font-family: 'The Girl Next Door', cursive;}
+
+.waiting-sunrise-cursive {
+font-family: 'Waiting for the Sunrise', cursive;}
+
+.montserrat-font {
+  font-family: 'Montserrat', sans-serif;
 }
 
 
