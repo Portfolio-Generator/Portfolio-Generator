@@ -82,7 +82,7 @@ const AddProject = () => {
         name={fieldName}
         required onChange={handleInputChange}
         value={value}
-        className="form-input px-4 py-3 rounded-full w-full mt-1">
+        className="form-input px-4 py-3 w-full mt-1">
       </input>
     </div>
     )
@@ -90,7 +90,7 @@ const AddProject = () => {
   // ----------------------------------------------
 
   return (
-    <section className="bg-green-100 rounded">
+    <section>
       <Form noValidate validated={validated} onSubmit={handleSaveProject}>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Error entering project information.
@@ -116,7 +116,7 @@ const AddProject = () => {
               name='blurb'
               onChange={handleInputChange}
               value={projectFormData.blurb}
-              className="form-textarea px-4 py-3 rounded-full w-full mt-1" rows="6">
+              className="form-textarea px-4 py-3 w-full mt-1 border-1" rows="6">
             </textarea>
           </div>
 

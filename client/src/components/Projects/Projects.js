@@ -25,7 +25,7 @@ const Projects = ({ userState, setuserState }) => {
   }
 
   return (
-    <section className="bg-green-100 rounded">
+    <section>
    
       <Card.Body className="raleway-font">
         
