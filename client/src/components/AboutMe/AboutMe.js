@@ -144,7 +144,7 @@ const AboutMe = ({ userState, setUserState }) => {
               Developer Skills List Options:
           </Accordion.Toggle>
             <Accordion.Collapse eventKey="1" className="raleway-font">
-              <Card.Body>
+              <Card.Body className="row mt-2">
                 {console.log(devSkillsChoices, "devSkillChoices")}
                 {devSkillsChoices.map((choice, index) => 
                   <div key={index}>
