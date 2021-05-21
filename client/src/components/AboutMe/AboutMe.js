@@ -17,7 +17,7 @@ const AboutMe = ({ userState, setUserState }) => {
   const devSkillsOptions = ['AJAX', 'Android', 'Apollo Graph QL', 'AWS', 'Azure', 'Bash', 'Bootstrap',
     'C++', 'CSS3', 'Docker', 'Express', 'Flutter', 'Google Firebase', 'Git', 'GitHub', 'GitHub API',
     'GitHub Pages', 'Handlebars', 'Heroku', 'HTML5', 'Java', 'JavaScript', 'jQuery', 'Linux Tux',
-    'Materialize', 'Moment.js', 'Mongo DB', 'MySQL', 'Node.js', 'NPM', 'PostgreSQL', 'RasberryPi',
+    'Materialize', 'Moment.js', 'Mongo DB', 'MySQL', 'Node.js', 'NPM', 'PostgreSQL', 'Python', 'RasberryPi',
     'React', 'React Bootstrap', 'React Router', 'Redux', 'Rest API', 'Tailwinds CSS', 'Typescript',
     'Vue.js', 'Webpack'];
 
