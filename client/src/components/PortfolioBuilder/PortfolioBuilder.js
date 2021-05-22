@@ -36,6 +36,7 @@ const PortfolioBuilder = () => {
       setUserState(data.me)
     }
   }, [data])
+  console.log("******** top level userData", userData)
 
   const loggedIn = Auth.loggedIn();
   if (!loggedIn) {
@@ -56,7 +57,6 @@ const PortfolioBuilder = () => {
         <div className="container">
           {userData ? (
             <div className="col-12 col-lg-12 mb-12">
-
 
               {/* developer information */}
               <Accordion>

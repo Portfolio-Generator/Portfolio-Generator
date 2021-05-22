@@ -27,6 +27,7 @@ const AboutMe = ({ userState, setUserState }) => {
 
   const [devSkillsChoices, setDevSkillsChoices] = useState([]);
   useEffect(() => {
+    if (!userState) return;
     setDevSkillsChoices(devSkillsOptions.map(skill => ({ name: skill, selected: userState.devSkills.includes(skill) })));
   }, [userState])
 
@@ -107,10 +108,10 @@ const AboutMe = ({ userState, setUserState }) => {
           {/*  Personal Information  */}
 
 
-          {aboutMeField("First Name:", "firstname", userState.firstname)}
-          {aboutMeField("Last Name:", "lastname", userState.lastname)}
-          {aboutMeField("Profile Image Filename (case sensitive):", "headshot", userState.headshot)}
-          {aboutMeField("Phone Number:", "phone", userState.phone)}
+          {aboutMeField("First Name:", "firstname", userState?.firstname)}
+          {aboutMeField("Last Name:", "lastname", userState?.lastname)}
+          {aboutMeField("Profile Image Filename (case sensitive):", "headshot", userState?.headshot)}
+          {aboutMeField("Phone Number:", "phone", userState?.phone)}
           {/* About Me Bio:   */}
           <div className="flex-col w-full">
             <label className="raleway-font text-gray-700 text-xl">
@@ -123,7 +124,7 @@ const AboutMe = ({ userState, setUserState }) => {
               placeholder=''
               name='aboutMe'
               onChange={handleInputChange}
-              value={userState.aboutMe}
+              value={userState?.aboutMe}
               className="form-textarea px-4 py-3 rounded-full w-full mt-1" rows="6">
             </textarea>
           </div>
@@ -145,7 +146,7 @@ const AboutMe = ({ userState, setUserState }) => {
             )}
           </div>
           {/* Save personal info and dev skills to db with one button */}
-          <Button disabled={!(userState.firstname && userState.lastname)} type='submit' variant='success'>
+          <Button disabled={!(userState?.firstname && userState?.lastname)} type='submit' variant='success'>
             Save
                 </Button>
         </Form>

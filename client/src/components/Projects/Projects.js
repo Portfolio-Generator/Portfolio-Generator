@@ -35,7 +35,7 @@ const Projects = ({ userState, setuserState }) => {
                   <AddProject />
                 </div>
               ) : null}
-              {userState.projects.map((proj) =>
+              {userState?.projects?.map((proj) =>
                 <ul key={proj._id} style={{ listStyle: 'none' }}>
                   <li><Button onClick={() => handleDeleteProject(proj._id)} >Delete Project</Button></li>
                   <li style={{ fontWeight: 'bold' }}>{proj.title}</li>

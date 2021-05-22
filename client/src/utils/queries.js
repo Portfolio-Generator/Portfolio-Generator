@@ -26,6 +26,7 @@ export const QUERY_ME = gql` {
   socialMedia {
     _id
     platform
+    accountLink
   }
 }
 }
@@ -47,6 +48,7 @@ export const QUERY_USERS = gql` {
     socialMedia {
       _id
       platform
+      accountLink
     }
   }
 }

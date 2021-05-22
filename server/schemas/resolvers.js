@@ -101,6 +101,18 @@ const resolvers = {
     
       throw new AuthenticationError('You need to be logged in!');
     },
+    updateSocialMedia: async (parent, args , context) => {
+      if (context.user) {
+        const updatedSocialMedia = await SocialMedia.findByIdAndUpdate(
+          { _id: args._id },
+          args,
+          { new: true, runValidators: true }
+        )
+        return  updatedSocialMedia;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
+    },
     // updateProjects: async (parent, args , context) => {
     //   if (context.user) {
     //     const updatedUser = await User.findOneAndUpdate(
