@@ -19,7 +19,7 @@ const UserPortfolioHtml = ({ userState }) => {
   const devSkillsOptions = [
     { name: 'AJAX', url: 'https://portfolio-generator.github.io/icon-page/ajax.svg' },
     { name: 'Android', url: 'https://portfolio-generator.github.io/icon-page/android.svg' },
-    { name: 'Apollo Graph QL', url: 'https://portfolio-generator.github.io/icon-page/apollo-graphql.svg' },
+    { name: 'Apollo GraphQL', url: 'https://portfolio-generator.github.io/icon-page/apollo-graphql.svg' },
     { name: 'AWS', url: 'https://portfolio-generator.github.io/icon-page/aws.svg' },
     { name: 'Azure', url: 'https://portfolio-generator.github.io/icon-page/azure.svg' },
     { name: 'Bash', url: 'https://portfolio-generator.github.io/icon-page/bash.svg' },
@@ -49,7 +49,7 @@ const UserPortfolioHtml = ({ userState }) => {
     { name: 'NPM', url: 'https://portfolio-generator.github.io/icon-page/npm.svg' },
     { name: 'PostgreSQL', url: 'https://portfolio-generator.github.io/icon-page/postgresql.svg' },
     { name: 'Python', url: 'https://portfolio-generator.github.io/icon-page/python.svg' },
-    { name: 'RasberryPi', url: 'https://portfolio-generator.github.io/icon-page/raspberrypi.svg' },
+    { name: 'RaspberryPi', url: 'https://portfolio-generator.github.io/icon-page/raspberrypi.svg' },
     { name: 'React', url: 'https://portfolio-generator.github.io/icon-page/react.svg' },
     { name: 'React Bootstrap', url: 'https://portfolio-generator.github.io/icon-page/react-bootstrap.svg' },
     { name: 'React Router', url: 'https://portfolio-generator.github.io/icon-page/react-router.svg' },
