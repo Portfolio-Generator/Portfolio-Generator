@@ -14,7 +14,6 @@ import AddProject from './AddProject';
 // DELETES a saved project
 // READS projects that have been saved from
 //   userState and displays them
-
 //----------------------------------------------------
   const Projects = ({ userState }) => {
   const [addProjectRequest, setAddProjectRequest] = useState(false);

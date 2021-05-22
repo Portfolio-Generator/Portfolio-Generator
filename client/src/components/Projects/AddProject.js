@@ -81,7 +81,7 @@ const AddProject = ({
       //NOTE: 
       // Setting AddProjectRequest===false will close
       // the add project form after a save -
-      //  BUT current thinking is it's better
+      //  BUT current opinion is it's better
       // to leave it open for the next project
       // setAddProjectRequest(false); 
 
