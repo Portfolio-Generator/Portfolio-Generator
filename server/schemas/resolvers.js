@@ -101,19 +101,18 @@ const resolvers = {
     
       throw new AuthenticationError('You need to be logged in!');
     },
-    // updateProjects: async (parent, args , context) => {
-    //   if (context.user) {
-    //     const updatedUser = await User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $set: { user: args } },
-    //       { new: true, runValidators: true }
-    //     );
-
-    //     return  updatedUser ;
-    //   }
+    updateSocialMedia: async (parent, args , context) => {
+      if (context.user) {
+        const updatedSocialMedia = await SocialMedia.findByIdAndUpdate(
+          { _id: args._id },
+          args,
+          { new: true, runValidators: true }
+        )
+        return  updatedSocialMedia;
+      }
     
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
+      throw new AuthenticationError('You need to be logged in!');
+    },    
     addProject: async (parent, args, context) => {
       if (context.user) {
         const newProject = await Project.create(args)

@@ -97,7 +97,7 @@ const AddProject = () => {
 
         <Card.Body className="raleway-font font-dark-blue">
           {projectField("Title (required)", "title", projectFormData.title)}
-          {projectField("Thumnail Image File (case sensitive)", projectFormData.thumbnail)}
+          {projectField("Thumnail Image File (case sensitive)", "thumbnail", projectFormData.thumbnail)}
           {projectField("Link to deployed application:", "deployedLink", projectFormData.deployedLink)}
           {projectField("Github Repository Link (optional)", "repoLink", projectFormData.repoLink)}
           {projectField("Video Link (optional):", "videoLink", projectFormData.videoLink)}
