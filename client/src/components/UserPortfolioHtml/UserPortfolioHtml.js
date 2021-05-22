@@ -1,27 +1,25 @@
 // CSS template literal to be used in Generated Portfolio
 const UserPortfolioHtml = ({ userState }) => {
 
-  const socialMediaOptions = [
-    { name: 'Discord', url: 'https://portfolio-generator.github.io/icon-page/discord.svg' },
-    { name: 'GitHub', url: 'https://portfolio-generator.github.io/icon-page/github.svg' },
-    { name: 'Facebook', url: 'https://portfolio-generator.github.io/icon-page/facebook.svg' },
-    { name: 'Instagram', url: 'https://portfolio-generator.github.io/icon-page/instagram.svg' },
-    { name: 'LinkedIn', url: 'https://portfolio-generator.github.io/icon-page/linkedin.svg' },
-    { name: 'Reddit', url: 'https://portfolio-generator.github.io/icon-page/reddit.svg' },
-    { name: 'Spotify', url: 'https://portfolio-generator.github.io/icon-page/spotify.svg' },
-    { name: 'StackOverflow', url: 'https://portfolio-generator.github.io/icon-page/stack-overflow.svg' },
-    { name: 'Twitch', url: 'https://portfolio-generator.github.io/icon-page/twitch.svg' },
-    { name: 'Twitter', url: 'https://portfolio-generator.github.io/icon-page/twitter.svg' },
-    { name: 'YouTube', url: 'https://portfolio-generator.github.io/icon-page/youtube.svg' }
-  ];
-
-
+  // const socialMediaOptions = [
+  //   { name: 'Discord', url: 'https://portfolio-generator.github.io/icon-page/discord.svg' },
+  //   { name: 'GitHub', url: 'https://portfolio-generator.github.io/icon-page/github.svg },
+  //   { name: 'Facebook', url: 'https://portfolio-generator.github.io/icon-page/facebook.svg' },
+  //   { name: 'Instagram', url: 'https://portfolio-generator.github.io/icon-page/instagram.svg },
+  //   { name: 'LinkedIn', url: 'https://portfolio-generator.github.io/icon-page/linkedin.svg' },
+  //   { name: 'Reddit', url: 'https://portfolio-generator.github.io/icon-page/reddit.svg' },
+  //   { name: 'Spotify', url: 'https://portfolio-generator.github.io/icon-page/spotify.svg' },
+  //   { name: 'StackOverflow', url: 'https://portfolio-generator.github.io/icon-page/stack-overflow.svg' },
+  //   { name: 'Twitch', url: 'https://portfolio-generator.github.io/icon-page/twitch.svg },
+  //   { name: 'Twitter', url: 'fhttps://portfolio-generator.github.io/icon-page/twitter.svg' },
+  //   { name: 'YouTube', url: 'https://portfolio-generator.github.io/icon-page/youtube.svg' }
+  // ];
 
 
   const devSkillsOptions = [
     { name: 'AJAX', url: 'https://portfolio-generator.github.io/icon-page/ajax.svg' },
     { name: 'Android', url: 'https://portfolio-generator.github.io/icon-page/android.svg' },
-    { name: 'Apollo GraphQL', url: 'https://portfolio-generator.github.io/icon-page/apollo-graphql.svg' },
+    { name: 'Apollo Graph QL', url: 'https://portfolio-generator.github.io/icon-page/apollo-graphql.svg' },
     { name: 'AWS', url: 'https://portfolio-generator.github.io/icon-page/aws.svg' },
     { name: 'Azure', url: 'https://portfolio-generator.github.io/icon-page/azure.svg' },
     { name: 'Bash', url: 'https://portfolio-generator.github.io/icon-page/bash.svg' },
@@ -51,7 +49,7 @@ const UserPortfolioHtml = ({ userState }) => {
     { name: 'NPM', url: 'https://portfolio-generator.github.io/icon-page/npm.svg' },
     { name: 'PostgreSQL', url: 'https://portfolio-generator.github.io/icon-page/postgresql.svg' },
     { name: 'Python', url: 'https://portfolio-generator.github.io/icon-page/python.svg' },
-    { name: 'RaspberryPi', url: 'https://portfolio-generator.github.io/icon-page/raspberrypi.svg' },
+    { name: 'RasberryPi', url: 'https://portfolio-generator.github.io/icon-page/raspberrypi.svg' },
     { name: 'React', url: 'https://portfolio-generator.github.io/icon-page/react.svg' },
     { name: 'React Bootstrap', url: 'https://portfolio-generator.github.io/icon-page/react-bootstrap.svg' },
     { name: 'React Router', url: 'https://portfolio-generator.github.io/icon-page/react-router.svg' },
@@ -63,7 +61,6 @@ const UserPortfolioHtml = ({ userState }) => {
     { name: 'Vue.js', url: 'https://portfolio-generator.github.io/icon-page/vuejs.svg' },
     { name: 'Webpack', url: 'https://portfolio-generator.github.io/icon-page/webpack.svg' }
   ];
-
 
   // START OF LOGIC TO CREATE TEMPLATE LITERAL FOR ABOUTME
   let headShotString = ``;
@@ -79,7 +76,7 @@ const UserPortfolioHtml = ({ userState }) => {
   let phoneString = ``;
   if (userState.phone?.length > 0) {
     phoneString = phoneString + `<div class="col-4 rounded-pill text-center text-wrap text-white" 
-  style="background:#4f1b94" href="${userState.phone}">${userState.phone}</div>`;
+  style="background:#4f1b94">${userState.phone}</div>`;
   }
 
   let emailString = ``;
@@ -118,6 +115,7 @@ const UserPortfolioHtml = ({ userState }) => {
   // START OF LOGIC TO CREATE TEMPLATE LITERAL FOR DEVSKILLS
   let devSkillsString = ``;
   if (userState.devSkills?.length) {
+    console.log("*****", userState.devSkills)
     userState.devSkills.forEach((skill, i) => {
       // includes starting html of devSkills container
       let devSkillsUrl = devSkillsOptions.filter(skillOption => skillOption.name == skill).map(skillOptionUrl => skillOptionUrl.url)[0]
@@ -160,7 +158,7 @@ const UserPortfolioHtml = ({ userState }) => {
 
       if (project.thumbnail?.length > 0) {
         projectThumbnailString = projectThumbnailString + `<img class="col order-first px-0 align-self-end img-fluid mr-3 
-      my-4 rounded shadow-lg" src="./${project.thumbnail}" style="width:405px">`
+      my-4 rounded shadow-lg" src="./assets/images/${project.thumbnail}" style="width:405px">`
       }
 
       if (project.title?.length > 0) {
@@ -236,29 +234,28 @@ const UserPortfolioHtml = ({ userState }) => {
   let socialMediaString = ``;
   if (userState.socialMedia?.length) {
     userState.socialMedia.forEach((media, i) => {
-      let socialMediaUrl = socialMediaOptions.filter(mediaOption => mediaOption.name == media.platform).map(mediaOptionUrl => mediaOptionUrl.url)[0]
+      let mediaIcon = "fab fa-" + media.platform.toLowerCase().trim();
+      if (mediaIcon === "fab fa-stackoverflow") {
+        mediaIcon = "fab fa-stack-overflow"
+      }
       // includes starting html of socialMedia container
       if (i === 0) {
-        socialMediaString = socialMediaString + `<!-- SocialMedia -->
-        <div id="socialMedia" class="container border-2 rounded" style="max-width: 1700px; background:#C4C4C4">
-          <div class="container d-none d-sm-block">
-            <h3 class="d-flex justify-content-center">Social Media</h3>
-            <div class="row mt-2">`
+        socialMediaString = socialMediaString + `<div class="container d-flex">
+        <div class="mx-auto mb-50">
+          <h3 class="justify-content-center ">Social Media</h3>`
       }
-      socialMediaString = socialMediaString + `<div class="col-1 d-none d-lg-block ">
-      <p>${media.platform}</p>
-      <p>${media.accountLink}</p>
-      <img class="border rounded img-fluid" src=${socialMediaUrl}>
+      socialMediaString = socialMediaString + `<div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option8">
+      <label class="form-check-label" for="inlineCheckbox3"><i class="${mediaIcon}"></i></label>
     </div>
   `
-  })
-}
+    })
+  }
   // includes ending html of socialMedia container
   if (userState.socialMedia?.length) {
     socialMediaString = socialMediaString +
       `</div>
     </div>
-  </div>
   `;
   }
   // END OF LOGIC TO CREATE TEMPLATE LITERAL FOR SOCIALMEDIA
@@ -273,8 +270,8 @@ const UserPortfolioHtml = ({ userState }) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Googlefonts CDN here -->
   
+    <link rel="stylesheet" src="../assets/css/styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>${userState.firstname} ${userState.lastname} Portfolio</title>
