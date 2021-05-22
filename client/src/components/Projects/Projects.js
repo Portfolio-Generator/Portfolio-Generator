@@ -23,7 +23,7 @@ const Projects = ({ userState, setuserState }) => {
 
   return (
     <section>
-   
+  
       <Card.Body className="raleway-font font-dark-blue rounded ">
         <div className="m-2 bg-cream rounded p-1">
               <Button onClick={() => setAddProjectRequest(true)} >Add New Project</Button>
@@ -35,6 +35,7 @@ const Projects = ({ userState, setuserState }) => {
               <div className="font-dark-blue py-4">
               {userState.projects.map((proj) =>
                 <ul key={proj._id} style={{ listStyle: 'none' }}>
+                  <li><Button onClick={() => handleDeleteProject(proj._id)} >Delete Project</Button></li>
                   <li><Button onClick={() => handleDeleteProject(proj._id)} >Delete Project</Button></li>
                   <li style={{ fontWeight: 'bold' }}>{proj.title}</li>
                   {proj.thumbnail ? (<li><b>Project Thumbnail Img:</b> {proj.thumbnail}</li>) : null}
