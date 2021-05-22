@@ -1,6 +1,3 @@
-// Projects - 
-// displays the projects when userState updates
-// uses projectForm component to add new project 
 
 import React, { useState } from 'react';
 import { Button, Accordion } from 'react-bootstrap';
