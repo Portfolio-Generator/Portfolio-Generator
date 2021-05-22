@@ -1,19 +1,19 @@
 // CSS template literal to be used in Generated Portfolio
 const UserPortfolioHtml = ({ userState }) => {
 
-  // const socialMediaOptions = [
-  //   { name: 'Discord', url: 'https://portfolio-generator.github.io/icon-page/discord.svg' },
-  //   { name: 'GitHub', url: 'https://portfolio-generator.github.io/icon-page/github.svg },
-  //   { name: 'Facebook', url: 'https://portfolio-generator.github.io/icon-page/facebook.svg' },
-  //   { name: 'Instagram', url: 'https://portfolio-generator.github.io/icon-page/instagram.svg },
-  //   { name: 'LinkedIn', url: 'https://portfolio-generator.github.io/icon-page/linkedin.svg' },
-  //   { name: 'Reddit', url: 'https://portfolio-generator.github.io/icon-page/reddit.svg' },
-  //   { name: 'Spotify', url: 'https://portfolio-generator.github.io/icon-page/spotify.svg' },
-  //   { name: 'StackOverflow', url: 'https://portfolio-generator.github.io/icon-page/stack-overflow.svg' },
-  //   { name: 'Twitch', url: 'https://portfolio-generator.github.io/icon-page/twitch.svg },
-  //   { name: 'Twitter', url: 'fhttps://portfolio-generator.github.io/icon-page/twitter.svg' },
-  //   { name: 'YouTube', url: 'https://portfolio-generator.github.io/icon-page/youtube.svg' }
-  // ];
+  const socialMediaOptions = [
+    { name: 'Discord', url: 'https://portfolio-generator.github.io/icon-page/discord.svg' },
+    { name: 'GitHub', url: 'https://portfolio-generator.github.io/icon-page/github.svg'},
+    { name: 'Facebook', url: 'https://portfolio-generator.github.io/icon-page/facebook.svg' },
+    { name: 'Instagram', url: 'https://portfolio-generator.github.io/icon-page/instagram.svg' },
+    { name: 'LinkedIn', url: 'https://portfolio-generator.github.io/icon-page/linkedin.svg' },
+    { name: 'Reddit', url: 'https://portfolio-generator.github.io/icon-page/reddit.svg' },
+    { name: 'Spotify', url: 'https://portfolio-generator.github.io/icon-page/spotify.svg' },
+    { name: 'StackOverflow', url: 'https://portfolio-generator.github.io/icon-page/stack-overflow.svg'},
+    { name: 'Twitch', url: 'https://portfolio-generator.github.io/icon-page/twitch.svg' },
+    { name: 'Twitter', url: 'fhttps://portfolio-generator.github.io/icon-page/twitter.svg' },
+    { name: 'YouTube', url: 'https://portfolio-generator.github.io/icon-page/youtube.svg' }
+  ];
 
 
   const devSkillsOptions = [
@@ -49,7 +49,7 @@ const UserPortfolioHtml = ({ userState }) => {
     { name: 'NPM', url: 'https://portfolio-generator.github.io/icon-page/npm.svg' },
     { name: 'PostgreSQL', url: 'https://portfolio-generator.github.io/icon-page/postgresql.svg' },
     { name: 'Python', url: 'https://portfolio-generator.github.io/icon-page/python.svg' },
-    { name: 'RasberryPi', url: 'https://portfolio-generator.github.io/icon-page/raspberrypi.svg' },
+    { name: 'RaspberryPi', url: 'https://portfolio-generator.github.io/icon-page/raspberrypi.svg' },
     { name: 'React', url: 'https://portfolio-generator.github.io/icon-page/react.svg' },
     { name: 'React Bootstrap', url: 'https://portfolio-generator.github.io/icon-page/react-bootstrap.svg' },
     { name: 'React Router', url: 'https://portfolio-generator.github.io/icon-page/react-router.svg' },
@@ -68,7 +68,7 @@ const UserPortfolioHtml = ({ userState }) => {
     headShotString = headShotString + `<figure class="mt-5 align-self-center ">
   <figcaption>Hello!</figcaption>
   <div>
-    <img class="border rounded shadow-lg" src="./assets/images/${userState.headshot}" style="width:281px">
+    <img class="border rounded shadow-lg" src="./${userState.headshot}" style="width:281px">
   </div>
 </figure>`
   }
@@ -76,13 +76,13 @@ const UserPortfolioHtml = ({ userState }) => {
   let phoneString = ``;
   if (userState.phone?.length > 0) {
     phoneString = phoneString + `<div class="col-4 rounded-pill text-center text-wrap text-white" 
-  style="background:#4f1b94">${userState.phone}</div>`;
+  style="background:#4f1b94" href="tel:${userState.phone}">${userState.phone}</div>`;
   }
 
   let emailString = ``;
   if (userState.email?.length > 0) {
     emailString = emailString + `<a class="col-4 rounded-pill text-center overflow-hidden text-white email" 
-  style="background:#4f1b94" href="${userState.email}">${userState.email}</a>`;
+  style="background:#4f1b94" href="mailto:${userState.email}">${userState.email}</a>`;
   }
 
   let aboutMeString = ``;
@@ -158,7 +158,7 @@ const UserPortfolioHtml = ({ userState }) => {
 
       if (project.thumbnail?.length > 0) {
         projectThumbnailString = projectThumbnailString + `<img class="col order-first px-0 align-self-end img-fluid mr-3 
-      my-4 rounded shadow-lg" src="./assets/images/${project.thumbnail}" style="width:405px">`
+      my-4 rounded shadow-lg" src="./${project.thumbnail}" style="width:405px">`
       }
 
       if (project.title?.length > 0) {
@@ -270,8 +270,8 @@ const UserPortfolioHtml = ({ userState }) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Googlefonts CDN here -->
   
-    <link rel="stylesheet" src="../assets/css/styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>${userState.firstname} ${userState.lastname} Portfolio</title>
