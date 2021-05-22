@@ -142,7 +142,7 @@ const SocialMedia = ({ userState, setuserState }) => {
       }
       if (id) {
         try {
-          const data = await updateSocialMedia({
+          await updateSocialMedia({
             variables:  {_id: id, platform: socialMediaLinks[i].platform, accountLink: socialMediaLinks[i].link }
           })
         } catch (e) {
@@ -150,7 +150,7 @@ const SocialMedia = ({ userState, setuserState }) => {
         }
       } else {
         try {
-          const data = await addSocialMedia({
+          await addSocialMedia({
             variables: { platform: socialMediaLinks[i].platform, accountLink: socialMediaLinks[i].link }
           })
         } catch (e) {
