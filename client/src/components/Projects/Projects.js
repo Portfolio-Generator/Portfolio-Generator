@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import Card from "react-bootstrap/Card"
 
@@ -20,6 +20,13 @@ import AddProject from './AddProject';
   const [addProjectRequest, setAddProjectRequest] = useState(false);
   const [projectDataSaved, setProjectDataSaved] = useState(false)
   const [removeProject] = useMutation(REMOVE_PROJECT);
+    
+// on component load, hide the add project form
+// doesn't actually work - on hold
+    // useEffect(() => {
+    //   setAddProjectRequest(false)
+    // }, [])
+
 //----------------------------------------------------
 // EVENT HANDLERS
 //----------------------------------------------------
