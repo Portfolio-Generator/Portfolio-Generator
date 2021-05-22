@@ -79,7 +79,7 @@ const UserPortfolioHtml = ({ userState }) => {
   let phoneString = ``;
   if (userState.phone?.length > 0) {
     phoneString = phoneString + `<div class="col-4 rounded-pill text-center text-wrap text-white" 
-  style="background:#4f1b94">${userState.phone}</div>`;
+  style="background:#4f1b94" href="${userState.phone}">${userState.phone}</div>`;
   }
 
   let emailString = ``;
@@ -160,7 +160,7 @@ const UserPortfolioHtml = ({ userState }) => {
 
       if (project.thumbnail?.length > 0) {
         projectThumbnailString = projectThumbnailString + `<img class="col order-first px-0 align-self-end img-fluid mr-3 
-      my-4 rounded shadow-lg" src="./assets/images/${project.thumbnail}" style="width:405px">`
+      my-4 rounded shadow-lg" src="./${project.thumbnail}" style="width:405px">`
       }
 
       if (project.title?.length > 0) {
@@ -273,8 +273,8 @@ const UserPortfolioHtml = ({ userState }) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Googlefonts CDN here -->
   
-    <link rel="stylesheet" src="../assets/css/styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>${userState.firstname} ${userState.lastname} Portfolio</title>
