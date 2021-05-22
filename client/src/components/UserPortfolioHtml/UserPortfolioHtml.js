@@ -78,14 +78,12 @@ const UserPortfolioHtml = ({ userState }) => {
 
   let phoneString = ``;
   if (userState.phone?.length > 0) {
-    phoneString = phoneString + `<div class="col-4 rounded-pill text-center text-wrap text-white" 
-  style="background:#4f1b94">${userState.phone}</div>`;
+    phoneString = phoneString + `<a class="koho font-white overflow-hidden" href="tel:+${userState.phone}">${userState.phone}</a>`;
   }
 
   let emailString = ``;
   if (userState.email?.length > 0) {
-    emailString = emailString + `<a class="col-4 rounded-pill text-center overflow-hidden text-white email" 
-  style="background:#4f1b94" href="${userState.email}">${userState.email}</a>`;
+    emailString = emailString + `<a class="font-white raleway overflow-hidden email" href="${userState.email}">${userState.email}</a>`;
   }
 
   let aboutMeString = ``;
@@ -103,7 +101,7 @@ const UserPortfolioHtml = ({ userState }) => {
             ${userState.aboutMe}
           </p>
           <div class="row justify-content-around text-wrap">`
-      + phoneString + emailString +
+      +
 
       `</div>
         </div>
@@ -273,32 +271,28 @@ const UserPortfolioHtml = ({ userState }) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Googlefonts CDN here -->
   
-    <link rel="stylesheet" src="../assets/css/styles.css" />
+    <link rel="stylesheet" src="./styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>${userState.firstname} ${userState.lastname} Portfolio</title>
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=KoHo&family=Montserrat:ital,wght@1,700&family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <title>${userState.firstname} ${userState.lastname}'s Portfolio</title>
   </head>
   
   <body>
     <!-- navbar -->
     <nav class="container-fluid navbar-dark bg-dark text-white">
       <div class="d-flex align-items-center justify-content-between">
-        <a class="navbar-brand mt-2 mb-2" href="#">${userState.firstname} ${userState.lastname}</a>
+        <a class="montserrat mt-2 mb-2" href="#">${userState.firstname} ${userState.lastname}</a>
         <div class="d-flex justify-content-end">
           <ul class="nav justify-content-end mt-2 mb-2">
-            <li class="nav-item">
-              <a class="nav-link text-white" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#portfolio">Portfolio Builder</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-danger" href="#logout">Logout</a>
-            </li>
+            <li class="nav-item">`
+            + phoneString +
+            `</li>
+            <li class="nav-item">`
+            + emailString +
+            `</li>
           </ul>
         </div>
       </div>
@@ -308,9 +302,8 @@ const UserPortfolioHtml = ({ userState }) => {
     projectsString +
     socialMediaString +
     `<!-- Footer -->
-    <footer id="projects" class="container mt-3 mb-2 border border-2 rounded"
-      style="max-width: 1700px; background:#C4C4C4">
-      <p class="d-flex justify-content-center">©Legion Incorporated Est ∞</p>
+    <footer id="projects" class="container my-3 border border-2 rounded bg-middle-blue font-rich-black">
+      <p class="d-flex justify-content-center">©${userState.firstname} ${userState.lastname} <script>document.write(new Date().getFullYear())</script></p>
     </footer>
   </body>
   
