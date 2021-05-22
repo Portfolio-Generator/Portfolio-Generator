@@ -15,9 +15,8 @@ import AddProject from './AddProject';
 // READS projects that have been saved from
 //   userState and displays them
 
-// todo: remove setUserState from props - reading only
 //----------------------------------------------------
-  const Projects = ({ userState, setuserState }) => {
+  const Projects = ({ userState }) => {
   const [addProjectRequest, setAddProjectRequest] = useState(false);
   const [projectDataSaved, setProjectDataSaved] = useState(false)
   const [removeProject] = useMutation(REMOVE_PROJECT);
