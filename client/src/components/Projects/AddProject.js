@@ -54,7 +54,6 @@ const AddProject = () => {
       event.preventDefault();
       event.stopPropagation();
     }
-    console.log("**Saving projectFormData** ", projectFormData)
     
     // create project in database
     // automatically updates logged in user with this project
@@ -62,7 +61,7 @@ const AddProject = () => {
       const data = await addProject({
         variables: { ...projectFormData },
       });
-      console.log("**returned project** ", data)
+      
     } catch (e) {
       console.error(e);
     }

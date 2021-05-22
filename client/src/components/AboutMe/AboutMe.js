@@ -39,7 +39,7 @@ const AboutMe = ({ userState, setUserState }) => {
     // ----------------------------------------------
     const updateChoice = (index) => {
       const newDevSkillsChoices = [...devSkillsChoices].map((choice, i) => i === index ? {...choice, selected: !choice.selected} : {...choice});
-      console.log(newDevSkillsChoices, "newdevSkillsChoices")
+     
       
       setDevSkillsChoices(newDevSkillsChoices);
       const updatedDevSkills = newDevSkillsChoices.filter(choice => choice.selected).map(choice => choice.name);
@@ -52,8 +52,7 @@ const AboutMe = ({ userState, setUserState }) => {
     // ----------------------------------------------
     const handleFormSubmit = async (event) => {
       event.preventDefault();
-      // console.log("!!!!!", devSkillsChoices)
-      // console.log("#######", updatedDevSkills)
+    
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -67,8 +66,7 @@ const AboutMe = ({ userState, setUserState }) => {
       console.error(e);
     }
 
-    // setUserState(userState)
-    console.log("*******", userState)
+  
   };
   // ----------------------------------------------
   // define the fields for the aboutMe form
@@ -148,7 +146,7 @@ const AboutMe = ({ userState, setUserState }) => {
                 </label>
                 <span className="text-left  pl-3">
                     {choice.name}:
-                    {console.log("path", choice.url)}
+                  
                 </span>
                 </div>
                 <div className="icon-style flex justify-center content-center justify-items-center text-center mb-2 pt-0.5">

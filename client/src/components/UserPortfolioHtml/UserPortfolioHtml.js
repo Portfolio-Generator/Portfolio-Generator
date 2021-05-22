@@ -115,7 +115,7 @@ const UserPortfolioHtml = ({ userState }) => {
   // START OF LOGIC TO CREATE TEMPLATE LITERAL FOR DEVSKILLS
   let devSkillsString = ``;
   if (userState.devSkills?.length) {
-    console.log("*****", userState.devSkills)
+  
     userState.devSkills.forEach((skill, i) => {
       // includes starting html of devSkills container
       let devSkillsUrl = devSkillsOptions.filter(skillOption => skillOption.name == skill).map(skillOptionUrl => skillOptionUrl.url)[0]
