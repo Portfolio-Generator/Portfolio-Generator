@@ -9,7 +9,7 @@ const Contact = () => {
         {/* Vicky Loebel */}
         <div className="flex-col justify-center   px-28 pt-4">
           <div className="flex justify-center text-center ">
-          <a href="https://github.com/vloebel" target="_blank">
+          <a href="https://github.com/vloebel" target="_blank" rel="noreferrer">
           <img alt="GitHub Profile" src={L_GITHUB}
           width="60" height="60" />
           </a>
@@ -24,7 +24,7 @@ const Contact = () => {
         {/* Stephanie Giel */}
         <div className="flex-col justify-center  px-28 pt-4">
           <div className="flex justify-center text-center">
-          <a href="https://github.com/SGiel" target="_blank">
+          <a href="https://github.com/SGiel" target="_blank" rel="noreferrer">
           <img alt="GitHub Profile" src={L_GITHUB}
           width="60" height="60"/>
           </a>
@@ -39,7 +39,7 @@ const Contact = () => {
         {/* Dan Arbelo */}
         <div className="flex-col justify-center  px-28 pt-4">
           <div className="flex justify-center text-center ">
-          <a href="https://github.com/Govepitr" target="_blank">
+          <a href="https://github.com/Govepitr" target="_blank" rel="noreferrer">
           <img alt="GitHub Profile" src={L_GITHUB}
           width="60" height="60"/>
           </a>
@@ -54,7 +54,7 @@ const Contact = () => {
         {/* Kashay Arbelo */}
         <div className="flex-col justify-center  px-28 pt-4">
           <div className="flex justify-center text-center ">
-          <a href="https://github.com/KashCodes" target="_blank">
+          <a href="https://github.com/KashCodes" target="_blank" rel="noreferrer">
           <img alt="GitHub Profile" src={L_GITHUB}
           width="60" height="60"/>
           </a>
