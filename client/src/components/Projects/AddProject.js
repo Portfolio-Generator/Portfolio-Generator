@@ -5,13 +5,27 @@
 
 
 import React, { useState } from 'react';
-import { Form, Button, Alert, Accordion } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_PROJECT } from '../../utils/mutations';
 import Card from "react-bootstrap/Card"
 
 const AddProject = () => {
   const [projectFormData, setProjectFormData] =
+    useState({
+      _id: '',
+      title: '',
+      thumbnail: '',
+      repoLink: '',
+      deployedLink: '',
+      videoLink: '',
+      organization: '',
+      blurb: '',
+      projectSkills: [],
+    });
+
+  // data for reset after save
+  const [projectFormResetData] =
     useState({
       _id: '',
       title: '',
@@ -54,14 +68,19 @@ const AddProject = () => {
       event.preventDefault();
       event.stopPropagation();
     }
-    
+
     // create project in database
     // automatically updates logged in user with this project
     try {
-      const data = await addProject({
+      await addProject({
         variables: { ...projectFormData },
       });
-      
+      // clear the form data
+      setProjectFormData(projectFormResetData);
+      // console.log("projectformdata after reset: ", projectFormData)
+
+
+
     } catch (e) {
       console.error(e);
     }
@@ -97,17 +116,15 @@ const AddProject = () => {
 
         <Card.Body className="raleway-font font-dark-blue">
           {projectField("Title (required)", "title", projectFormData.title)}
-          {projectField("Thumnail Image File (case sensitive)", "thumbnail", projectFormData.thumbnail)}
-          {projectField("Link to deployed application:", "deployedLink", projectFormData.deployedLink)}
-          {projectField("Github Repository Link (optional)", "repoLink", projectFormData.repoLink)}
-          {projectField("Video Link (optional):", "videoLink", projectFormData.videoLink)}
-          {projectField("Organization:", "organization", projectFormData.organization)}
+          {projectField("Thumbnail Image Filename (case sensitive)", "thumbnail", projectFormData.thumbnail)}
+          {projectField("Link to deployed application", "deployedLink", projectFormData.deployedLink)}
+          {projectField("Github Repository Link", "repoLink", projectFormData.repoLink)}
+          {projectField("Video Link", "videoLink", projectFormData.videoLink)}
+          {projectField("Organization", "organization", projectFormData.organization)}
           {/* Project Blurb:   */}
           <div className="flex-col w-full">
             <label className="raleway-font font-dark-blue text-xl">
-              <span className="text-left">
-                Short Description:
-                    </span>
+              <span className="text-left">Short Description</span>
             </label>
             <textarea
               type="textarea"
@@ -129,9 +146,9 @@ const AddProject = () => {
 
 
 
-    </Form >
-  </section >
-);
+      </Form >
+    </section >
+  );
 };
 
 export default AddProject;
