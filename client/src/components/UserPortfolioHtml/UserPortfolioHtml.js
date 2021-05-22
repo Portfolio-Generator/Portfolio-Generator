@@ -1,19 +1,21 @@
 // CSS template literal to be used in Generated Portfolio
 const UserPortfolioHtml = ({ userState }) => {
 
-  // const socialMediaOptions = [
-  //   { name: 'Discord', url: 'https://portfolio-generator.github.io/icon-page/discord.svg' },
-  //   { name: 'GitHub', url: 'https://portfolio-generator.github.io/icon-page/github.svg },
-  //   { name: 'Facebook', url: 'https://portfolio-generator.github.io/icon-page/facebook.svg' },
-  //   { name: 'Instagram', url: 'https://portfolio-generator.github.io/icon-page/instagram.svg },
-  //   { name: 'LinkedIn', url: 'https://portfolio-generator.github.io/icon-page/linkedin.svg' },
-  //   { name: 'Reddit', url: 'https://portfolio-generator.github.io/icon-page/reddit.svg' },
-  //   { name: 'Spotify', url: 'https://portfolio-generator.github.io/icon-page/spotify.svg' },
-  //   { name: 'StackOverflow', url: 'https://portfolio-generator.github.io/icon-page/stack-overflow.svg' },
-  //   { name: 'Twitch', url: 'https://portfolio-generator.github.io/icon-page/twitch.svg },
-  //   { name: 'Twitter', url: 'fhttps://portfolio-generator.github.io/icon-page/twitter.svg' },
-  //   { name: 'YouTube', url: 'https://portfolio-generator.github.io/icon-page/youtube.svg' }
-  // ];
+  const socialMediaOptions = [
+    { name: 'Discord', url: 'https://portfolio-generator.github.io/icon-page/discord.svg' },
+    { name: 'GitHub', url: 'https://portfolio-generator.github.io/icon-page/github.svg' },
+    { name: 'Facebook', url: 'https://portfolio-generator.github.io/icon-page/facebook.svg' },
+    { name: 'Instagram', url: 'https://portfolio-generator.github.io/icon-page/instagram.svg' },
+    { name: 'LinkedIn', url: 'https://portfolio-generator.github.io/icon-page/linkedin.svg' },
+    { name: 'Reddit', url: 'https://portfolio-generator.github.io/icon-page/reddit.svg' },
+    { name: 'Spotify', url: 'https://portfolio-generator.github.io/icon-page/spotify.svg' },
+    { name: 'StackOverflow', url: 'https://portfolio-generator.github.io/icon-page/stack-overflow.svg' },
+    { name: 'Twitch', url: 'https://portfolio-generator.github.io/icon-page/twitch.svg' },
+    { name: 'Twitter', url: 'https://portfolio-generator.github.io/icon-page/twitter.svg' },
+    { name: 'YouTube', url: 'https://portfolio-generator.github.io/icon-page/youtube.svg' }
+  ];
+
+
 
 
   const devSkillsOptions = [
@@ -61,6 +63,7 @@ const UserPortfolioHtml = ({ userState }) => {
     { name: 'Vue.js', url: 'https://portfolio-generator.github.io/icon-page/vuejs.svg' },
     { name: 'Webpack', url: 'https://portfolio-generator.github.io/icon-page/webpack.svg' }
   ];
+
 
   // START OF LOGIC TO CREATE TEMPLATE LITERAL FOR ABOUTME
   let headShotString = ``;
@@ -115,7 +118,6 @@ const UserPortfolioHtml = ({ userState }) => {
   // START OF LOGIC TO CREATE TEMPLATE LITERAL FOR DEVSKILLS
   let devSkillsString = ``;
   if (userState.devSkills?.length) {
-  
     userState.devSkills.forEach((skill, i) => {
       // includes starting html of devSkills container
       let devSkillsUrl = devSkillsOptions.filter(skillOption => skillOption.name == skill).map(skillOptionUrl => skillOptionUrl.url)[0]
@@ -234,28 +236,29 @@ const UserPortfolioHtml = ({ userState }) => {
   let socialMediaString = ``;
   if (userState.socialMedia?.length) {
     userState.socialMedia.forEach((media, i) => {
-      let mediaIcon = "fab fa-" + media.platform.toLowerCase().trim();
-      if (mediaIcon === "fab fa-stackoverflow") {
-        mediaIcon = "fab fa-stack-overflow"
-      }
+      let socialMediaUrl = socialMediaOptions.filter(mediaOption => mediaOption.name == media.platform).map(mediaOptionUrl => mediaOptionUrl.url)[0]
       // includes starting html of socialMedia container
       if (i === 0) {
-        socialMediaString = socialMediaString + `<div class="container d-flex">
-        <div class="mx-auto mb-50">
-          <h3 class="justify-content-center ">Social Media</h3>`
+        socialMediaString = socialMediaString + `<!-- SocialMedia -->
+        <div id="socialMedia" class="container border-2 rounded" style="max-width: 1700px; background:#C4C4C4">
+          <div class="container d-none d-sm-block">
+            <h3 class="d-flex justify-content-center">Social Media</h3>
+            <div class="row mt-2">`
       }
-      socialMediaString = socialMediaString + `<div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option8">
-      <label class="form-check-label" for="inlineCheckbox3"><i class="${mediaIcon}"></i></label>
+      socialMediaString = socialMediaString + `<div class="col-1 d-none d-lg-block ">
+      <p>${media.platform}</p>
+      <p>${media.accountLink}</p>
+      <img class="border rounded img-fluid" src=${socialMediaUrl}>
     </div>
   `
-    })
-  }
+  })
+}
   // includes ending html of socialMedia container
   if (userState.socialMedia?.length) {
     socialMediaString = socialMediaString +
       `</div>
     </div>
+  </div>
   `;
   }
   // END OF LOGIC TO CREATE TEMPLATE LITERAL FOR SOCIALMEDIA
