@@ -244,6 +244,7 @@ const UserPortfolioHtml = ({ userState }) => {
       }
       socialMediaString = socialMediaString + `<div class="col-1 d-none d-lg-block ">
       <p>${media.platform}</p>
+      <p>${media.accountLink}</p>
       <img class="border rounded img-fluid" src=${socialMediaUrl}>
     </div>
   `

@@ -36,7 +36,6 @@ const PortfolioBuilder = () => {
       setUserState(data.me)
     }
   }, [data])
-  console.log("******** top level userData", userData)
 
   const loggedIn = Auth.loggedIn();
   if (!loggedIn) {

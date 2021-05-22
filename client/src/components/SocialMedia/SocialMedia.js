@@ -6,11 +6,6 @@ import { UPDATE_SOCIAL_MEDIA } from '../../utils/mutations';
 import Card from "react-bootstrap/Card"
 
 const SocialMedia = ({ userState, setuserState }) => {
-  // the name of the platform is in one array, and
-  // the corresponding link is in state
-  // tbd is put them in one object, but for now
-  // we're taking the low road
-
 
   // smFormData will contain the user inputed link to their social media  
   const [smFormData, setSmFormData] =
@@ -77,7 +72,6 @@ const SocialMedia = ({ userState, setuserState }) => {
     if (userState?.socialMedia) {
       let smFormDataFilled = smFormData.map((item) => {
         userState.socialMedia.forEach(userItem => {
-          console.log("$$$ userItem", userItem)
           if (item?.platform === userItem?.platform) {
             item.link = userItem.accountLink
           }
@@ -88,7 +82,6 @@ const SocialMedia = ({ userState, setuserState }) => {
     }
   }, [userState])
 
-  console.log("$$$$$", smFormData)
 
   // ----------------------------------------------
   // UPDATE FORM FIELD Event Listener 
@@ -96,7 +89,6 @@ const SocialMedia = ({ userState, setuserState }) => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    console.log('$$$$$', name, value)
     let updatedSmFormData = smFormData.map((item) => {
       if (name === item.platform) {
         item.link = value
@@ -117,19 +109,15 @@ const SocialMedia = ({ userState, setuserState }) => {
       event.preventDefault();
       event.stopPropagation();
     }
-    console.log("** HANDLE SAVE SOCIAL MEDIA smFormData ** ", smFormData)
 
     let socialMediaLinks = smFormData.filter(item => item.link)
-    console.log("&&&", socialMediaLinks)
     // go through the socialMediaLinks
     // if already exists in userState then do an update use socialMedia._id and do an update
     // else do an add only if a link exists
     var i;
     for (i = 0; i < socialMediaLinks.length; i++) {
-      console.log("HERE IS MY LINK", socialMediaLinks[i])
       let id = '';
       if (userState.socialMedia) {
-        console.log("USERSTATE.SOCIALMEDIA", userState.socialMedia)
         var j;
         for (j = 0; j < userState.socialMedia.length; j++) {
           if (userState.socialMedia[j].platform === socialMediaLinks[i].platform) {
@@ -137,24 +125,19 @@ const SocialMedia = ({ userState, setuserState }) => {
           }
         }
       }
-      console.log("ID!!!!!!!", id)
       if (id) {
         try {
           const data = await updateSocialMedia({
             variables:  {_id: id, platform: socialMediaLinks[i].platform, accountLink: socialMediaLinks[i].link }
           })
-          console.log("**returned user** IN UPDATESOCIALMEDIA", data)
         } catch (e) {
           console.error(e);
         }
-
-
       } else {
         try {
           const data = await addSocialMedia({
             variables: { platform: socialMediaLinks[i].platform, accountLink: socialMediaLinks[i].link }
           })
-          console.log("**returned user** IN ADDSOCIALMEDIA", data)
         } catch (e) {
           console.error(e);
         }
@@ -162,28 +145,6 @@ const SocialMedia = ({ userState, setuserState }) => {
     }
 
   }
-
-  // ---FORM SETUP-------------------------------------------
-
-  const smField = (description, fieldName, value) => {
-    console.log("###", description, fieldName, value)
-    return (<div className="flex-col w-full">
-      <label className="raleway-font text-gray-700 text-xl" >
-        <span className="text-left">
-          {description}
-        </span>
-      </label>
-      <input
-        type="text"
-        name={fieldName}
-        required onChange={handleInputChange}
-        value={value}
-        className="form-input px-4 py-3 w-full mt-1">
-      </input>
-    </div>
-    )
-  }
-  // ----------------------------------------------
 
   return (
     <section>
@@ -194,14 +155,14 @@ const SocialMedia = ({ userState, setuserState }) => {
 
         <Card.Body className="raleway-font">
           {smFormData.map((smData) => {
-            return (<div className="flex-col w-full">
+            return (
+            <div className="flex-col w-full" key={smData.platform}>
               <label className="raleway-font text-gray-700 text-xl" >
                 <span className="text-left">
                   {smData.platform}:
-          </span>
+                </span>
               </label>
               <input
-                key={smData.platform}
                 type="text"
                 name={smData.platform}
                 required onChange={handleInputChange}
@@ -210,7 +171,6 @@ const SocialMedia = ({ userState, setuserState }) => {
               </input>
             </div>
             )
-            // smField("Discord: ", "Discord", smData.link)
           })}
 
         </Card.Body>
