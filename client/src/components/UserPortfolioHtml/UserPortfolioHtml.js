@@ -243,7 +243,7 @@ const UserPortfolioHtml = ({ userState }) => {
             <div class="row my-3 py-3">`
       }
       socialMediaString = socialMediaString + `<div class="col-1 d-none d-lg-block ">
-      <img class=" m-2 rounded skills-icons" style="max-width:55px; max-height:55px;" src="${socialMediaUrl}" target="_blank" rel="noopener noreferrer">
+      <img class=" m-2 rounded skills-icons" style="max-width:55px; max-height:55px;" src="${socialMediaUrl}" href="${media.accountLink}" target="_blank" rel="noopener noreferrer"/>
     </div>
   `
   })
