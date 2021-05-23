@@ -1,18 +1,36 @@
 
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
-
 import Card from "react-bootstrap/Card"
-
-import AddProject from './AddProject';
 
 import { useMutation } from '@apollo/react-hooks';
 import { REMOVE_PROJECT } from '../../utils/mutations';
+import AddProject from './AddProject';
 
-const Projects = ({ userState, setuserState }) => {
+//----------------------------------------------------
+//  PROJECTS COMPONENT
+//----------------------------------------------------
+// CREATES a new project (via AddProject) 
+// DELETES a saved project
+// READS projects that have been saved from
+//   userState and displays them
+//----------------------------------------------------
+  const Projects = ({ userState }) => {
   const [addProjectRequest, setAddProjectRequest] = useState(false);
+  const [projectDataSaved, setProjectDataSaved] = useState(false)
   const [removeProject] = useMutation(REMOVE_PROJECT);
+    
+// on component load, hide the add project form
+// doesn't actually work - on hold
+    // useEffect(() => {
+    //   setAddProjectRequest(false)
+    // }, [])
 
+//----------------------------------------------------
+// EVENT HANDLERS
+//----------------------------------------------------
+//  Delete Project button click
+//---------------------------------------------------- 
   async function handleDeleteProject(deleteId) {
     try {
       await removeProject({ variables: { _id: deleteId } })
@@ -20,18 +38,27 @@ const Projects = ({ userState, setuserState }) => {
       console.error(err);
     }
   }
-
+//----------------------------------------------------
   return (
     <section>
 
       <Card.Body className="raleway-font font-dark-blue rounded ">
         <div className="m-2 bg-cream rounded p-1">
-
+          {/* show either the addProject component or the "Add Project" button */}
           {addProjectRequest ? (
             <div>
-              <AddProject />
+              <AddProject addProjectRequest={addProjectRequest}
+                setAddProjectRequest={setAddProjectRequest}
+                projectDataSaved={projectDataSaved}
+                setProjectDataSaved={setProjectDataSaved}
+              />
             </div>
           ) : <Button onClick={() => setAddProjectRequest(true)} >Add New Project</Button>}
+          {/* If we just saved, show a status msg */}
+          {projectDataSaved ? (
+            <div> Project Saved </div>
+          ) : null}
+      
           <div className="font-dark-blue py-4">
             {userState.projects.map((proj) =>
               <ul key={proj._id} style={{ listStyle: 'none' }}>

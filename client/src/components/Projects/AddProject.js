@@ -1,16 +1,24 @@
-// Creates a new project from data entered in form
-// Saves project and updates user in db 
-
-// Version 1.0 is new project only - no editing or updates
-
 
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
-import { useMutation } from '@apollo/react-hooks';
-import { ADD_PROJECT } from '../../utils/mutations';
 import Card from "react-bootstrap/Card"
 
-const AddProject = () => {
+import { useMutation } from '@apollo/react-hooks';
+import { ADD_PROJECT } from '../../utils/mutations';
+
+//----------------------------------------------------
+//  ADD PROJECTS COMPONENT
+//----------------------------------------------------
+// CREATES a new project and saves to database
+// sets prop projectDataSaved(true) to display "saved" message
+// and clears it if the user begins typing again
+// sets addProjectRequest(false) on save to close form
+//----------------------------------------------------
+const AddProject = ({
+  addProjectRequest,
+  setAddProjectRequest,
+  projectDataSaved,
+  setProjectDataSaved}) => {
   const [projectFormData, setProjectFormData] =
     useState({
       _id: '',
@@ -24,7 +32,7 @@ const AddProject = () => {
       projectSkills: [],
     });
 
-  // data for reset after save
+  // Data for resetting form after project is saved
   const [projectFormResetData] =
     useState({
       _id: '',
@@ -39,47 +47,43 @@ const AddProject = () => {
     });
 
   const [addProject] = useMutation(ADD_PROJECT);
-
   //input form validation
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-
-
-  // ----------------------------------------------
-  // UPDATE FORM FIELD Event Listener 
-  // ----------------------------------------------
-
+//----------------------------------------------------
+// EVENT HANDLERS
+//----------------------------------------------------  
+//  Input Change on form
+//----------------------------------------------------  
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setProjectFormData({ ...projectFormData, [name]: value });
+    if (projectDataSaved) setProjectDataSaved(false);
   };
-
-  // ----------------------------------------------
-  // SUBMIT BUTTON event listener
-  // addProject mutation 
-  // add Project to userState Project Array
-  // updateUser in database
-  // ----------------------------------------------
+//----------------------------------------------------  
+//  Save Project button click
+//---------------------------------------------------- 
   const handleSaveProject = async (event) => {
     event.preventDefault();
-
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
-
-    // create project in database
-    // automatically updates logged in user with this project
+    // create project and assign to logged-in user
     try {
       await addProject({
         variables: { ...projectFormData },
       });
-      // clear the form data
+      // clear the form data & set "saved message" flag
       setProjectFormData(projectFormResetData);
-      // console.log("projectformdata after reset: ", projectFormData)
-
-
+      setProjectDataSaved(true);
+      //NOTE: 
+      // Setting AddProjectRequest===false will close
+      // the add project form after a save -
+      //  BUT current opinion is it's better
+      // to leave it open for the next project
+      // setAddProjectRequest(false); 
 
     } catch (e) {
       console.error(e);
