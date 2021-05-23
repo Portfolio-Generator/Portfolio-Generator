@@ -103,7 +103,7 @@ const AddProject = ({
         type="text"
         name={fieldName}
         required onChange={handleInputChange}
-        value={value}
+        value={value ? value : ''}
         className="form-input px-4 py-3 w-full mt-1">
       </input>
     </div>
@@ -123,7 +123,7 @@ const AddProject = ({
           {projectField("Title (required)", "title", projectFormData.title)}
           </div>
           <div className="pb-4">
-          {projectField("Thumbnail Image Filename (case sensitive)", "thumbnail", projectFormData.thumbnail)}
+          {projectField("Thumbnail Image Filename (required, case sensitive)", "thumbnail", projectFormData.thumbnail)}
           </div>
           <div className="pb-4">
           {projectField("Link to deployed application", "deployedLink", projectFormData.deployedLink)}
@@ -144,7 +144,7 @@ const AddProject = ({
             </label>
             <textarea
               type="textarea"
-              placeholder='Project Description'
+              placeholder='Project Description (required)'
               name='blurb'
               onChange={handleInputChange}
               value={projectFormData.blurb}
@@ -152,8 +152,7 @@ const AddProject = ({
             </textarea>
           </div>
 
-
-          <Button disabled={!(projectFormData.title)} type='submit' className="btn-primary">
+          <Button disabled={!(projectFormData.title && projectFormData.thumbnail && projectFormData.blurb)} type='submit' className="btn-primary">
           Save Project
         </Button>
 
@@ -162,13 +161,6 @@ const AddProject = ({
           ) : null}
 
         </Card.Body>
-
-
-
-
-
-
-
       </Form >
     </section >
   );

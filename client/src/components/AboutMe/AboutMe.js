@@ -84,8 +84,8 @@ const AboutMe = ({ userState, setUserState }) => {
       <input
         type="text"
         name={fieldName}
-        required onChange={handleInputChange}
-        value={value}
+        onChange={handleInputChange}
+        value={value ? value : ''}
         className="form-input px-4 py-3 w-full mt-1">
       </input>
     </div>
@@ -156,7 +156,7 @@ const AboutMe = ({ userState, setUserState }) => {
             )}
           </div>
           {/* Save personal info and dev skills to db with one button */}
-          <Button disabled={!(userState.firstname && userState.lastname)} type='submit' className="btn-primary mt-4">
+          <Button disabled={!(userState.firstname && userState.lastname)} type='submit' className="btn-primary mt-4" >
             Save
           </Button>
           {/* display "saved" message */}

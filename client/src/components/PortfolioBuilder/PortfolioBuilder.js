@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ME } from '../../utils/queries';
-import Accordion from "react-bootstrap/Accordion";
-import Card from "react-bootstrap/Card"
+import { Accordion, Card } from "react-bootstrap";
+// import Card from "react-bootstrap/Card"
 import Directions from "../Directions/Directions"
 
 
@@ -30,8 +30,19 @@ const PortfolioBuilder = () => {
     projects: [],
     socialMedia: []
   });
+//-------------------------------------------
+  // accordion toggle state & event listener
+  const [accordionState, setAccordionState] = useState('0');
 
-  // const [portfolioData, setPortfolioData] = usestate({});
+  // TBD: This click handler is meant to catch changes to the accordion key so
+  // we can put + or - buttons on the header. Howerver, it's not working
+  // - the first time in key is "n" and state is "n+1"
+  // - commenting it out for future development
+  // function handleOnClickAccordion(key) {
+  //   console.log ('onClick key: ', key, 'accordionState: ', accordionState)
+  // };
+//-------------------------------------------
+
 
   let { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
@@ -61,15 +72,17 @@ const PortfolioBuilder = () => {
           {userData ? (
             <div className="col-12 col-lg-12 bg-dark-green font-lite-gray ">
 
-              
-
               {/* developer information */}
               <Accordion >
                 <Card className="rounded">
-                  <Accordion.Toggle
-                    eventKey="0"
+                <Accordion.Toggle
+                  eventKey='0'
+                  // onClick={() => {
+                  //   setAccordionState('0')
+                  //   handleOnClickAccordion('0')
+                  // }}
                     className="raleway-font text-left font-lite-gray accordian-header header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
-                    Developer Information  <span></span>
+                    Developer Information 
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0" className="raleway-font bg-cream font-dark-blue  p-1 font-lite-gray ">
                     <AboutMe userState={userState} setUserState={setUserState} />
@@ -78,8 +91,12 @@ const PortfolioBuilder = () => {
               
                 {/* Social Media information */}
                 <Card className="rounded">
-                  <Accordion.Toggle
-                    eventKey="1"
+                <Accordion.Toggle
+                  eventKey = '1'
+                  // onClick={() => {
+                  //   setAccordionState('1')
+                  //   handleOnClickAccordion('1')
+                  // }}
                     className="raleway-font text-left font-lite-gray accordian-header header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
                     Social Media  <span></span>  
                   </Accordion.Toggle>
@@ -91,7 +108,11 @@ const PortfolioBuilder = () => {
                 {/* project information */}
                 <Card className="rounded">
                   <Accordion.Toggle
-                    eventKey="2"
+                    eventKey='2'
+                  // onClick={() => {
+                  //   setAccordionState('2')
+                  //     handleOnClickAccordion('2')
+                  //   }}
                     className="raleway-font text-left font-lite-gray accordian-header header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
                     Projects  <span></span>  
                   </Accordion.Toggle>
