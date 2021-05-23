@@ -32,11 +32,15 @@ const PortfolioBuilder = () => {
   });
 //-------------------------------------------
   // accordion toggle state & event listener
-  const [accordionState, setAccordionState] = useState('');
+  const [accordionState, setAccordionState] = useState('0');
 
-  function handleOnClickAccordion(accState) {
-    console.log('accordionState: ', accState)
-  };
+  // TBD: This click handler is meant to catch changes to the accordion key so
+  // we can put + or - buttons on the header. Howerver, it's not working
+  // - the first time in key is "n" and state is "n+1"
+  // - commenting it out for future development
+  // function handleOnClickAccordion(key) {
+  //   console.log ('onClick key: ', key, 'accordionState: ', accordionState)
+  // };
 //-------------------------------------------
 
 
@@ -72,11 +76,11 @@ const PortfolioBuilder = () => {
               <Accordion >
                 <Card className="rounded">
                 <Accordion.Toggle
-                  onClick={() => {
-                    setAccordionState('0')
-                    handleOnClickAccordion(accordionState)
-                  }}
-                  eventKey={accordionState}
+                  eventKey='0'
+                  // onClick={() => {
+                  //   setAccordionState('0')
+                  //   handleOnClickAccordion('0')
+                  // }}
                     className="raleway-font text-left font-lite-gray accordian-header header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
                     Developer Information 
                   </Accordion.Toggle>
@@ -87,8 +91,12 @@ const PortfolioBuilder = () => {
               
                 {/* Social Media information */}
                 <Card className="rounded">
-                  <Accordion.Toggle
-                    eventKey="1"
+                <Accordion.Toggle
+                  eventKey = '1'
+                  // onClick={() => {
+                  //   setAccordionState('1')
+                  //   handleOnClickAccordion('1')
+                  // }}
                     className="raleway-font text-left font-lite-gray accordian-header header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
                     Social Media  <span></span>  
                   </Accordion.Toggle>
@@ -100,7 +108,11 @@ const PortfolioBuilder = () => {
                 {/* project information */}
                 <Card className="rounded">
                   <Accordion.Toggle
-                    eventKey="2"
+                    eventKey='2'
+                  // onClick={() => {
+                  //   setAccordionState('2')
+                  //     handleOnClickAccordion('2')
+                  //   }}
                     className="raleway-font text-left font-lite-gray accordian-header header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
                     Projects  <span></span>  
                   </Accordion.Toggle>

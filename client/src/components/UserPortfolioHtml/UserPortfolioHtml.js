@@ -120,7 +120,7 @@ const UserPortfolioHtml = ({ userState }) => {
   if (userState.devSkills?.length) {
     userState.devSkills.forEach((skill, i) => {
       // includes starting html of devSkills container
-      let devSkillsUrl = devSkillsOptions.filter(skillOption => skillOption.name == skill).map(skillOptionUrl => skillOptionUrl.url)[0]
+      let devSkillsUrl = devSkillsOptions.filter(skillOption => skillOption.name === skill).map(skillOptionUrl => skillOptionUrl.url)[0]
       if (i === 0) {
         devSkillsString = devSkillsString + `<!-- Skills -->
       <div id="skills" class="container border-2 rounded" style="max-width: 1700px; background:#C4C4C4">
@@ -236,7 +236,7 @@ const UserPortfolioHtml = ({ userState }) => {
   let socialMediaString = ``;
   if (userState.socialMedia?.length) {
     userState.socialMedia.forEach((media, i) => {
-      let socialMediaUrl = socialMediaOptions.filter(mediaOption => mediaOption.name == media.platform).map(mediaOptionUrl => mediaOptionUrl.url)[0]
+      let socialMediaUrl = socialMediaOptions.filter(mediaOption => mediaOption.name === media.platform).map(mediaOptionUrl => mediaOptionUrl.url)[0]
       // includes starting html of socialMedia container
       if (i === 0) {
         socialMediaString = socialMediaString + `<!-- SocialMedia -->
