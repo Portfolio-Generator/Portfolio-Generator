@@ -172,20 +172,17 @@ const UserPortfolioHtml = ({ userState }) => {
 
       if (project.repoLink?.length > 0) {
         projectRepoLinkString = projectRepoLinkString +
-          `<div class="p-1 rounded-pill text-center text-wrap text-white mt-0" style="background:#4f1b94">
-      ${project.repoLink} </div>`;
+          `<div class="p-1 px-2 rounded-pill text-center text-wrap text-white my-1" style="background:#2a3a6e" href="${project.repoLink}">Source Code URL</div>`;
       }
 
       if (project.deployedLink?.length > 0) {
         projectDeployedLinkString = projectDeployedLinkString +
-          `<div class="p-1 rounded-pill text-center text-wrap text-white mt-0" style="background:#4f1b94">
-      ${project.deployedLink} </div>`;
+          `<div class="p-1 px-2 rounded-pill text-center text-wrap text-white my-1" style="background:#2a3a6e" href="${project.deployedLink}">Live Site URL</div>`;
       }
 
       if (project.videoLink?.length > 0) {
         projectVideoLinkString = projectVideoLinkString +
-          `<div class="p-1 rounded-pill text-center text-wrap text-white mt-0" style="background:#4f1b94">
-      ${project.videoLink} </div>`;
+          `<div class="p-1 px-2 rounded-pill text-center text-wrap text-white my-1" style="background:#2a3a6e" href="${project.videoLink}">Video Demo URL</div>`;
       }
 
       if (project.blurb?.length > 0) {
@@ -196,7 +193,7 @@ const UserPortfolioHtml = ({ userState }) => {
       // includes starting html of projects container
       if (i === 0) {
         projectsString = projectsString + `<!-- Project names -->
-      <div id="projects" class="container-fluid my-3 border-2 rounded " style="max-width: 1700px; background:#C4C4C4">
+      <div id="projects" class="container-fluid py-3 my-3 border-2 rounded " style="max-width: 1700px; background:#C4C4C4">
         `
       }
 
@@ -213,12 +210,13 @@ const UserPortfolioHtml = ({ userState }) => {
         `</div>
     </div>
     <div class="d-flex col order-last text-wrap align-items-top">
-      <h3 class="align-self-center mx-3">Description: </h3>
+      <h5 class="align-self-center mx-3">Description: </h5>
       <p class="">`
         + projectBlurbString +
         `</p>
     </div>
-    </div>`
+    </div>
+    <hr style="background-color:#2a3a6e"></hr>`
     })
   }
 
