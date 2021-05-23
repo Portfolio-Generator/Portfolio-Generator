@@ -14,6 +14,28 @@ const UserPortfolioCss =
   height: 55px;
 }
 
+.text-5xl {
+  font-size: 3rem !important;
+  text-align: center !important;
+}
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.raleway {
+  font-family: 'Raleway', sans-serif !important;
+}
+
+.koho {
+  font-family: 'KoHo', sans-serif!important;
+}
+
+
+
+
+
+
 `
 
 export default UserPortfolioCss;

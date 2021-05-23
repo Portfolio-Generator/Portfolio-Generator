@@ -69,9 +69,8 @@ const UserPortfolioHtml = ({ userState }) => {
   let headShotString = ``;
   if (userState.headshot?.length > 0) {
     headShotString = headShotString + `<figure class="mt-5 align-self-center ">
-  <figcaption>Hello!</figcaption>
   <div>
-    <img class="border rounded shadow-lg" src="./assets/images/${userState.headshot}" style="width:281px">
+    <img class="border rounded shadow-lg" src="./assets/images/${userState.headshot}" style="max-width:281px; max-height:250;">
   </div>
 </figure>`
   }
@@ -94,7 +93,7 @@ const UserPortfolioHtml = ({ userState }) => {
       `<!-- About me -->
   <div id="aboutMe" class="justify-content-center container-fluid my-3 border-2 rounded fw-bolder "
     style="max-width: 1700px; background:#C4C4C4">
-    <div class="row mx-5">`
+    <div class="row mx-auto">`
       + headShotString +
       `<div class="col-md-8">
         <div class="card-body">
@@ -102,7 +101,7 @@ const UserPortfolioHtml = ({ userState }) => {
           <p class=" lead">
             ${userState.aboutMe}
           </p>
-          <div class="row justify-content-around text-wrap">`
+          <div class="row justify-content-around text-wrap pt-3">`
       + phoneString + emailString +
 
       `</div>
@@ -274,6 +273,8 @@ const UserPortfolioHtml = ({ userState }) => {
     <!-- Googlefonts CDN here -->
   
     <link rel="stylesheet" src="../assets/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=KoHo&family=Montserrat:ital,wght@1,700&family=Raleway:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -282,35 +283,22 @@ const UserPortfolioHtml = ({ userState }) => {
   
   <body>
     <!-- navbar -->
-    <nav class="container-fluid navbar-dark bg-dark text-white">
-      <div class="d-flex align-items-center justify-content-between">
-        <a class="navbar-brand mt-2 mb-2" href="#">${userState.firstname} ${userState.lastname}</a>
-        <div class="d-flex justify-content-end">
-          <ul class="nav justify-content-end mt-2 mb-2">
-            <li class="nav-item">
-              <a class="nav-link text-white" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#portfolio">Portfolio Builder</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-danger" href="#logout">Logout</a>
-            </li>
-          </ul>
-        </div>
+    <div class="container-fluid text-center bg-dark text-white">
+      <div class="d-flex align-items-center">
+        <h1 class="text-center mx-auto mt-3 mb-3 montserrat">${userState.firstname} ${userState.lastname}</h1>
       </div>
-    </nav>`
+    </div>`
     + aboutMeString +
     devSkillsString +
     projectsString +
     socialMediaString +
     `<!-- Footer -->
-    <footer id="projects" class="container mt-3 mb-2 border border-2 rounded"
+    <footer id="projects" class="container-fluid mt-3 mb-2 border border-2 rounded"
       style="max-width: 1700px; background:#C4C4C4">
-      <p class="d-flex justify-content-center">©Legion Incorporated Est ∞</p>
+      <p class="d-flex justify-content-center m-0 py-2">©${userState.firstname} ${userState.lastname} <script>
+      document.write(new Date().getFullYear());
+    </script>
+    </p>
     </footer>
   </body>
   

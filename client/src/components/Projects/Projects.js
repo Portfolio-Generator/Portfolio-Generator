@@ -60,7 +60,7 @@ import AddProject from './AddProject';
       
           <div className="font-dark-blue py-4">
             {userState.projects.map((proj) =>
-            <div className="bg-dark-gray p-3 rounded-2xl my-5 font-lite-gray border-4 bd-dark-green">
+            <div className="bg-cream p-3 rounded-2xl my-5 font-dark-gray border-4 bd-dark-green">
             <div>
               <ul key={proj._id} style={{ listStyle: 'none' }}>
                 <li><Button className="bg-sienna mb-4 " onClick={() => handleDeleteProject(proj._id)} >Delete Project</Button></li>
