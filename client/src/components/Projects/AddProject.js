@@ -119,12 +119,24 @@ const AddProject = ({
         </Alert>
 
         <Card.Body className="raleway-font font-dark-blue">
+          <div className="pb-4">
           {projectField("Title (required)", "title", projectFormData.title)}
+          </div>
+          <div className="pb-4">
           {projectField("Thumbnail Image Filename (case sensitive)", "thumbnail", projectFormData.thumbnail)}
+          </div>
+          <div className="pb-4">
           {projectField("Link to deployed application", "deployedLink", projectFormData.deployedLink)}
+          </div>
+          <div className="pb-4">
           {projectField("Github Repository Link", "repoLink", projectFormData.repoLink)}
+          </div>
+          <div className="pb-4">
           {projectField("Video Link", "videoLink", projectFormData.videoLink)}
+          </div>
+          <div className="pb-4">
           {projectField("Organization", "organization", projectFormData.organization)}
+          </div>
           {/* Project Blurb:   */}
           <div className="flex-col w-full">
             <label className="raleway-font font-dark-blue text-xl">
@@ -140,20 +152,15 @@ const AddProject = ({
             </textarea>
           </div>
 
-          {projectDataSaved ? (
-            <div> Project Saved </div>
-          ) : null}
-          
-        </Card.Body>
-
-
-        <Button disabled={!(projectFormData.title)} type='submit' className="btn-primary">
+          <Button disabled={!(projectFormData.title)} type='submit' className="btn-primary">
           Save Project
         </Button>
 
+        {projectDataSaved ? (
+            <div className="font-sienna text-base "> Project Saved </div>
+          ) : null}
 
-
-
+        </Card.Body>
       </Form >
     </section >
   );
