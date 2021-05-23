@@ -141,6 +141,7 @@ const SocialMedia = ({ userState, setuserState }) => {
         }
       }
       if (id) {
+        console.log("in UPDATE", id, socialMediaLinks[i].link)
         try {
           await updateSocialMedia({
             variables:  {_id: id, platform: socialMediaLinks[i].platform, accountLink: socialMediaLinks[i].link }
