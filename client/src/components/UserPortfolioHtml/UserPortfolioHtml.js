@@ -209,9 +209,8 @@ const UserPortfolioHtml = ({ userState }) => {
         projectVideoLinkString +
         `</div>
     </div>
-    <div class="d-flex col order-last text-wrap align-items-top">
-      <h5 class="align-self-start text-right m-2 raleway">Description: </h5>
-      <p class="raleway">`
+    <div class="d-flex col align-items-top">
+      <p class="raleway p-3">`
         + projectBlurbString +
         `</p>
     </div>
