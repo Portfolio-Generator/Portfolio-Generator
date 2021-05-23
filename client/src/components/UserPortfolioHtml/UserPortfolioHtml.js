@@ -77,13 +77,13 @@ const UserPortfolioHtml = ({ userState }) => {
 
   let phoneString = ``;
   if (userState.phone?.length > 0) {
-    phoneString = phoneString + `<div class="col-4 rounded-pill text-center text-wrap text-white" 
+    phoneString = phoneString + `<div class="col-4 rounded-pill text-center text-wrap text-white koho" 
   style="background:#2a3a6e" href="tel:${userState.phone}">${userState.phone}</div>`;
   }
 
   let emailString = ``;
   if (userState.email?.length > 0) {
-    emailString = emailString + `<a class="col-4 rounded-pill text-center overflow-hidden text-white email" 
+    emailString = emailString + `<a class="col-4 rounded-pill text-center overflow-hidden text-white email raleway" 
   style="background:#2a3a6e" href="mailto:${userState.email}">${userState.email}</a>`;
   }
 
@@ -97,11 +97,11 @@ const UserPortfolioHtml = ({ userState }) => {
       + headShotString +
       `<div>
         <div class="card-body">
-          <h3 class="d-flex justify-content-center"> About Me </h3>
-          <p class=" lead">
+          <h3 class="d-flex justify-content-center raleway"> About Me </h3>
+          <p class=" lead raleway">
             ${userState.aboutMe}
           </p>
-          <div class="row justify-content-around text-wrap pt-3">`
+          <div class="row justify-content-around text-wrap pt-3 raleway">`
       + phoneString + emailString +
 
       `</div>
@@ -124,11 +124,11 @@ const UserPortfolioHtml = ({ userState }) => {
         devSkillsString = devSkillsString + `<!-- Skills -->
       <div id="skills" class="container border-2 rounded" style="max-width: 1700px; background:#C4C4C4">
         <div class="container d-none d-sm-block">
-          <h3 class="d-flex justify-content-center">Skills</h3>
-          <div class="row mt-2">`
+          <h3 class="d-flex justify-content-center py-2 raleway">Skills</h3>
+          <div class="row my-3 py-3">`
       }
       devSkillsString = devSkillsString + `<div class="col-1 d-none d-lg-block ">
-      <img class="border rounded img-fluid" src=${devSkillsUrl}>
+      <img class=" m-2 rounded skills-icons" style="max-width:55px; max-height:55px;" src=${devSkillsUrl}>
     </div>
 `
     })

@@ -14,6 +14,11 @@ const UserPortfolioCss =
   height: 55px;
 }
 
+.skills-icons {
+  max-width: 55px;
+  max-height: 55px;
+}
+
 .text-5xl {
   font-size: 3rem !important;
   text-align: center !important;
