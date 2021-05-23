@@ -3,6 +3,7 @@ import { saveAs } from 'file-saver';
 import { Button } from 'react-bootstrap';
  
 import UserPortfolioCss from '../UserPortfolioCss/UserPortfolioCss';
+import UserPortfolioTWCss from '../UserPortfolioCss/UserPortfolioTWCss'
 import UserPortfolioHtml from '../UserPortfolioHtml/UserPortfolioHtml';
 
 const JSZip = require("jszip");
@@ -18,13 +19,16 @@ const PortfolioBuildButton = ({ userState, setUserState }) => {
 
     const ziphtml = new JSZip();
     const zipcss = new JSZip();
+    const ziptail = new JSZip();
     const htmlString = UserPortfolioHtml({userState}); 
 
     const cssString = UserPortfolioCss;
     // create a file and folder
+    const tailString = UserPortfolioTWCss;
 
     ziphtml.file('index.html', htmlString);
     zipcss.file('style.css', cssString);
+    ziptail.file('styles.css', tailString);
 
     // zip.generateAsync({ type: "string" })
     //   .then(function (content) {
@@ -39,6 +43,10 @@ const PortfolioBuildButton = ({ userState, setUserState }) => {
       zipcss.generateAsync({ type: "blob" })
         .then(function (blob) {
           saveAs(blob, "css.zip");
+        });
+        ziptail.generateAsync({ type: "blob"})
+        .then(function (blob) {
+          saveAs(blob, "TailWCss.zip");
         });
   };
 

@@ -16,12 +16,10 @@ const UserPortfolioHtml = ({ userState }) => {
   ];
 
 
-
-
   const devSkillsOptions = [
     { name: 'AJAX', url: 'https://portfolio-generator.github.io/icon-page/ajax.svg' },
     { name: 'Android', url: 'https://portfolio-generator.github.io/icon-page/android.svg' },
-    { name: 'Apollo GraphQL', url: 'https://portfolio-generator.github.io/icon-page/apollo-graphql.svg' },
+    { name: 'Apollo Graph QL', url: 'https://portfolio-generator.github.io/icon-page/apollo-graphql.svg' },
     { name: 'AWS', url: 'https://portfolio-generator.github.io/icon-page/aws.svg' },
     { name: 'Azure', url: 'https://portfolio-generator.github.io/icon-page/azure.svg' },
     { name: 'Bash', url: 'https://portfolio-generator.github.io/icon-page/bash.svg' },
@@ -64,14 +62,13 @@ const UserPortfolioHtml = ({ userState }) => {
     { name: 'Webpack', url: 'https://portfolio-generator.github.io/icon-page/webpack.svg' }
   ];
 
-
   // START OF LOGIC TO CREATE TEMPLATE LITERAL FOR ABOUTME
   let headShotString = ``;
   if (userState.headshot?.length > 0) {
     headShotString = headShotString + `<figure class="mt-5 align-self-center ">
   <figcaption>Hello!</figcaption>
   <div>
-    <img class="border rounded shadow-lg" src="./assets/images/${userState.headshot}" style="width:281px">
+    <img class="border rounded shadow-lg" src="./${userState.headshot}" style="width:281px">
   </div>
 </figure>`
   }
@@ -79,13 +76,13 @@ const UserPortfolioHtml = ({ userState }) => {
   let phoneString = ``;
   if (userState.phone?.length > 0) {
     phoneString = phoneString + `<div class="col-4 rounded-pill text-center text-wrap text-white" 
-  style="background:#4f1b94">${userState.phone}</div>`;
+  style="background:#4f1b94" href="tel:${userState.phone}">${userState.phone}</div>`;
   }
 
   let emailString = ``;
   if (userState.email?.length > 0) {
     emailString = emailString + `<a class="col-4 rounded-pill text-center overflow-hidden text-white email" 
-  style="background:#4f1b94" href="${userState.email}">${userState.email}</a>`;
+  style="background:#4f1b94" href="mailto:${userState.email}">${userState.email}</a>`;
   }
 
   let aboutMeString = ``;
@@ -118,6 +115,7 @@ const UserPortfolioHtml = ({ userState }) => {
   // START OF LOGIC TO CREATE TEMPLATE LITERAL FOR DEVSKILLS
   let devSkillsString = ``;
   if (userState.devSkills?.length) {
+    console.log("*****", userState.devSkills)
     userState.devSkills.forEach((skill, i) => {
       // includes starting html of devSkills container
       let devSkillsUrl = devSkillsOptions.filter(skillOption => skillOption.name == skill).map(skillOptionUrl => skillOptionUrl.url)[0]
@@ -160,7 +158,7 @@ const UserPortfolioHtml = ({ userState }) => {
 
       if (project.thumbnail?.length > 0) {
         projectThumbnailString = projectThumbnailString + `<img class="col order-first px-0 align-self-end img-fluid mr-3 
-      my-4 rounded shadow-lg" src="./assets/images/${project.thumbnail}" style="width:405px">`
+      my-4 rounded shadow-lg" src="./${project.thumbnail}" style="width:405px">`
       }
 
       if (project.title?.length > 0) {
@@ -236,29 +234,28 @@ const UserPortfolioHtml = ({ userState }) => {
   let socialMediaString = ``;
   if (userState.socialMedia?.length) {
     userState.socialMedia.forEach((media, i) => {
-      let socialMediaUrl = socialMediaOptions.filter(mediaOption => mediaOption.name == media.platform).map(mediaOptionUrl => mediaOptionUrl.url)[0]
+      let mediaIcon = "fab fa-" + media.platform.toLowerCase().trim();
+      if (mediaIcon === "fab fa-stackoverflow") {
+        mediaIcon = "fab fa-stack-overflow"
+      }
       // includes starting html of socialMedia container
       if (i === 0) {
-        socialMediaString = socialMediaString + `<!-- SocialMedia -->
-        <div id="socialMedia" class="container border-2 rounded" style="max-width: 1700px; background:#C4C4C4">
-          <div class="container d-none d-sm-block">
-            <h3 class="d-flex justify-content-center">Social Media</h3>
-            <div class="row mt-2">`
+        socialMediaString = socialMediaString + `<div class="container d-flex">
+        <div class="mx-auto mb-50">
+          <h3 class="justify-content-center ">Social Media</h3>`
       }
-      socialMediaString = socialMediaString + `<div class="col-1 d-none d-lg-block ">
-      <p>${media.platform}</p>
-      <p>${media.accountLink}</p>
-      <img class="border rounded img-fluid" src=${socialMediaUrl}>
+      socialMediaString = socialMediaString + `<div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option8">
+      <label class="form-check-label" for="inlineCheckbox3"><i class="${mediaIcon}"></i></label>
     </div>
   `
-  })
-}
+    })
+  }
   // includes ending html of socialMedia container
   if (userState.socialMedia?.length) {
     socialMediaString = socialMediaString +
       `</div>
     </div>
-  </div>
   `;
   }
   // END OF LOGIC TO CREATE TEMPLATE LITERAL FOR SOCIALMEDIA
@@ -273,36 +270,29 @@ const UserPortfolioHtml = ({ userState }) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Googlefonts CDN here -->
   
-    <link rel="stylesheet" src="../assets/css/styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>${userState.firstname} ${userState.lastname} Portfolio</title>
   </head>
   
-  <body>
+  <body class="bg-middle-blue">
     <!-- navbar -->
-    <nav class="container-fluid navbar-dark bg-dark text-white">
-      <div class="d-flex align-items-center justify-content-between">
-        <a class="navbar-brand mt-2 mb-2" href="#">${userState.firstname} ${userState.lastname}</a>
-        <div class="d-flex justify-content-end">
-          <ul class="nav justify-content-end mt-2 mb-2">
-            <li class="nav-item">
-              <a class="nav-link text-white" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#portfolio">Portfolio Builder</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-danger" href="#logout">Logout</a>
-            </li>
-          </ul>
+    <div id="navbar" class="container-fluid bg-rich-black py-3 pt-4 flex flex-row justify-content-between">
+      <div>
+        <a class="montserrat  text-3xl bullseye" href="#">${userState.firstname} ${userState.lastname}</a>
         </div>
-      </div>
-    </nav>`
+
+        <div class="  text-2xl flex">
+          <div>
+            <a class="bullseye koho overflow-hidden px-4" href=tel:${userState.phone}>${userState.phone}</a>
+          </div>
+          <div>
+            <a class="bullseye raleway overflow-hidden email px-4" href=mailto:${userState.email}>${userState.email}</a>
+          </div>
+        </div>
+      </div>`
     + aboutMeString +
     devSkillsString +
     projectsString +
