@@ -159,11 +159,11 @@ const UserPortfolioHtml = ({ userState }) => {
 
       if (project.thumbnail?.length > 0) {
         projectThumbnailString = projectThumbnailString + `<img class="col order-first px-0 align-self-end img-fluid mr-3 
-      my-4 rounded shadow-lg" src="./assets/images/${project.thumbnail}" style="width:405px">`
+      my-4 rounded shadow-lg" src="./assets/images/${project.thumbnail}" style="max-width:405px; max-height:230px;">`
       }
 
       if (project.title?.length > 0) {
-        projectTitleString = projectTitleString + ` <h3 class="p-2"> ${project.title} </h3>`;
+        projectTitleString = projectTitleString + ` <h3 class="pt-2 pb-1"> ${project.title} </h3>`;
       }
 
       if (project.organization?.length > 0) {
@@ -210,7 +210,7 @@ const UserPortfolioHtml = ({ userState }) => {
         `</div>
     </div>
     <div class="d-flex col order-last text-wrap align-items-top">
-      <h5 class="align-self-center mx-3">Description: </h5>
+      <h5 class="align-self-start text-right m-2">Description: </h5>
       <p class="">`
         + projectBlurbString +
         `</p>
