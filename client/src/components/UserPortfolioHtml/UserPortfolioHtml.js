@@ -68,9 +68,9 @@ const UserPortfolioHtml = ({ userState }) => {
   // START OF LOGIC TO CREATE TEMPLATE LITERAL FOR ABOUTME
   let headShotString = ``;
   if (userState.headshot?.length > 0) {
-    headShotString = headShotString + `<figure class="mt-5 align-self-center ">
+    headShotString = headShotString + `<figure class="mt-5 mx-auto align-self-center ">
   <div>
-    <img class="border rounded shadow-lg" src="./assets/images/${userState.headshot}" style="max-width:281px; max-height:250;">
+    <img class="border rounded shadow-lg" src="./assets/images/${userState.headshot}" style="max-width:281px; max-height:281;">
   </div>
 </figure>`
   }
@@ -78,13 +78,13 @@ const UserPortfolioHtml = ({ userState }) => {
   let phoneString = ``;
   if (userState.phone?.length > 0) {
     phoneString = phoneString + `<div class="col-4 rounded-pill text-center text-wrap text-white" 
-  style="background:#4f1b94">${userState.phone}</div>`;
+  style="background:#2a3a6e" href="tel:${userState.phone}">${userState.phone}</div>`;
   }
 
   let emailString = ``;
   if (userState.email?.length > 0) {
     emailString = emailString + `<a class="col-4 rounded-pill text-center overflow-hidden text-white email" 
-  style="background:#4f1b94" href="${userState.email}">${userState.email}</a>`;
+  style="background:#2a3a6e" href="mailto:${userState.email}">${userState.email}</a>`;
   }
 
   let aboutMeString = ``;
@@ -93,9 +93,9 @@ const UserPortfolioHtml = ({ userState }) => {
       `<!-- About me -->
   <div id="aboutMe" class="justify-content-center container-fluid my-3 border-2 rounded fw-bolder "
     style="max-width: 1700px; background:#C4C4C4">
-    <div class="row mx-auto">`
+    <div class="row mx-auto px-5">`
       + headShotString +
-      `<div class="col-md-8">
+      `<div>
         <div class="card-body">
           <h3 class="d-flex justify-content-center"> About Me </h3>
           <p class=" lead">
