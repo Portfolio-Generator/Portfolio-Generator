@@ -61,6 +61,8 @@ import AddProject from './AddProject';
       
           <div className="font-dark-blue py-4">
             {userState.projects.map((proj) =>
+            <div>
+            <div>
               <ul key={proj._id} style={{ listStyle: 'none' }}>
                 <li><Button onClick={() => handleDeleteProject(proj._id)} >Delete Project</Button></li>
                 <li style={{ fontWeight: 'bold' }}>{proj.title}</li>
@@ -72,6 +74,8 @@ import AddProject from './AddProject';
                 {proj.blurb ? (<li><b>Project Description:</b> {proj.blurb}</li>) : null}
                 {(!proj.projectSkills === []) ? (<li><b>Skills:</b> {proj.projectSkills}</li>) : null}
               </ul>
+          </div>
+          </div>
             )}
           </div>
         </div>
