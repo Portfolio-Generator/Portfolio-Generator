@@ -3,15 +3,15 @@ const UserPortfolioHtml = ({ userState }) => {
 
   const socialMediaOptions = [
     { name: 'Discord', url: 'https://portfolio-generator.github.io/icon-page/discord.svg' },
-    { name: 'GitHub', url: 'https://portfolio-generator.github.io/icon-page/github.svg'},
+    { name: 'GitHub', url: 'https://portfolio-generator.github.io/icon-page/github.svg' },
     { name: 'Facebook', url: 'https://portfolio-generator.github.io/icon-page/facebook.svg' },
     { name: 'Instagram', url: 'https://portfolio-generator.github.io/icon-page/instagram.svg' },
     { name: 'LinkedIn', url: 'https://portfolio-generator.github.io/icon-page/linkedin.svg' },
     { name: 'Reddit', url: 'https://portfolio-generator.github.io/icon-page/reddit.svg' },
     { name: 'Spotify', url: 'https://portfolio-generator.github.io/icon-page/spotify.svg' },
-    { name: 'StackOverflow', url: 'https://portfolio-generator.github.io/icon-page/stack-overflow.svg'},
+    { name: 'StackOverflow', url: 'https://portfolio-generator.github.io/icon-page/stack-overflow.svg' },
     { name: 'Twitch', url: 'https://portfolio-generator.github.io/icon-page/twitch.svg' },
-    { name: 'Twitter', url: 'fhttps://portfolio-generator.github.io/icon-page/twitter.svg' },
+    { name: 'Twitter', url: 'https://portfolio-generator.github.io/icon-page/twitter.svg' },
     { name: 'YouTube', url: 'https://portfolio-generator.github.io/icon-page/youtube.svg' }
   ];
 
@@ -271,35 +271,28 @@ const UserPortfolioHtml = ({ userState }) => {
     <!-- Googlefonts CDN here -->
   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>${userState.firstname} ${userState.lastname} Portfolio</title>
   </head>
   
-  <body>
+  <body class="bg-middle-blue">
     <!-- navbar -->
-    <nav class="container-fluid navbar-dark bg-dark text-white">
-      <div class="d-flex align-items-center justify-content-between">
-        <a class="navbar-brand mt-2 mb-2" href="#">${userState.firstname} ${userState.lastname}</a>
-        <div class="d-flex justify-content-end">
-          <ul class="nav justify-content-end mt-2 mb-2">
-            <li class="nav-item">
-              <a class="nav-link text-white" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#portfolio">Portfolio Builder</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-danger" href="#logout">Logout</a>
-            </li>
-          </ul>
+    <div id="navbar" class="container-fluid bg-rich-black py-3 pt-4 flex flex-row justify-content-between">
+      <div>
+        <a class="montserrat  text-3xl bullseye" href="#">${userState.firstname} ${userState.lastname}</a>
         </div>
-      </div>
-    </nav>`
+
+        <div class="  text-2xl flex">
+          <div>
+            <a class="bullseye koho overflow-hidden px-4" href=tel:${userState.phone}>${userState.phone}</a>
+          </div>
+          <div>
+            <a class="bullseye raleway overflow-hidden email px-4" href=mailto:${userState.email}>${userState.email}</a>
+          </div>
+        </div>
+      </div>`
     + aboutMeString +
     devSkillsString +
     projectsString +
