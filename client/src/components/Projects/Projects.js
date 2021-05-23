@@ -55,9 +55,7 @@ import AddProject from './AddProject';
             </div>
           ) : <Button onClick={() => setAddProjectRequest(true)} >Add New Project</Button>}
           {/* If we just saved, show a status msg */}
-          {projectDataSaved ? (
-            <div> Project Saved </div>
-          ) : null}
+        
       
           <div className="font-dark-blue py-4">
             {userState.projects.map((proj) =>

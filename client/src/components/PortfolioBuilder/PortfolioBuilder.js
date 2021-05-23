@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ME } from '../../utils/queries';
-import Accordion from "react-bootstrap/Accordion";
-import Card from "react-bootstrap/Card"
+import { Accordion, Card } from "react-bootstrap";
+// import Card from "react-bootstrap/Card"
 import Directions from "../Directions/Directions"
 
 
@@ -30,8 +30,15 @@ const PortfolioBuilder = () => {
     projects: [],
     socialMedia: []
   });
+//-------------------------------------------
+  // accordion toggle state & event listener
+  const [accordionState, setAccordionState] = useState('');
 
-  // const [portfolioData, setPortfolioData] = usestate({});
+  function handleOnClickAccordion(accState) {
+    console.log('accordionState: ', accState)
+  };
+//-------------------------------------------
+
 
   let { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
@@ -61,15 +68,17 @@ const PortfolioBuilder = () => {
           {userData ? (
             <div className="col-12 col-lg-12 bg-dark-green font-lite-gray ">
 
-              
-
               {/* developer information */}
               <Accordion >
                 <Card className="rounded">
-                  <Accordion.Toggle
-                    eventKey="0"
+                <Accordion.Toggle
+                  onClick={() => {
+                    setAccordionState('0')
+                    handleOnClickAccordion(accordionState)
+                  }}
+                  eventKey={accordionState}
                     className="raleway-font text-left font-lite-gray accordian-header header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
-                    Developer Information  <span></span>
+                    Developer Information 
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0" className="raleway-font bg-cream font-dark-blue  p-1 font-lite-gray ">
                     <AboutMe userState={userState} setUserState={setUserState} />

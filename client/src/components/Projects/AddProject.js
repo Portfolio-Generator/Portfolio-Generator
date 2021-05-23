@@ -140,6 +140,10 @@ const AddProject = ({
             </textarea>
           </div>
 
+          {projectDataSaved ? (
+            <div> Project Saved </div>
+          ) : null}
+          
         </Card.Body>
 
 
