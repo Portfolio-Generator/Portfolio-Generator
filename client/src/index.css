@@ -13,7 +13,10 @@
   --dark-green: #003844;
   --cyann: #cbf2f8;
   --bright-blue: #446df6;
-  --dark-gray: #4D4D4D;
+  --bright-blue-hov: #0f3fdb;
+  --bright-blue-act: #3a53a5;
+  --bright-blue-vis: #2a3a6e;
+  --dark-gray: #4c5972;
   --lite-gray: #f3f3f3;
   --white: #FFF;
   --black: #000;
@@ -45,11 +48,35 @@
   background: linear-gradient(45deg, rgba(1,23,47,1) 0%, rgba(0,26,110,1) 50%, rgba(1,23,47,1) 100%);
 }
 
-.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+.btn-primary {
   background-color: var(--bright-blue) !important;
   border-color: var(--dark-blue) !important;
+  border-width: 2px !important;
   font-family: 'Raleway', sans-serif;
 }
+
+
+.btn-primary:visited {
+  background-color: var(--bright-blue-vis) !important;
+  border-color: var(--dark-blue) !important;
+  border-width: 2px !important;
+  font-family: 'Raleway', sans-serif;
+}
+
+.btn-primary:hover {
+  background-color: var(--bright-blue-hov) !important;
+  border-color: var(--dark-blue) !important;
+  border-width: 2px !important;
+  font-family: 'Raleway', sans-serif;
+}
+
+.btn-primary:active {
+  background-color: var(--bright-blue-act) !important;
+  border-color: var(--dark-blue) !important;
+  border-width: 2px !important;
+  font-family: 'Raleway', sans-serif;
+}
+
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
   background-color: var(--bright-blue) !important;

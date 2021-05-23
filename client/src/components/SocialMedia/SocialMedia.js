@@ -162,17 +162,16 @@ const SocialMedia = ({ userState, setuserState }) => {
   }
 
   return (
-    <section>
+    <section className=" rounded  font-dark-blue  ">
+      <Card.Body  className="raleway-font  font-dark-blue  ">
       <Form noValidate validated={validated} onSubmit={handleSaveSocialMedia}>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Error entering social media links.
         </Alert>
-
-        <Card.Body className="raleway-font">
           {smFormData.map((smData) => {
             return (
             <div className="flex-col w-full" key={smData.platform}>
-              <label className="raleway-font text-gray-700 text-xl" >
+              <label className="raleway-font  font-dark-blue text-xl" >
                 <span className="text-left">
                   {smData.platform}:
                 </span>
@@ -182,22 +181,24 @@ const SocialMedia = ({ userState, setuserState }) => {
                 name={smData.platform}
                 required onChange={handleInputChange}
                 value={smData.link}
-                className="form-input px-4 py-3 w-full mt-1">
+                className="form-input px-4 py-3 w-full my-3 mb-4 font-dark-blue bd-dark-blue border-2 rounded">
               </input>
             </div>
             )
           })}
 
-        </Card.Body>
 
-        <Button type='submit' variant='success'>
+        <Button type='submit' className="btn-primary mt-4">
           Save
         </Button>
         {socialMediaDataSaved ? (
-            <div> Social Media Saved </div>
+            <div className="font-sienna text-base"> Social Media Saved </div>
           ) : null}
 
-      </Form >
+        </Form >
+
+      </Card.Body>
+
     </section >
   );
 };

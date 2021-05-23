@@ -7,6 +7,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { REMOVE_PROJECT } from '../../utils/mutations';
 import AddProject from './AddProject';
 
+
 //----------------------------------------------------
 //  PROJECTS COMPONENT
 //----------------------------------------------------
@@ -55,24 +56,22 @@ import AddProject from './AddProject';
             </div>
           ) : <Button onClick={() => setAddProjectRequest(true)} >Add New Project</Button>}
           {/* If we just saved, show a status msg */}
-          {projectDataSaved ? (
-            <div> Project Saved </div>
-          ) : null}
+          
       
           <div className="font-dark-blue py-4">
             {userState.projects.map((proj) =>
-            <div>
+            <div className="bg-dark-gray p-3 rounded-2xl my-5 font-lite-gray border-4 bd-dark-green">
             <div>
               <ul key={proj._id} style={{ listStyle: 'none' }}>
-                <li><Button onClick={() => handleDeleteProject(proj._id)} >Delete Project</Button></li>
-                <li style={{ fontWeight: 'bold' }}>{proj.title}</li>
-                {proj.thumbnail ? (<li><b>Project Thumbnail Img:</b> {proj.thumbnail}</li>) : null}
-                {proj.deployedLink ? (<li><b>Live Site URL:</b> {proj.deployedLink}</li>) : null}
-                {proj.repoLink ? (<li><b>Source Code URL:</b> {proj.repoLink}</li>) : null}
-                {proj.videoLink ? (<li><b>Video Demo URL:</b> {proj.videoLink}</li>) : null}
-                {proj.organization ? (<li><b>Organization:</b> {proj.organization}</li>) : null}
-                {proj.blurb ? (<li><b>Project Description:</b> {proj.blurb}</li>) : null}
-                {(!proj.projectSkills === []) ? (<li><b>Skills:</b> {proj.projectSkills}</li>) : null}
+                <li><Button className="bg-sienna mb-4 " onClick={() => handleDeleteProject(proj._id)} >Delete Project</Button></li>
+                <li className="font-black text-3xl" style={{ fontWeight: 'bold' }}>{proj.title}</li>
+                {proj.thumbnail ? (<li><b className="font-dark-blue">Project Thumbnail Img:</b> {proj.thumbnail}</li>) : null}
+                {proj.deployedLink ? (<li><b className="font-dark-blue">Live Site URL:</b> {proj.deployedLink}</li>) : null}
+                {proj.repoLink ? (<li><b className="font-dark-blue">Source Code URL:</b> {proj.repoLink}</li>) : null}
+                {proj.videoLink ? (<li><b className="font-dark-blue">Video Demo URL:</b> {proj.videoLink}</li>) : null}
+                {proj.organization ? (<li><b className="font-dark-blue">Organization:</b> {proj.organization}</li>) : null}
+                {proj.blurb ? (<li><b className="font-dark-blue">Project Description:</b> {proj.blurb}</li>) : null}
+                {(!proj.projectSkills === []) ? (<li><b className="font-dark-blue">Skills:</b> {proj.projectSkills}</li>) : null}
               </ul>
           </div>
           </div>

@@ -161,7 +161,7 @@ const AboutMe = ({ userState, setUserState }) => {
           </Button>
           {/* display "saved" message */}
           {aboutMeDataSaved ? (
-            <div> Developer Information Saved </div>
+            <div className="font-sienna text-base"> Developer Information Saved </div>
           ) : null}
         </Form>
       </Card.Body>
