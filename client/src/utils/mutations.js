@@ -120,8 +120,8 @@ mutation updateProject($_id: ID!, $title: String, $thumbnail: String, $repoLink:
 `;
 
 export const UPDATE_SOCIAL_MEDIA = gql`
-mutation updateSocialMedia($platform: String, $icon: String, $accountLink: String) {
-  updateSocialMedia(platform: $platform, icon: $icon, accountLink: $accountLink) {
+mutation updateSocialMedia($_id: ID!, $platform: String, $icon: String, $accountLink: String) {
+  updateSocialMedia(_id: $_id, platform: $platform, icon: $icon, accountLink: $accountLink) {
     _id
     platform
     icon

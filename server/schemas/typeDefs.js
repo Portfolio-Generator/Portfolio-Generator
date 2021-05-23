@@ -111,7 +111,7 @@ const typeDefs = gql`
         platform: String
         icon: String
         accountLink: String
-        ): User
+        ): SocialMedia
       }
       `;
       
