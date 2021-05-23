@@ -85,7 +85,8 @@ const AboutMe = ({ userState, setUserState }) => {
         type="text"
         name={fieldName}
         required onChange={handleInputChange}
-        value={value}
+        // value={value}
+        value={valuel ? value : ""}
         className="form-input px-4 py-3 w-full mt-1">
       </input>
     </div>
