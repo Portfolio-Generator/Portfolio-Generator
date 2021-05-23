@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
+import Card from "react-bootstrap/Card"
+
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_SOCIAL_MEDIA } from '../../utils/mutations';
 import { UPDATE_SOCIAL_MEDIA } from '../../utils/mutations';
-import Card from "react-bootstrap/Card"
+
+//----------------------------------------------------
+//  SOCIAL MEDIA COMPONENT
+//----------------------------------------------------
+// CREATES a new project (via AddProject) 
+// DELETES a saved project
+// READS projects that have been saved from
+//   userState and displays them
+//----------------------------------------------------
 
 const SocialMedia = ({ userState, setuserState }) => {
 
@@ -59,6 +69,7 @@ const SocialMedia = ({ userState, setuserState }) => {
 
   const [addSocialMedia] = useMutation(ADD_SOCIAL_MEDIA);
   const [updateSocialMedia] = useMutation(UPDATE_SOCIAL_MEDIA);
+  const [socialMediaDataSaved, setSocialMediaDataSaved] = useState(false);
 
   //input form validation
   const [validated] = useState(false);
@@ -97,8 +108,10 @@ const SocialMedia = ({ userState, setuserState }) => {
     })
 
     setSmFormData(updatedSmFormData);
+    setSocialMediaDataSaved(false);
   };
 
+  
   // ----------------------------------------------
   // SUBMIT BUTTON event listener
   // ----------------------------------------------
@@ -109,6 +122,8 @@ const SocialMedia = ({ userState, setuserState }) => {
       event.preventDefault();
       event.stopPropagation();
     }
+// flag for "saved" message
+    setSocialMediaDataSaved(true);
 
     let socialMediaLinks = smFormData.filter(item => item.link)
     // go through the socialMediaLinks
@@ -127,7 +142,7 @@ const SocialMedia = ({ userState, setuserState }) => {
       }
       if (id) {
         try {
-          const data = await updateSocialMedia({
+          await updateSocialMedia({
             variables:  {_id: id, platform: socialMediaLinks[i].platform, accountLink: socialMediaLinks[i].link }
           })
         } catch (e) {
@@ -135,7 +150,7 @@ const SocialMedia = ({ userState, setuserState }) => {
         }
       } else {
         try {
-          const data = await addSocialMedia({
+          await addSocialMedia({
             variables: { platform: socialMediaLinks[i].platform, accountLink: socialMediaLinks[i].link }
           })
         } catch (e) {
@@ -176,8 +191,11 @@ const SocialMedia = ({ userState, setuserState }) => {
         </Card.Body>
 
         <Button type='submit' variant='success'>
-          Save FORM
+          Save
         </Button>
+        {socialMediaDataSaved ? (
+            <div> Social Media Saved </div>
+          ) : null}
 
       </Form >
     </section >
