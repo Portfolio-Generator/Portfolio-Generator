@@ -85,7 +85,7 @@ const PortfolioBuilder = () => {
                 <Accordion.Toggle
                   eventKey='0'
                   className="raleway-font text-left font-lite-gray accordian-header header-bold h4 m-0 p-2 rounded bd-dark-blue border-2 shadow-2xl">
-                  Detailed Directions  <span></span>
+                  Directions  <span></span>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="0" className="raleway-font bg-cream font-dark-blue p-1">
                   <DetailedDirections />
