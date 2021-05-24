@@ -65,7 +65,7 @@ const UserPortfolioHtml = ({ userState }) => {
   // START OF LOGIC TO CREATE TEMPLATE LITERAL FOR ABOUTME
   let headShotString = ``;
   if (userState.headshot?.length > 0) {
-    headShotString = headShotString + `<figure class="mt-5 mx-auto align-self-center ">
+    headShotString = headShotString + `<figure class="mt-5 ">
   <div>
     <img class="border rounded shadow-lg" src="./assets/images/${userState.headshot}" style="max-width:281px; max-height:281;">
   </div>
@@ -90,7 +90,7 @@ const UserPortfolioHtml = ({ userState }) => {
       `<!-- About me -->
   <div id="aboutMe" class="justify-content-center container-fluid my-3 border-2 rounded fw-bolder "
     style="max-width: 1700px; background:#C4C4C4">
-    <div class="row mx-auto px-5">`
+    <div class="row justify-content-around px-5">`
       + headShotString +
       `<div>
         <div class="card-body">
