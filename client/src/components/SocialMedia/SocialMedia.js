@@ -5,6 +5,7 @@ import Card from "react-bootstrap/Card"
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_SOCIAL_MEDIA } from '../../utils/mutations';
 import { UPDATE_SOCIAL_MEDIA } from '../../utils/mutations';
+import { REMOVE_SOCIAL_MEDIA } from '../../utils/mutations';
 
 //----------------------------------------------------
 //  SOCIAL MEDIA COMPONENT
@@ -66,9 +67,9 @@ const SocialMedia = ({ userState, setuserState }) => {
       }
     ]);
 
-
   const [addSocialMedia] = useMutation(ADD_SOCIAL_MEDIA);
   const [updateSocialMedia] = useMutation(UPDATE_SOCIAL_MEDIA);
+  const [removeSocialMedia] = useMutation(REMOVE_SOCIAL_MEDIA);
   const [socialMediaDataSaved, setSocialMediaDataSaved] = useState(false);
 
   //input form validation
@@ -110,7 +111,6 @@ const SocialMedia = ({ userState, setuserState }) => {
     setSmFormData(updatedSmFormData);
     setSocialMediaDataSaved(false);
   };
-
   
   // ----------------------------------------------
   // SUBMIT BUTTON event listener
@@ -125,40 +125,48 @@ const SocialMedia = ({ userState, setuserState }) => {
 // flag for "saved" message
     setSocialMediaDataSaved(true);
 
-    let socialMediaLinks = smFormData.filter(item => item.link)
     // go through the socialMediaLinks
     // if already exists in userState then do an update use socialMedia._id and do an update
     // else do an add only if a link exists
     var i;
-    for (i = 0; i < socialMediaLinks.length; i++) {
+    for (i = 0; i < smFormData.length; i++) {
       let id = '';
       if (userState.socialMedia) {
         var j;
         for (j = 0; j < userState.socialMedia.length; j++) {
-          if (userState.socialMedia[j].platform === socialMediaLinks[i].platform) {
+          if (userState.socialMedia[j].platform === smFormData[i].platform) {
             id = userState.socialMedia[j]._id
           }
         }
       }
-      if (id) {
+      console.log("ID", id)
+      console.log("smFormData[i]", smFormData[i])
+      
+      if (id && smFormData[i].link) {
         try {
           await updateSocialMedia({
-            variables:  {_id: id, platform: socialMediaLinks[i].platform, accountLink: socialMediaLinks[i].link }
+            variables:  {_id: id, platform: smFormData[i].platform, accountLink: smFormData[i].link }
           })
         } catch (e) {
           console.error(e);
         }
-      } else {
+      } else if (id && !smFormData[i].link) {
+        try {
+          await removeSocialMedia({ variables: { _id: id } })
+        } catch (err) {
+          console.error(err);
+        }    
+      } else if (smFormData[i].link) {
+        console.log("IN ADDSOCIALMEDIA", smFormData[i])
         try {
           await addSocialMedia({
-            variables: { platform: socialMediaLinks[i].platform, accountLink: socialMediaLinks[i].link }
+            variables: { platform: smFormData[i].platform, accountLink: smFormData[i].link }
           })
         } catch (e) {
           console.error(e);
         }
       }
     }
-
   }
 
   return (
