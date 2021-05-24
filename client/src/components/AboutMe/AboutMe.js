@@ -103,10 +103,10 @@ const AboutMe = ({ userState, setUserState }) => {
 
           {/*  Personal Information  */}
           <div className=" font-dark-blue  koho-font">
-            {aboutMeField("First Name:", "firstname", userState.firstname)}
-            {aboutMeField("Last Name:", "lastname", userState.lastname)}
-            {aboutMeField("Profile Image Filename (case sensitive):", "headshot", userState.headshot)}
-            {aboutMeField("Phone Number:", "phone", userState.phone)}
+            {aboutMeField("First Name*", "firstname", userState.firstname)}
+            {aboutMeField("Last Name*", "lastname", userState.lastname)}
+            {aboutMeField("Profile Image Filename* (case sensitive/do not include directory path)", "headshot", userState.headshot)}
+            {aboutMeField("Phone Number", "phone", userState.phone)}
           </div>
 
           {/* About Me Bio:   */}
@@ -156,7 +156,7 @@ const AboutMe = ({ userState, setUserState }) => {
             )}
           </div>
           {/* Save personal info and dev skills to db with one button */}
-          <Button disabled={!(userState.firstname && userState.lastname)} type='submit' className="btn-primary mt-4" >
+          <Button disabled={!(userState.firstname && userState.lastname && userState.headshot)} type='submit' className="btn-primary mt-4" >
             Save
           </Button>
           {/* display "saved" message */}
