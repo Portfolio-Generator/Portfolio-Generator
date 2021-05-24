@@ -1,16 +1,24 @@
-// Creates a new project from data entered in form
-// Saves project and updates user in db 
-
-// Version 1.0 is new project only - no editing or updates
-
 
 import React, { useState } from 'react';
-import { Form, Button, Alert, Accordion } from 'react-bootstrap';
-import { useMutation } from '@apollo/react-hooks';
-import { ADD_PROJECT } from '../../utils/mutations';
+import { Form, Button, Alert } from 'react-bootstrap';
 import Card from "react-bootstrap/Card"
 
-const AddProject = () => {
+import { useMutation } from '@apollo/react-hooks';
+import { ADD_PROJECT } from '../../utils/mutations';
+
+//----------------------------------------------------
+//  ADD PROJECTS COMPONENT
+//----------------------------------------------------
+// CREATES a new project and saves to database
+// sets prop projectDataSaved(true) to display "saved" message
+// and clears it if the user begins typing again
+// sets addProjectRequest(false) on save to close form
+//----------------------------------------------------
+const AddProject = ({
+  addProjectRequest,
+  setAddProjectRequest,
+  projectDataSaved,
+  setProjectDataSaved}) => {
   const [projectFormData, setProjectFormData] =
     useState({
       _id: '',
@@ -24,44 +32,59 @@ const AddProject = () => {
       projectSkills: [],
     });
 
-  const [addProject] = useMutation(ADD_PROJECT);
+  // Data for resetting form after project is saved
+  const [projectFormResetData] =
+    useState({
+      _id: '',
+      title: '',
+      thumbnail: '',
+      repoLink: '',
+      deployedLink: '',
+      videoLink: '',
+      organization: '',
+      blurb: '',
+      projectSkills: [],
+    });
 
+  const [addProject] = useMutation(ADD_PROJECT);
   //input form validation
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-
-
-  // ----------------------------------------------
-  // UPDATE FORM FIELD Event Listener 
-  // ----------------------------------------------
-
+//----------------------------------------------------
+// EVENT HANDLERS
+//----------------------------------------------------  
+//  Input Change on form
+//----------------------------------------------------  
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setProjectFormData({ ...projectFormData, [name]: value });
+    if (projectDataSaved) setProjectDataSaved(false);
   };
-
-  // ----------------------------------------------
-  // SUBMIT BUTTON event listener
-  // addProject mutation 
-  // add Project to userState Project Array
-  // updateUser in database
-  // ----------------------------------------------
+//----------------------------------------------------  
+//  Save Project button click
+//---------------------------------------------------- 
   const handleSaveProject = async (event) => {
     event.preventDefault();
-
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
-    
-    // create project in database
-    // automatically updates logged in user with this project
+    // create project and assign to logged-in user
     try {
-      const data = await addProject({
+      await addProject({
         variables: { ...projectFormData },
       });
-      
+      // clear the form data & set "saved message" flag
+      setProjectFormData(projectFormResetData);
+      setProjectDataSaved(true);
+      //NOTE: 
+      // Setting AddProjectRequest===false will close
+      // the add project form after a save -
+      //  BUT current opinion is it's better
+      // to leave it open for the next project
+      // setAddProjectRequest(false); 
+
     } catch (e) {
       console.error(e);
     }
@@ -80,7 +103,7 @@ const AddProject = () => {
         type="text"
         name={fieldName}
         required onChange={handleInputChange}
-        value={value}
+        value={value ? value : ''}
         className="form-input px-4 py-3 w-full mt-1">
       </input>
     </div>
@@ -96,22 +119,32 @@ const AddProject = () => {
         </Alert>
 
         <Card.Body className="raleway-font font-dark-blue">
-          {projectField("Title (required)", "title", projectFormData.title)}
-          {projectField("Thumnail Image File (case sensitive)", projectFormData.thumbnail)}
-          {projectField("Link to deployed application:", "deployedLink", projectFormData.deployedLink)}
-          {projectField("Github Repository Link (optional)", "repoLink", projectFormData.repoLink)}
-          {projectField("Video Link (optional):", "videoLink", projectFormData.videoLink)}
-          {projectField("Organization:", "organization", projectFormData.organization)}
+          <div className="pb-4">
+          {projectField("Title*", "title", projectFormData.title)}
+          </div>
+          <div className="pb-4">
+          {projectField("Thumbnail Image Filename* (case sensitive)", "thumbnail", projectFormData.thumbnail)}
+          </div>
+          <div className="pb-4">
+          {projectField("Link to deployed application", "deployedLink", projectFormData.deployedLink)}
+          </div>
+          <div className="pb-4">
+          {projectField("Github Repository Link", "repoLink", projectFormData.repoLink)}
+          </div>
+          <div className="pb-4">
+          {projectField("Video Link", "videoLink", projectFormData.videoLink)}
+          </div>
+          <div className="pb-4">
+          {projectField("Organization", "organization", projectFormData.organization)}
+          </div>
           {/* Project Blurb:   */}
           <div className="flex-col w-full">
             <label className="raleway-font font-dark-blue text-xl">
-              <span className="text-left">
-                Short Description:
-                    </span>
+              <span className="text-left">Short Description*</span>
             </label>
             <textarea
               type="textarea"
-              placeholder='Project Description'
+              placeholder='Project Description (required)'
               name='blurb'
               onChange={handleInputChange}
               value={projectFormData.blurb}
@@ -119,19 +152,18 @@ const AddProject = () => {
             </textarea>
           </div>
 
-        </Card.Body>
-
-
-        <Button disabled={!(projectFormData.title)} type='submit' className="btn-primary">
+          <Button disabled={!(projectFormData.title && projectFormData.thumbnail && projectFormData.blurb)} type='submit' className="btn-primary">
           Save Project
         </Button>
 
+        {projectDataSaved ? (
+            <div className="font-sienna text-base "> Project Saved </div>
+          ) : null}
 
-
-
-    </Form >
-  </section >
-);
+        </Card.Body>
+      </Form >
+    </section >
+  );
 };
 
 export default AddProject;

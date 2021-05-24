@@ -27,7 +27,7 @@ const AppNavbar = () => {
               </Nav.Link>
               </Navbar.Text>
               <Navbar.Text>
-              <Nav.Link href="https://portfolio-generator.github.io/Demo-Portfolios/" target="_blank" rel="noreferrer">
+              <Nav.Link href="https://portfolio-generator.github.io/Demo-Portfolios/" target="_blank" rel="noopener noreferrer">
                 Demo
               </Nav.Link>
               </Navbar.Text>

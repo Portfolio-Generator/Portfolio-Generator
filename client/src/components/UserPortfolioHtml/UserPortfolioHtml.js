@@ -68,24 +68,23 @@ const UserPortfolioHtml = ({ userState }) => {
   // START OF LOGIC TO CREATE TEMPLATE LITERAL FOR ABOUTME
   let headShotString = ``;
   if (userState.headshot?.length > 0) {
-    headShotString = headShotString + `<figure class="mt-5 align-self-center ">
-  <figcaption>Hello!</figcaption>
+    headShotString = headShotString + `<figure class="mt-5 mx-auto align-self-center ">
   <div>
-    <img class="border rounded shadow-lg" src="./assets/images/${userState.headshot}" style="width:281px">
+    <img class="border rounded shadow-lg" src="./assets/images/${userState.headshot}" style="max-width:281px; max-height:281;">
   </div>
 </figure>`
   }
 
   let phoneString = ``;
   if (userState.phone?.length > 0) {
-    phoneString = phoneString + `<div class="col-4 rounded-pill text-center text-wrap text-white" 
-  style="background:#4f1b94">${userState.phone}</div>`;
+    phoneString = phoneString + `<div class="col-4 rounded-pill text-center text-wrap text-white koho" 
+  style="background:#2a3a6e" href="tel:${userState.phone}">${userState.phone}</div>`;
   }
 
   let emailString = ``;
   if (userState.email?.length > 0) {
-    emailString = emailString + `<a class="col-4 rounded-pill text-center overflow-hidden text-white email" 
-  style="background:#4f1b94" href="${userState.email}">${userState.email}</a>`;
+    emailString = emailString + `<a class="col-4 rounded-pill text-center overflow-hidden text-white email raleway" 
+  style="background:#2a3a6e" href="mailto:${userState.email}">${userState.email}</a>`;
   }
 
   let aboutMeString = ``;
@@ -94,15 +93,15 @@ const UserPortfolioHtml = ({ userState }) => {
       `<!-- About me -->
   <div id="aboutMe" class="justify-content-center container-fluid my-3 border-2 rounded fw-bolder "
     style="max-width: 1700px; background:#C4C4C4">
-    <div class="row mx-5">`
+    <div class="row mx-auto px-5">`
       + headShotString +
-      `<div class="col-md-8">
+      `<div>
         <div class="card-body">
-          <h3 class="d-flex justify-content-center"> About Me </h3>
-          <p class=" lead">
+          <h3 class="d-flex justify-content-center raleway"> About Me </h3>
+          <p class=" lead raleway">
             ${userState.aboutMe}
           </p>
-          <div class="row justify-content-around text-wrap">`
+          <div class="row justify-content-around text-wrap pt-3 raleway">`
       + phoneString + emailString +
 
       `</div>
@@ -120,16 +119,16 @@ const UserPortfolioHtml = ({ userState }) => {
   if (userState.devSkills?.length) {
     userState.devSkills.forEach((skill, i) => {
       // includes starting html of devSkills container
-      let devSkillsUrl = devSkillsOptions.filter(skillOption => skillOption.name == skill).map(skillOptionUrl => skillOptionUrl.url)[0]
+      let devSkillsUrl = devSkillsOptions.filter(skillOption => skillOption.name === skill).map(skillOptionUrl => skillOptionUrl.url)[0]
       if (i === 0) {
         devSkillsString = devSkillsString + `<!-- Skills -->
       <div id="skills" class="container border-2 rounded" style="max-width: 1700px; background:#C4C4C4">
         <div class="container d-none d-sm-block">
-          <h3 class="d-flex justify-content-center">Skills</h3>
-          <div class="row mt-2">`
+          <h3 class="d-flex justify-content-center py-2 raleway">Skills</h3>
+          <div class="row my-3 py-3">`
       }
       devSkillsString = devSkillsString + `<div class="col-1 d-none d-lg-block ">
-      <img class="border rounded img-fluid" src=${devSkillsUrl}>
+      <img class=" m-2 rounded skills-icons" style="max-width:55px; max-height:55px;" src="${devSkillsUrl}" target="_blank" rel="noopener noreferrer">
     </div>
 `
     })
@@ -160,33 +159,30 @@ const UserPortfolioHtml = ({ userState }) => {
 
       if (project.thumbnail?.length > 0) {
         projectThumbnailString = projectThumbnailString + `<img class="col order-first px-0 align-self-end img-fluid mr-3 
-      my-4 rounded shadow-lg" src="./assets/images/${project.thumbnail}" style="width:405px">`
+      my-4 rounded shadow-lg" src="./assets/images/${project.thumbnail}" style="max-width:405px; max-height:230px;">`
       }
 
       if (project.title?.length > 0) {
-        projectTitleString = projectTitleString + ` <h3 class="p-2"> ${project.title} </h3>`;
+        projectTitleString = projectTitleString + ` <h3 class="pt-2 pb-1 raleway"> ${project.title} </h3>`;
       }
 
       if (project.organization?.length > 0) {
-        projectOrganizationString = projectOrganizationString + ` <h4 class="p-2"> ${project.organization} </h4>`;
+        projectOrganizationString = projectOrganizationString + ` <h4 class="p-2 raleway"> ${project.organization} </h4>`;
       }
 
       if (project.repoLink?.length > 0) {
         projectRepoLinkString = projectRepoLinkString +
-          `<div class="p-1 rounded-pill text-center text-wrap text-white mt-0" style="background:#4f1b94">
-      ${project.repoLink} </div>`;
+          `<div class="p-1 px-2 rounded-pill text-center text-wrap text-white my-1 raleway" style="background:#2a3a6e" href="${project.repoLink}" target="_blank" rel="noopener noreferrer">Source Code URL</div>`;
       }
 
       if (project.deployedLink?.length > 0) {
         projectDeployedLinkString = projectDeployedLinkString +
-          `<div class="p-1 rounded-pill text-center text-wrap text-white mt-0" style="background:#4f1b94">
-      ${project.deployedLink} </div>`;
+          `<div class="p-1 px-2 rounded-pill text-center text-wrap text-white my-1 raleway" style="background:#2a3a6e" href="${project.deployedLink}" target="_blank" rel="noopener noreferrer">Live Site URL</div>`;
       }
 
       if (project.videoLink?.length > 0) {
         projectVideoLinkString = projectVideoLinkString +
-          `<div class="p-1 rounded-pill text-center text-wrap text-white mt-0" style="background:#4f1b94">
-      ${project.videoLink} </div>`;
+          `<div class="p-1 px-2 rounded-pill text-center text-wrap text-white my-1 raleway" style="background:#2a3a6e" href="${project.videoLink}" target="_blank" rel="noopener noreferrer">Video Demo URL</div>`;
       }
 
       if (project.blurb?.length > 0) {
@@ -197,7 +193,7 @@ const UserPortfolioHtml = ({ userState }) => {
       // includes starting html of projects container
       if (i === 0) {
         projectsString = projectsString + `<!-- Project names -->
-      <div id="projects" class="container-fluid my-3 border-2 rounded " style="max-width: 1700px; background:#C4C4C4">
+      <div id="projects" class="container-fluid py-3 my-3 border-2 rounded " style="max-width: 1700px; background:#C4C4C4">
         `
       }
 
@@ -213,13 +209,13 @@ const UserPortfolioHtml = ({ userState }) => {
         projectVideoLinkString +
         `</div>
     </div>
-    <div class="d-flex col order-last text-wrap align-items-top">
-      <h3 class="align-self-center mx-3">Description: </h3>
-      <p class="">`
+    <div class="d-flex col align-items-top">
+      <p class="raleway p-3">`
         + projectBlurbString +
         `</p>
     </div>
-    </div>`
+    </div>
+    <hr style="background-color:#2a3a6e"></hr>`
     })
   }
 
@@ -236,19 +232,17 @@ const UserPortfolioHtml = ({ userState }) => {
   let socialMediaString = ``;
   if (userState.socialMedia?.length) {
     userState.socialMedia.forEach((media, i) => {
-      let socialMediaUrl = socialMediaOptions.filter(mediaOption => mediaOption.name == media.platform).map(mediaOptionUrl => mediaOptionUrl.url)[0]
+      let socialMediaUrl = socialMediaOptions.filter(mediaOption => mediaOption.name === media.platform).map(mediaOptionUrl => mediaOptionUrl.url)[0]
       // includes starting html of socialMedia container
       if (i === 0) {
         socialMediaString = socialMediaString + `<!-- SocialMedia -->
         <div id="socialMedia" class="container border-2 rounded" style="max-width: 1700px; background:#C4C4C4">
           <div class="container d-none d-sm-block">
-            <h3 class="d-flex justify-content-center">Social Media</h3>
-            <div class="row mt-2">`
+            <h3 class="d-flex justify-content-center raleway">Social Media</h3>
+            <div class="row my-3 py-3">`
       }
       socialMediaString = socialMediaString + `<div class="col-1 d-none d-lg-block ">
-      <p>${media.platform}</p>
-      <p>${media.accountLink}</p>
-      <img class="border rounded img-fluid" src=${socialMediaUrl}>
+      <img class=" m-2 rounded skills-icons" style="max-width:55px; max-height:55px;" src="${socialMediaUrl}" href="${media.accountLink}" target="_blank" rel="noopener noreferrer"/>
     </div>
   `
   })
@@ -274,6 +268,8 @@ const UserPortfolioHtml = ({ userState }) => {
     <!-- Googlefonts CDN here -->
   
     <link rel="stylesheet" src="../assets/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=KoHo&family=Montserrat:ital,wght@1,700&family=Raleway:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -282,35 +278,22 @@ const UserPortfolioHtml = ({ userState }) => {
   
   <body>
     <!-- navbar -->
-    <nav class="container-fluid navbar-dark bg-dark text-white">
-      <div class="d-flex align-items-center justify-content-between">
-        <a class="navbar-brand mt-2 mb-2" href="#">${userState.firstname} ${userState.lastname}</a>
-        <div class="d-flex justify-content-end">
-          <ul class="nav justify-content-end mt-2 mb-2">
-            <li class="nav-item">
-              <a class="nav-link text-white" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#portfolio">Portfolio Builder</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-danger" href="#logout">Logout</a>
-            </li>
-          </ul>
-        </div>
+    <div class="container-fluid text-center bg-dark text-white">
+      <div class="d-flex align-items-center">
+        <h1 class="text-center mx-auto mt-3 mb-3 montserrat">${userState.firstname} ${userState.lastname}</h1>
       </div>
-    </nav>`
+    </div>`
     + aboutMeString +
     devSkillsString +
     projectsString +
     socialMediaString +
     `<!-- Footer -->
-    <footer id="projects" class="container mt-3 mb-2 border border-2 rounded"
+    <footer id="projects" class="container-fluid mt-3 mb-2 border border-2 rounded"
       style="max-width: 1700px; background:#C4C4C4">
-      <p class="d-flex justify-content-center">©Legion Incorporated Est ∞</p>
+      <p class="d-flex justify-content-center m-0 py-2">©${userState.firstname} ${userState.lastname} <script>
+      document.write(new Date().getFullYear());
+    </script>
+    </p>
     </footer>
   </body>
   
