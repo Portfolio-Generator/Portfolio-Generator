@@ -12,8 +12,8 @@ const Directions = () => {
             <h2>Click each section to enter portfolio information</h2>
             <ul>
               <li>When you are finished, click "Create Portfolio Zip File" to download zip files containing html and css.</li>
-              <li>IMPORTANT: Your portfolio assumes all images are located in an "assets/images" subfolder and that the css is in an "assets/css" subfolder. You must retain this path structure to publish your website. </li>
-              <li> Click "Detailed Instructions" below for more informaton</li>
+              <li>IMPORTANT: Your portfolio assumes all images are located in an "assets/images" subfolder and that the css is in an "assets/css" subfolder. You must create this path structure to publish your website. </li>
+              <li> Click "Detailed Directions" below for more informaton</li>
             </ul>
 
 
