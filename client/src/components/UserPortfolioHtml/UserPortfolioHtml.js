@@ -15,9 +15,6 @@ const UserPortfolioHtml = ({ userState }) => {
     { name: 'YouTube', url: 'https://portfolio-generator.github.io/icon-page/youtube.svg' }
   ];
 
-
-
-
   const devSkillsOptions = [
     { name: 'AJAX', url: 'https://portfolio-generator.github.io/icon-page/ajax.svg' },
     { name: 'Android', url: 'https://portfolio-generator.github.io/icon-page/android.svg' },
@@ -78,7 +75,7 @@ const UserPortfolioHtml = ({ userState }) => {
   let phoneString = ``;
   if (userState.phone?.length > 0) {
     phoneString = phoneString + `<div class="col-4 rounded-pill text-center text-wrap text-white koho" 
-  style="background:#2a3a6e" href="tel:${userState.phone}">${userState.phone}</div>`;
+  style="background:#2a3a6e"><a class="text-white koho" href="tel:${userState.phone}">${userState.phone}</a></div>`;
   }
 
   let emailString = ``;
@@ -172,17 +169,20 @@ const UserPortfolioHtml = ({ userState }) => {
 
       if (project.repoLink?.length > 0) {
         projectRepoLinkString = projectRepoLinkString +
-          `<div class="p-1 px-2 rounded-pill text-center text-wrap text-white my-1 raleway" style="background:#2a3a6e" href="${project.repoLink}" target="_blank" rel="noopener noreferrer">Source Code URL</div>`;
+          `<div class="p-1 px-2 rounded-pill text-center text-wrap text-white my-1 raleway" style="background:#2a3a6e">
+          <a class="text-white raleway" href="${project.repoLink}" target="_blank" rel="noopener noreferrer">Source Code URL</a></div>`;
       }
 
       if (project.deployedLink?.length > 0) {
         projectDeployedLinkString = projectDeployedLinkString +
-          `<div class="p-1 px-2 rounded-pill text-center text-wrap text-white my-1 raleway" style="background:#2a3a6e" href="${project.deployedLink}" target="_blank" rel="noopener noreferrer">Live Site URL</div>`;
+          `<div class="p-1 px-2 rounded-pill text-center text-wrap text-white my-1 raleway" style="background:#2a3a6e">
+          <a class="text-white raleway" href="${project.deployedLink}" target="_blank" rel="noopener noreferrer">Live Site URL</a></div>`;
       }
 
       if (project.videoLink?.length > 0) {
         projectVideoLinkString = projectVideoLinkString +
-          `<div class="p-1 px-2 rounded-pill text-center text-wrap text-white my-1 raleway" style="background:#2a3a6e" href="${project.videoLink}" target="_blank" rel="noopener noreferrer">Video Demo URL</div>`;
+          `<div class="p-1 px-2 rounded-pill text-center text-wrap text-white my-1 raleway" style="background:#2a3a6e">
+          <a class="text-white raleway" href="${project.videoLink}" target="_blank" rel="noopener noreferrer">Video Demo URL</a></div>`;
       }
 
       if (project.blurb?.length > 0) {
@@ -239,10 +239,12 @@ const UserPortfolioHtml = ({ userState }) => {
         <div id="socialMedia" class="container border-2 rounded" style="max-width: 1700px; background:#C4C4C4">
           <div class="container d-none d-sm-block">
             <h3 class="d-flex justify-content-center raleway">Social Media</h3>
-            <div class="row my-3 py-3">`
+            <div class="row my-3 py-3 justify-content-center">`
       }
       socialMediaString = socialMediaString + `<div class="col-1 d-none d-lg-block ">
-      <img class=" m-2 rounded skills-icons" style="max-width:55px; max-height:55px;" src="${socialMediaUrl}" href="${media.accountLink}" target="_blank" rel="noopener noreferrer"/>
+      <a href="${media.accountLink}" target="_blank" rel="noopener noreferrer">
+        <img class=" m-2 rounded skills-icons" style="max-width:55px; max-height:55px;" src="${socialMediaUrl}"/>
+      </a>
     </div>
   `
   })
