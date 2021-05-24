@@ -1,5 +1,3 @@
-#  DRAFT README - IN PROGRESS
-
 
 <h1 align="center">Web-Developer Portfolio Generator</h1>
   <h2 align="center">University of Arizona Web Developers Bootcamp - Group Project 3</h2>
@@ -20,19 +18,18 @@
     <img src="https://img.shields.io/badge/JWT-orange" />
     <img src="https://img.shields.io/badge/MongoDB-blue" />
 
-<img src="https://img.shields.io/v1?message=Mongoose&color=red"/>
 
 <img src="https://img.shields.io/badge/graphql-blue" />
     <img src="https://img.shields.io/badge/-Bcrypt-red" />
     <img src="https://img.shields.io/badge/-Dotenv-red" />
-    <img src="https://img.shields.io/badge/-GoogleFonts-blue" />
-    <img src="https://img.shields.io/badge/-FontAwesome-blue" />
-    <img src="https://img.shields.io/badge/-ScreenCastify-grey" />
+   
     
   </p>
   
   ## Description
-Web Developer Portfolio Generator lets you enter all the information you need to create a high-quality HTML portfolio to deploy to GitHub Pages or other website.  
+Portfolio Generator collects all the information you need to create a high-quality web-based developer's portfolio and generates the html and css files to deploy to GitHub Pages or other website.  
+
+Information is stored in a mongo database on Heroku so it can be retrieved and edited at any time.
 
 The generated portfolio includes:  
  * About Me with optional photo and short bio
@@ -41,19 +38,18 @@ The generated portfolio includes:
  * Social media contact information 
 
 
-### Link to Walkthrough Video:
+<!-- ### Link to Walkthrough Video:
 
 > - [:movie_camera: Click Here for an external video link.](https://drive.google.com/file/d/1UL_enQS1NUaSNOnWEJRAG2vYJFQae5Vr/view)
 > - [:movie_camera: Click Here for the downloaded MP4 video saved locally.](./src/demo-MP4.mp4)
-> - [:movie_camera: Click Here for the downloaded webm video saved locally.](./src/demo-webm.webm)
+<!-- > - [:movie_camera: Click Here for the downloaded webm video saved locally.](./src/demo-webm.webm) -->
 
-:loop: Here's a GIF showing the app's overall functionality:
+<!-- :loop: Here's a GIF showing the app's overall functionality:
 
-![demo](./src/demo.gif)
+<!-- ![demo](./src/demo.gif)  -->
 
 ## Table of Contents
 
-- [Description](#description)
 - [User Story](#user)
 - [License](#license)
 - [Live Site](#live)
@@ -64,22 +60,39 @@ The generated portfolio includes:
 
 ## User Story: 
 
-:book: As a bootcamp student or prospective student, I would like an application that allows me to see and comment on blog posts from other bootcamp students and industry professionals. 
-When in need of resources, I am presented with a list of useful documents and articles in an easy-to-navigate area. 
-When looking for potential bootcamps to attend, I am presented with suggestions and posts from other bootcamp students and graduates to help inform my decision.
+As a professional working in the tech industry, I need a high-quality web-based portfolio that will make it easy for employers to get to know me and my skills.
 
+When I run the Portfolio-Generator, I see a brief introduction and the option to either Sign up or Login.
+
+Once I sign up or login, I have access to  Portfolio Generator sections for entering my Developer Information, Social Media Links, and a list of Projects I've worked on. 
+
+When I expand the Developer Information, I can specify my (required) name, (required) profile image, phone number, and a short, required "About Me" biography, as well as selecting from a large list of optional developer skills (and icons) that to include in the portfolio.
+
+When I expand the Social Medial section, I can optionallyl provide account urls for a variety of social media platforms.
+
+When I expand the Projects section, I see a list of any projects that were previously specified, together with a button to add a new project. 
+
+When I click ``Add New Project``, a form expands that lets me enter a (required) title, (required) thumbnail image filename, link to deployed application, github repository link, video link, organization, and (required) short description.
+
+When I click ``Save`` in any of the sectons, the information in that area is written to a mongoDB database so it it can be retrieved and edited at a later date.
+
+When I click ``Create Portfolio Zip File`` the HTML and css files for my portfolio are downloaded to my computer.
+
+When I unpack the zip files, I place  ``index.html`` in a directory of my choosing, place the ``styles.css`` in an ``assets/css`` subdirectory, and place any images I've included in the project in an ``assets/images`` subdirectory so they can be loaded propertly by the html file.
+
+When I load my ``index.html`` file into a web browser, I see a single-page portfolio with "About Me" and "Contact" information, social media links, and a list of projects that includes both image thumbnails and application links. 
 
 ## Live Site:
 
-> https://coding-bootcamp-survival-guide.herokuapp.com/
+> https://dksv-portfolio-generator.herokuapp.com/
 
 ## GitHub Repository Link:
 
-> https://github.com/Coding-Bootcamp-Survival-Guide/Coding-Bootcamp-Survival-Guide
+>https://github.com/Portfolio-Generator/Portfolio-Generator
 
 ## Instructions:
 
-🚀 Log-in or Create an account to "Heart/Like" your favorite resources. You can also comment on the individual posts by clicking the post title. Once you have "hearted/liked" a post/resource you can then view them by category in the "Your Profile" section for later use.   
+Create a user-account (or login) and follow the directions included in the application.   
 
 ## License
 
@@ -89,10 +102,10 @@ This application is covered by the MIT license.
 
 ## 👥Contributors:
 
-- :octocat: [Kashay Arbelo](https://github.com/KashCodes)<br /> - _Project Manager, Design, HTML, CSS, JavaScript, Documentation, QA, & Presentation (Front-End)_
-- :octocat: [Peter Quinn](https://github.com/PeterdQuinns)<br /> - _Design, HTML, CSS, JavaScript, QA, Presentation (Front-End)_
-- :octocat: [Stephanie Giel](https://github.com/SGiel)<br /> - _Design, JavaScript, APIs, HTML, CSS, QA, Presentation (Back-End)_
-- :octocat: [Garrett Warzecha](https://github.com/gwarzecha)<br /> - _Design, JavaScript, APIs, HTML, CSS, QA, Presentation (Back-End)_
+- :octocat: [Kashay Arbelo](https://github.com/KashCodes)<br /> - _Project Manager, UX/UI Design, HTML, CSS, Template design & generation, JavaScript/JSX, QA, Presentation (Design & Front-End)_
+- :octocat: [Dan Arbelo](/https://github.com/Govepitr)<br /> - _UX/UI Design, HTML, CSS, JavaScript/JSX, QA, Presentation (Design & Front-End)_
+- :octocat: [Stephanie Giel](https://github.com/SGiel)<br /> - _Functional Design, JavaScript/JSX, React, Apollo/GraphQl/Mongoose API, QA, Presentation (Front & Back-End)_
+- :octocat: [Vicky Loebel](https://github.com/vloebel)<br /> - _Functional Design,  JavaScript/JSX, React, Database Design & Integration, JWT Authentication, Documentation (Front-end/Back-End)_
 
 
 
