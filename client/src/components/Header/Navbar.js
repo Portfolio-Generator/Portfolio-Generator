@@ -15,7 +15,7 @@ const AppNavbar = () => {
       <Navbar  variant='dark' expand='lg' className="bg-dark-blue raleway-font">
         <Container fluid>
           <Navbar.Brand as={Link} to='/' className="montserrat-font font-2xl title">
-            Profile Generator
+            Portfolio Generator
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
           <Navbar.Collapse id='navbar'>
