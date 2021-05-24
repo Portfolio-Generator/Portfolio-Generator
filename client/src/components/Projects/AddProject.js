@@ -120,10 +120,10 @@ const AddProject = ({
 
         <Card.Body className="raleway-font font-dark-blue">
           <div className="pb-4">
-          {projectField("Title (required)", "title", projectFormData.title)}
+          {projectField("Title*", "title", projectFormData.title)}
           </div>
           <div className="pb-4">
-          {projectField("Thumbnail Image Filename (required, case sensitive)", "thumbnail", projectFormData.thumbnail)}
+          {projectField("Thumbnail Image Filename* (case sensitive)", "thumbnail", projectFormData.thumbnail)}
           </div>
           <div className="pb-4">
           {projectField("Link to deployed application", "deployedLink", projectFormData.deployedLink)}
@@ -140,7 +140,7 @@ const AddProject = ({
           {/* Project Blurb:   */}
           <div className="flex-col w-full">
             <label className="raleway-font font-dark-blue text-xl">
-              <span className="text-left">Short Description</span>
+              <span className="text-left">Short Description*</span>
             </label>
             <textarea
               type="textarea"

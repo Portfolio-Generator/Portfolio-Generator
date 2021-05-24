@@ -18,8 +18,8 @@ const DetailedDirections = () => {
             <ul>
               <li> First Name, Last Name, and Profile Image are required</li>
               <li> Enter the Profile Image Filename without a directory path, as in "myHeadShot.jpg"</li>
-              <li>Optionally, select the developer skills that you want list in your portfolio</li>
-              <li>Click "Save".</li>
+              <li>Select any developer skills that you want list in your portfolio</li>
+              <li>Click "Save"</li>
             </ul>
             <h4>Social Media:</h4>
             <ul>
@@ -33,21 +33,21 @@ const DetailedDirections = () => {
               <li>Click "Add New Projects"</li>
               <li>Enter the Title </li>
               <li>Provide the full url to any links you choose to include, as in: "https://github.com/myAccount"</li>
-              <li>Enter the Thumbnail Image Filename without a directory path, as in "myThumbnail1.jpg"</li>
-              <li>Enter a short description of the project</li>
-              <li>Click "Save".</li>
+              <li>Enter the required Thumbnail Image Filename without a directory path, as in "myThumbnail1.jpg"</li>
+              <li>Enter a short (required) description of the project</li>
+              <li>Click "Save"</li>
             </ul>
             <h4>Downloading Portfolio Zip Files:</h4>
             <ul>
-              <li>You can save  portfolio information and come back to it at any time.</li>
-              <li>When everthing is ready, click "Create Portfolio Zip File" to download zip files containing html and css.</li>
-              <li>CREATE a folder for your portfolio and UNZIP "index.html" file into that folder.</li>
-              <li>In the Portfolio folder, create a subfolder named "assets".</li>
-              <li>In the assets folder, create TWO subfolders named "css" and  "images".</li>
-              <li>UNZIP the "styles.css" file into the "css" folder.</li>
-              <li>MOVE all the images you are using in your portfolio into the "images" folder.</li>
+              <li>You can save  portfolio information and come back to it at any time</li>
+              <li>When everthing is ready, click "Create Portfolio Zip File" to download zip files containing html and css</li>
+              <li>CREATE a folder for your portfolio and UNZIP "index.html" file into that folder</li>
+              <li>In the Portfolio folder, create a subfolder named "assets"</li>
+              <li>In the assets folder, create TWO subfolders named "css" and  "images"</li>
+              <li>UNZIP the "styles.css" file into the "css" folder</li>
+              <li>MOVE all the images you are using in your portfolio into the "images" folder</li>
 
-              <li>IMPORTANT: Your portfolio assumes images are located in an "assets/images" subfolder and that the css is in an "assets/css" subfolder. You must create this path structure to publish your website. </li>
+              <li>IMPORTANT: Your portfolio assumes images are located in an "assets/images" subfolder and that the css is in an "assets/css" subfolder. You must create this path structure to publish your website </li>
 
             </ul>
 
