@@ -8,27 +8,27 @@ const DetailedDirections = () => {
   return (
     <section className=" rounded  font-dark-blue  ">
       <Card.Body className="raleway-font  font-dark-blue  ">
-        <div className="bg-cream w-full container my-5 bd-dark-green rounded-3xl bd-3-5">
+        <div className="bg-cream w-full container my-5 bd-dark-green rounded-3xl bd-3-5" >
           <div className="p-4 font-dark-blue raleway-font text-xl text-left">
 
 
 
             <h2>Click each section to enter portfolio information</h2>
             <h4>Developer Information:</h4>
-            <ul>
+            <ul className="A">
               <li> First Name, Last Name, and Profile Image are required</li>
               <li> Enter the Profile Image Filename without a directory path, as in "myHeadShot.jpg"</li>
               <li>Select any developer skills that you want list in your portfolio</li>
               <li>Click "Save"</li>
             </ul>
             <h4>Social Media:</h4>
-            <ul>
+            <ul className="A">
               <li> Social Media links are optional</li>
               <li> Enter the full url to any social media account you want to include, as in: "https://twitter.com/myAccount"</li>
               <li>Click "Save".</li>
             </ul>
             <h4>Projects:</h4>
-            <ul>
+            <ul className="A">
               <li> Projects are the centerpiece of your portfolio. You will need a preview image file for each included project.</li>
               <li>Click "Add New Projects"</li>
               <li>Enter the Title </li>
@@ -38,7 +38,7 @@ const DetailedDirections = () => {
               <li>Click "Save"</li>
             </ul>
             <h4>Downloading Portfolio Zip Files:</h4>
-            <ul>
+            <ul className="A">
               <li>You can save  portfolio information and come back to it at any time</li>
               <li>When everthing is ready, click "Create Portfolio Zip File" to download zip files containing html and css</li>
               <li>CREATE a folder for your portfolio and UNZIP "index.html" file into that folder</li>

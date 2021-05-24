@@ -1612,3 +1612,7 @@ nav a:hover {
     align-items: center;
   }
 }
+
+ul.A {
+  list-style-type: square;
+}
