@@ -290,7 +290,7 @@ const UserPortfolioHtml = ({ userState }) => {
     projectsString +
     socialMediaString +
     `<!-- Footer -->
-    <footer id="projects" class="container-fluid mt-3 mb-2 border border-2 rounded"
+    <footer class="container-fluid mt-3 mb-2 border border-2 rounded"
       style="max-width: 1700px; background:#C4C4C4">
       <p class="d-flex justify-content-center m-0 py-2">©${userState.firstname} ${userState.lastname} <script>
       document.write(new Date().getFullYear());

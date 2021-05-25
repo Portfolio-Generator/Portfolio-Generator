@@ -32,6 +32,10 @@
   background-color: var(--dark-blue);
 }
 
+.aboutpic {
+  max-width:700px; 
+  max-height:400px; }
+  
 .rounded-3xl {
   border-radius: 1.5rem;
 }
