@@ -11,9 +11,9 @@ const Directions = () => {
           <div className="p-4 font-dark-blue raleway-font text-xl align-text-center">
             <h2>Expand each section to enter portfolio information</h2>
             <ul className="">
-              <li className="text-center"><b>Starred * fields are required</b></li>
-              <li>When finished, select <b>Create Portfolio Zip File</b> to download the HTML and CSS. Your portfolio assumes all images are located in an <i>assets/images</i> subfolder and that the css is in an <i>assets/css</i> subfolder.</li>
+              <li>When you're finished, select <b>Create Portfolio Zip File</b> to download the HTML and CSS. Your portfolio assumes all images are located in an <i>assets/images</i> subfolder and that the css is in an <i>assets/css</i> subfolder.</li>
               <li>  Select  <b>Directions</b> for more informaton.</li>
+              <li className="text-center py-1"><b>Fields with * are required</b></li>
             </ul>
           </div>
         </div>

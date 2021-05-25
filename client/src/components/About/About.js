@@ -12,8 +12,10 @@ const About = () => {
             <h2>Portfolio Generator</h2>
             <p>A sophisticated online portfolio is essential for every developer. 
 In just minutes, this application creates a professional portfolio for you to to deploy to the web. </p>
-            <img className="border rounded shadow-lg py-3 aboutpic"
-              src="./images/PortfolioLandingPage.jpg" alt=""></img>
+            <div className="flex justify-center">
+              <img className="border rounded shadow-lg py-3 aboutpic "
+                src="./images/PortfolioLandingPage.jpg" alt=""></img>
+            </div>
 
           </div>
         </div>
