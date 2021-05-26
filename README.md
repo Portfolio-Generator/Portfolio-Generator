@@ -5,7 +5,6 @@
   <p align="center">
     <img src="https://img.shields.io/github/repo-size/Portfolio-Generator/Portfolio-Generator?style=plastic" />
     <img src="https://img.shields.io/github/languages/count/Portfolio-Generator/Portfolio-Generator?style=plastic" />
-    <img src="https://img.shields.io/github/languages/top/Portfolio-Generator/Portfolio-Generator-Guide?style=plastic" />
     <img src="https://img.shields.io/github/last-commit/Portfolio-Generator/Portfolio-Generator?style=plastic" />
   </p>
 
