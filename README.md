@@ -3,10 +3,10 @@
   <h2 align="center">University of Arizona Web Developers Bootcamp - Group Project 3</h2>
 
   <p align="center">
-    <img src="https://img.shields.io/github/repo-size/Coding-Bootcamp-Survival-Guide/Coding-Bootcamp-Survival-Guide?style=plastic" />
-    <img src="https://img.shields.io/github/languages/count/Coding-Bootcamp-Survival-Guide/Coding-Bootcamp-Survival-Guide?style=plastic" />
-    <img src="https://img.shields.io/github/languages/top/Coding-Bootcamp-Survival-Guide/Coding-Bootcamp-Survival-Guide?style=plastic" />
-    <img src="https://img.shields.io/github/last-commit/Coding-Bootcamp-Survival-Guide/Coding-Bootcamp-Survival-Guide?style=plastic" />
+    <img src="https://img.shields.io/github/repo-size/Portfolio-Generator/Portfolio-Generator?style=plastic" />
+    <img src="https://img.shields.io/github/languages/count/Portfolio-Generator/Portfolio-Generator?style=plastic" />
+    <img src="https://img.shields.io/github/languages/top/Portfolio-Generator/Portfolio-Generator-Guide?style=plastic" />
+    <img src="https://img.shields.io/github/last-commit/Portfolio-Generator/Portfolio-Generator?style=plastic" />
   </p>
 
   <p align="center">
